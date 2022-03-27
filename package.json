@@ -4,7 +4,7 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "nodejs": "nodemon .",
+    "nodejs": "node .",
     "web": "cd frontend && yarn start",
     "deploy": "set NODE_ENV=production && cd frontend && yarn build && cd .."
   },

@@ -17,12 +17,12 @@ body {
   -webkit-touch-callout: none;
   overflow: hidden;
   font-size: 0.8em;
-}
-
-@media only screen and (max-width: 1200px) {
-  body {
-    font-size: 1em;
-  }
+  font-family: var(--chakra-fonts-body);
+    color: var(--chakra-colors-whiteAlpha-900);
+    background: var(--chakra-colors-gray-800);
+    transition-property: background-color;
+    transition-duration: var(--chakra-transition-duration-normal);
+    line-height: var(--chakra-lineHeights-base);
 }
 
 code {
