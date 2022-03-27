@@ -1,0 +1,22 @@
+{
+  "name": "chatapp-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "nodejs": "nodemon .",
+    "web": "cd frontend && yarn start",
+    "deploy": "set NODE_ENV=production && cd frontend && yarn build && cd .."
+  },
+  "author": "yuvraj-choudhary",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.9",
+    "socket.io": "^4.4.1"
+  }
+}

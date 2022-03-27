@@ -1,0 +1,30 @@
+.chat-anim {
+  animation: fade 1.5s ease-in-out forwards;
+}
+
+.home {
+  animation: fade 1s ease-in-out forwards;
+  background: linear-gradient(45deg, red, blue);
+  background-position: center;
+  background-size: cover;
+  min-width: 100%;
+  display: flex;
+
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.chat-box {
+  height: calc(100vh - 60px);
+}

@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap");
+
+.App {
+  min-height: 100vh;
+  display: flex;
+}
+
+.component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  background-color: #f0f2f5;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  display: none;
+}
