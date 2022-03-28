@@ -6,7 +6,7 @@ import {
   MenuList,
   Text,
   useColorMode,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { isLastMessage, isSameReceiver } from "../config/ChatLogics";
 import Linkify from "linkify-react";
@@ -24,7 +24,7 @@ const MessageSender = ({ m, i, message, deleteMessage, user }) => {
 
   const options = {
     target: "_blank",
-    className: "link--s"
+    className: "link--s",
   };
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -40,7 +40,7 @@ const MessageSender = ({ m, i, message, deleteMessage, user }) => {
     "Sep",
     "Oct",
     "Nov",
-    "Dec"
+    "Dec",
   ];
 
   const toast = useToast();
@@ -52,7 +52,7 @@ const MessageSender = ({ m, i, message, deleteMessage, user }) => {
           backgroundColor: colorMode === "dark" ? "#232b38" : "#e6e6e6",
           marginLeft: "auto",
           boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 20%)",
-          marginTop: 6,
+          marginTop: 1.5,
           borderRadius:
             isSameReceiver(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)
@@ -133,7 +133,9 @@ const MessageSender = ({ m, i, message, deleteMessage, user }) => {
               : "0px"
           }
         />
-        <Linkify options={options}>{m.content}</Linkify>
+        <Linkify options={options}>
+          <Text>{m.content}</Text>
+        </Linkify>
         <Box d="flex" alignItems="center" justifyContent="center">
           <Text fontSize="12px" marginRight="auto" d="flex" color="GrayText">
             {formatDate(days[new Date(m.createdAt).getDay()])}{" "}
@@ -154,7 +156,7 @@ const MessageSender = ({ m, i, message, deleteMessage, user }) => {
                   toast({
                     title: "Successfully copied the text to clipboard.",
                     status: "success",
-                    position:'top',
+                    position: "top",
                     duration: 2000,
                     isClosable: true,
                   });

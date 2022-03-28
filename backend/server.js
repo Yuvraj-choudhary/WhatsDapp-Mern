@@ -1,19 +1,59 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
+const Pusher = require("pusher");
+const mongoose = require("mongoose");
+
+const pusher = new Pusher({
+  appId: "1364139",
+  key: "3fbcbada485cb2c5e9de",
+  secret: "dedb2864dc947601fa1c",
+  cluster: "ap2",
+  useTLS: true,
+});
 
 const app = express();
 
 dotenv.config();
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-connectDB();
+const db = mongoose.connection;
 
-app.use(express.json({ limit: "30mb", extended: true }));
+db.once("open", () => {
+  console.log(`Database connection established`);
+  const msgCollection = db.collection("messages");
+  const changeStream = msgCollection.watch();
+
+  changeStream.on("change", (change) => {
+    console.log(change);
+
+    if (change.operationType === "insert") {
+      const messageDetails = change.fullDocument;
+      pusher.trigger("messages", "inserted", {
+        content: messageDetails.content,
+        file: messageDetails.file,
+        audio: messageDetails.audio,
+        video: messageDetails.video,
+        gif: messageDetails.gif,
+        readBy: messageDetails.readBy,
+        sender: messageDetails.sender,
+        image: messageDetails.image,
+        chat: messageDetails.chat,
+      });
+    } else {
+      console.log("Error triggering Pusher");
+    }
+  });
+});
+
+app.use(express.json({ limit: "100000000000mb", extended: true }));
 
 const PORT = process.env.PORT || 8000;
 
@@ -26,7 +66,6 @@ app.use("/api/message", messageRoutes);
 const __dirname1 = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
-
   app.use(express.static(path.join(__dirname1, "/frontend/build")));
 
   app.get("*", (req, res) =>
@@ -50,8 +89,8 @@ const server = app.listen(
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000"
-  }
+    origin: "http://localhost:3000",
+  },
 });
 
 io.on("connection", (socket) => {

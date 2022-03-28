@@ -147,17 +147,20 @@ const Footer = ({
           )}
         </>
         {showPicker && !showGifPicker ? (
-          <Box h="80%" w="100%">
-            <EmojiPicker
-              emojiVersion={14.0}
-              emojiSize={45}
-              onEmojiClick={(e) => onEmojiClick(e)}
-              tabsVariant="fullWidth"
-              set="native"
-              mode={colorMode === "dark" ? "dark" : "light"}
-            />
-          </Box>
+          // <Box h="80%">
+          <EmojiPicker
+            emojiVersion={14.0}
+            emojiSize={45}
+            onEmojiClick={(e) => onEmojiClick(e)}
+            tabsVariant="fullWidth"
+            set="native"
+            styles={{
+              backgroundColor: colorMode === "dark" ? "#2d3748" : "#fff",
+            }}
+            mode={colorMode === "dark" ? "dark" : "light"}
+          />
         ) : (
+          // </Box>
           <></>
         )}
       </Box>
@@ -169,7 +172,7 @@ const Footer = ({
         d="flex"
         justifyContent="center"
         alignItems="center"
-        h={pic || audio || gif || video || showPicker ? "100%" : ""}
+        // h={pic || audio || gif || video || showPicker ? "100%" : ""}
         pt={3}
         px={2}
       >

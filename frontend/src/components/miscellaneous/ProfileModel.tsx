@@ -1,11 +1,5 @@
-import { ViewIcon } from "@chakra-ui/icons";
-import { Avatar } from "@material-ui/core";
-import { ChatState } from "../../context/ChatProvider";
 import {
   Box,
-  Button,
-  IconButton,
-  Image,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -15,8 +9,9 @@ import {
   ModalOverlay,
   Text,
   Tooltip,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
+import { Avatar } from "@material-ui/core";
 
 const ProfileModel = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,18 +52,18 @@ const ProfileModel = ({ user, children }) => {
             alignItems="center"
             justifyContent="space-between"
           >
-              <Avatar
-                component="span"
-                src={user.pic}
-                alt={user.name}
-                style={{ width: "300px", height: "300px" }}
-                className="transition-all rounded h-full w-full hover:opacity-50"
-              />
+            <Avatar
+              component="span"
+              src={user.pic}
+              alt={user.name}
+              style={{ width: "300px", height: "300px" }}
+              className="transition-all rounded h-full w-full hover:opacity-50"
+            />
+          </ModalBody>
+          <ModalFooter d="flex" alignItems="center" justifyContent="center">
             <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
               Email: {user.email}
             </Text>
-          </ModalBody>
-          <ModalFooter>
           </ModalFooter>
         </ModalContent>
       </Modal>

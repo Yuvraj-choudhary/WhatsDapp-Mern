@@ -60,7 +60,7 @@ const MessageReceiver = ({
         style={{
           backgroundColor: "#2b6bed",
           boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 60%)",
-          marginTop: 7.5,
+          marginTop: 1.5,
           marginLeft: selectedChat.isGroupChat
             ? isSameSenderMargin(message, m, i, user._id)
             : 0,

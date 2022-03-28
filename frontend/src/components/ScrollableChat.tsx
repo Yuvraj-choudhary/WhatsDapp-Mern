@@ -72,7 +72,7 @@ const ScrollableChat = ({ message, selectedChat, isTyping, deleteMessage }) => {
       ) : (
         <></>
       )}
-      <Box mb="10px"  />
+      <Box mb="10px" />
     </ScrollableFeed>
   );
 };

@@ -209,72 +209,95 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
 
   const sendMessage = async (e: any) => {
     if (e.keyCode == 13 && (newMessage || pic || audio || gif || video)) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-      const { data } = await axios.post(
-        "api/message",
-        {
-          content: newMessage,
-          image: pic,
-          audio: audio,
-          file: file,
-          chatId: selectedChat._id,
-          gif: gif,
-          video: video,
-        },
-        config
-      );
+      try {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        };
+        const { data } = await axios.post(
+          "api/message",
+          {
+            content: newMessage,
+            image: pic,
+            audio: audio,
+            file: file,
+            chatId: selectedChat._id,
+            gif: gif,
+            video: video,
+          },
+          config
+        );
 
-      socket.emit("new message", data);
-      setNewMessage("");
-      setShowPicker(false);
-      setPic("");
-      setAudio("");
-      setGif("");
-      setVideo("");
-      setFile("");
-      audioPlay.play();
-      setMessage([...message, data]);
+        socket.emit("new message", data);
+        setNewMessage("");
+        setShowPicker(false);
+        setPic("");
+        setAudio("");
+        setGif("");
+        setVideo("");
+        setFile("");
+        audioPlay.play();
+        setMessage([...message, data]);
+      } catch (error) {
+        toast({
+          title: "Error Occurred!",
+          description: "Failed to send the Message",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
     }
   };
 
   const sendMessageButton = async () => {
     if (newMessage || pic || audio || gif || video) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
+      try {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        };
 
-      const { data } = await axios.post(
-        "api/message",
-        {
-          content: newMessage,
-          image: pic,
-          file: file,
-          audio: audio,
-          chatId: selectedChat._id,
-          gif: gif,
-          video: video,
-        },
-        config
-      );
+        const { data } = await axios.post(
+          "api/message",
+          {
+            content: newMessage,
+            image: pic,
+            file: file,
+            audio: audio,
+            chatId: selectedChat._id,
+            gif: gif,
+            video: video,
+          },
+          config
+        );
 
-      socket.emit("new message", data);
-      setNewMessage("");
-      setShowPicker(false);
-      setPic("");
-      setAudio("");
-      setGif("");
-      setVideo("");
-      setFile("");
-      audioPlay.play();
-      setMessage([...message, data]);
+        
+        socket.emit("new message", data);
+        setNewMessage("");
+        setShowPicker(false);
+        setPic("");
+        setAudio("");
+        setGif("");
+        setVideo("");
+        setFile("");
+        audioPlay.play();
+        setMessage([...message, data]);
+      } catch (error) {
+        toast({
+          title: "Error Occurred!",
+          description: "Failed to send the Message",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
     }
   };
 
