@@ -25,6 +25,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.18.1",
     "crypto": "^1.0.1",
+    "emoji-mart": "^3.0.1",
     "express": "^4.17.3",
     "firebase": "^9.6.8",
     "framer-motion": "^6.2.8",

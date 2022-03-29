@@ -1,7 +1,7 @@
 import { useColorMode } from "@chakra-ui/react";
 import { TextareaAutosize } from "@material-ui/core";
 
-const InputRoot = ({ newMessage, typingHandler }) => {
+const InputRoot = ({ newMessage, typingHandler, placeholder }) => {
   const { colorMode } = useColorMode();
   return (
     <TextareaAutosize
@@ -18,7 +18,7 @@ const InputRoot = ({ newMessage, typingHandler }) => {
         background: colorMode === "dark" ? "#232b38" : "#f0f2f5",
         padding: "8px",
       }}
-      placeholder="Type a message"
+      placeholder={placeholder}
       value={newMessage}
       onChange={(e) => typingHandler(e.target.value)}
     />

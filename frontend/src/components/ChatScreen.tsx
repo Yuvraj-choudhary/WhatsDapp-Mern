@@ -1,5 +1,4 @@
 import { Box, Spinner } from "@chakra-ui/react";
-import Picker from "react-giphy-component";
 import ChatHeader from "./ChatHeader";
 import Footer from "./Footer";
 import ScrollableChat from "./ScrollableChat";
@@ -91,15 +90,6 @@ const ChatScreen = ({
           )}
         </Box>
       )}
-      {showGifPicker && (
-        <Box h="85%" w="100%">
-          <Picker
-            apiKey="P9bkVJ0Z7fcRkW7dRCrZz7BgNsrtc30f"
-            onSelected={(p: any) => setGifHandler(p.downsized.url)}
-            width="100%"
-          />
-        </Box>
-      )}
       <Footer
         newMessage={newMessage}
         sendMessageButton={sendMessageButton}
@@ -128,6 +118,7 @@ const ChatScreen = ({
         file={file}
         setFile={setFile}
         postFile={postFile}
+        setGifHandler={setGifHandler}
       />
     </>
   );

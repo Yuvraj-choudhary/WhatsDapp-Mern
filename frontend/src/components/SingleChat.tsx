@@ -208,7 +208,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   };
 
   const sendMessage = async (e: any) => {
-    if (e.keyCode == 13 && (newMessage || pic || audio || gif || video)) {
+    if (
+      e.keyCode == 13 &&
+      newMessage.trim() !== "" &&
+      (newMessage || pic || audio || gif || video)
+    ) {
+      e.preventDefault();
       try {
         const config = {
           headers: {
@@ -254,7 +259,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   };
 
   const sendMessageButton = async () => {
-    if (newMessage || pic || audio || gif || video) {
+    if (
+      newMessage ||
+      newMessage.trim() !== "" ||
+      pic ||
+      audio ||
+      gif ||
+      video
+    ) {
       try {
         const config = {
           headers: {
@@ -277,7 +289,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
           config
         );
 
-        
         socket.emit("new message", data);
         setNewMessage("");
         setShowPicker(false);

@@ -27,7 +27,7 @@ import {
   Text,
   Tooltip,
   useColorMode,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -148,13 +148,17 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
             borderColor={colorMode === "dark" ? "#232b38" : "#e5e7eb"}
             d={{ base: !selectedChat ? "flex" : "none", xl: "flex" }}
           >
-            <Box>
+            <Box d="flex">
               <Tooltip
                 label="Search Users to chats"
                 hasArrow
                 placement="bottom-end"
               >
-                <Button variant="outline" onClick={onOpen} mr={2}>
+                <Button
+                  variant="outline"
+                  onClick={onOpen}
+                  mr={2}
+                >
                   <Search2Icon />
                   <Text d={{ base: "none", md: "flex" }} pl="4" pr="1">
                     Search Users
@@ -163,11 +167,10 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
               </Tooltip>
               <IconButton
                 aria-label="hi"
-                icon={<ChevronDownIcon fontSize="2xl" />}
+                icon={<ChevronUpIcon fontSize="2xl" />}
                 variant="outline"
                 onClick={() => {
                   setIsHidden(true);
-                  localStorage.setItem("hidden", JSON.stringify(isHidden));
                 }}
               />
             </Box>
@@ -298,7 +301,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
             setIsHidden(false);
           }}
         >
-          <ChevronUpIcon fontSize={25} cursor="pointer" />
+          <ChevronDownIcon fontSize={25} cursor="pointer" />
         </Box>
       )}
     </>

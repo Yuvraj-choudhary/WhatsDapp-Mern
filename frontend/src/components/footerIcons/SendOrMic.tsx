@@ -15,16 +15,21 @@ const SendOrMic = ({
   audioLoading,
   videoLoading,
   fileLoading,
-  postAudio
+  postAudio,
 }) => {
   return (
     <>
-      {newMessage || pic || audio || gif || video ? (
+      {newMessage ||
+      newMessage.trim() !== "" ||
+      pic ||
+      audio ||
+      gif ||
+      video ? (
         <>
           <IconButton
             style={{
               marginLeft: 5,
-              color: colorMode === "dark" ? "#898787" : "#707070"
+              color: colorMode === "dark" ? "#898787" : "#707070",
             }}
             onClick={sendMessageButton}
           >
@@ -36,7 +41,7 @@ const SendOrMic = ({
           disableRipple
           style={{
             marginLeft: 7,
-            color: colorMode === "dark" ? "#898787" : "#707070"
+            color: colorMode === "dark" ? "#898787" : "#707070",
           }}
         >
           <Spinner />
@@ -49,7 +54,7 @@ const SendOrMic = ({
             accept="audio/*"
             capture
             style={{
-              display: "none"
+              display: "none",
             }}
             onChange={(e: any) => postAudio(e.target.files[0])}
           />
@@ -58,7 +63,7 @@ const SendOrMic = ({
             style={{
               marginLeft: 5,
               marginRight: -10,
-              color: colorMode === "dark" ? "#898787" : "#707070"
+              color: colorMode === "dark" ? "#898787" : "#707070",
             }}
           >
             <Mic />

@@ -1,3 +1,4 @@
+import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Box,
   Menu,
@@ -8,14 +9,12 @@ import {
   useColorMode,
   useToast,
 } from "@chakra-ui/react";
-import { isLastMessage, isSameReceiver } from "../config/ChatLogics";
-import Linkify from "linkify-react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import AudioPlayer from "react-h5-audio-player";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
+import Linkify from "linkify-react";
+import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
+import { isLastMessage, isSameReceiver } from "../config/ChatLogics";
 import "./styles.css";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const MessageSender = ({ m, i, message, deleteMessage, user }) => {
   const formatDate = (date: any) => {
@@ -136,14 +135,21 @@ const MessageSender = ({ m, i, message, deleteMessage, user }) => {
         <Linkify options={options}>
           <Text>{m.content}</Text>
         </Linkify>
-        <Box d="flex" alignItems="center" justifyContent="center">
-          <Text fontSize="12px" marginRight="auto" d="flex" color="GrayText">
+        <Box d="flex" position="relative" alignItems="center" justifyContent="center">
+          <span
+            style={{
+              fontSize: "12px",
+              marginRight: "auto",
+              display: "flex",
+              color: "GrayText",
+            }}
+          >
             {formatDate(days[new Date(m.createdAt).getDay()])}{" "}
             {formatDate(new Date(m.createdAt).getDate())}{" "}
             {formatDate(months[new Date(m.createdAt).getMonth()])}{" "}
             {formatDate(new Date(m.createdAt).getHours())}:
             {formatDate(new Date(m.createdAt).getMinutes())}
-          </Text>
+          </span>
           <Menu>
             <MenuButton>
               <ChevronDownIcon fontSize="2xl" color="GrayText" />

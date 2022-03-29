@@ -10,8 +10,9 @@ import {
   Text,
   Tooltip,
   useDisclosure,
+  Image,
+  Avatar,
 } from "@chakra-ui/react";
-import { Avatar } from "@material-ui/core";
 
 const ProfileModel = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,11 +54,9 @@ const ProfileModel = ({ user, children }) => {
             justifyContent="space-between"
           >
             <Avatar
-              component="span"
+              boxSize="250px"
               src={user.pic}
-              alt={user.name}
-              style={{ width: "300px", height: "300px" }}
-              className="transition-all rounded h-full w-full hover:opacity-50"
+              name={user.name}
             />
           </ModalBody>
           <ModalFooter d="flex" alignItems="center" justifyContent="center">

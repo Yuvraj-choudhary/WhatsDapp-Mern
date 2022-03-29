@@ -25,13 +25,17 @@
   background-color: #232b38;
 }
 
-
 .file {
   border-radius: 17px;
   width: 100%;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
   height: 50%;
 }
+
+.ratio {
+  width: 150px;
+}
+
 
 .image {
   border-radius: 17px;

@@ -5,7 +5,11 @@ import Lock from "../components/icons/Lock";
 
 const Loadingpage = ({ colorMode, progress }) => {
   return (
-    <Box className="component" bg={colorMode === "dark" ? "#2d3748" : "#fff"}>
+    <Box
+      className="component"
+      bg={colorMode === "dark" ? "#2d3748" : "#fff"}
+      d={{ base: "none", xl: "flex" }}
+    >
       <Image src={chatdapp} width={70} mb={10} />
 
       <LinearProgress

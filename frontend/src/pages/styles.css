@@ -2,6 +2,10 @@
   animation: fade 1.5s ease-in-out forwards;
 }
 
+.⛔-anim {
+  animation: fade 1.5s ease-in-out forwards;
+}
+
 .home {
   animation: fade 1s ease-in-out forwards;
   background: linear-gradient(45deg, red, blue);

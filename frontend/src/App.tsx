@@ -1,11 +1,11 @@
 import { Box, useColorMode } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import NotFound from "./pages/404";
 import Chatpage from "./pages/Chatpage";
-import Homepage from "./pages/Homepage";
-import Loadingpage from "./pages/Loadingpage";
+const Loadingpage = lazy(() => import("./pages/Loadingpage"));
+const NotFound = lazy(() => import("./pages/404"));
+const Homepage = lazy(() => import("./pages/Homepage"));
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -34,15 +34,25 @@ const App = () => {
   }, []);
 
   return (
-    <Box className="App">
+    <Box
+      bgColor={colorMode === "dark" ? "#2d3748" : "#fff"}
+      className="transition-all App"
+      transition="1s"
+    >
       {!loading ? (
-        <Switch>
-          <Route path="/" component={Homepage} exact />
-          <Route path="/@" component={Chatpage} />
-          <Route component={NotFound} />
-        </Switch>
+        <Router>
+          <Suspense fallback={<></>}>
+            <Switch>
+              <Route path="/" component={Homepage} exact />
+              <Route path="/@" component={Chatpage} />
+              <Route component={NotFound} />
+            </Switch>
+          </Suspense>
+        </Router>
       ) : (
-        <Loadingpage colorMode={colorMode} progress={progress} />
+        <Suspense fallback={<></>}>
+          <Loadingpage colorMode={colorMode} progress={progress} />
+        </Suspense>
       )}
     </Box>
   );
