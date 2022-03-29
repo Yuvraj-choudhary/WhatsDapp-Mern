@@ -23,7 +23,8 @@ const AttachFile = ({
           <IconButton
             style={{
               marginRight: 7,
-              color: colorMode === "dark" ? "#898787" : "#707070"
+              marginLeft: -15,
+              color: colorMode === "dark" ? "#898787" : "#707070",
             }}
             onClick={() => setShowGifPicker(true)}
           >
@@ -36,11 +37,11 @@ const AttachFile = ({
             as={IconButton}
             style={{
               marginRight: 7,
-              marginLeft:-15,
-              color: colorMode === "dark" ? "#898787" : "#707070"
+              marginLeft: -15,
+              color: colorMode === "dark" ? "#898787" : "#707070",
             }}
           >
-              <Attach />
+            <Attach />
           </MenuButton>
           <MenuList>
             <label htmlFor="icon-button-file">
@@ -49,7 +50,7 @@ const AttachFile = ({
                 type="file"
                 accept="image/*"
                 style={{
-                  display: "none"
+                  display: "none",
                 }}
                 onChange={(e: any) => postDetails(e.target.files[0])}
               />
@@ -59,7 +60,7 @@ const AttachFile = ({
                   marginRight: 7,
                   width: "100%",
                   height: 60,
-                  color: colorMode === "dark" ? "#fff" : "#000"
+                  color: colorMode === "dark" ? "#fff" : "#000",
                 }}
               >
                 Attach Image
@@ -72,7 +73,7 @@ const AttachFile = ({
                 type="file"
                 accept="video/*"
                 style={{
-                  display: "none"
+                  display: "none",
                 }}
                 onChange={(e: any) => postVideo(e.target.files[0])}
               />
@@ -83,7 +84,7 @@ const AttachFile = ({
                   marginRight: 7,
                   width: "100%",
                   height: 60,
-                  color: colorMode === "dark" ? "#fff" : "#000"
+                  color: colorMode === "dark" ? "#fff" : "#000",
                 }}
               >
                 Attach Video
@@ -96,7 +97,7 @@ const AttachFile = ({
                 type="file"
                 accept="file/*"
                 style={{
-                  display: "none"
+                  display: "none",
                 }}
                 onChange={(e: any) => postFile(e.target.files[0])}
               />
@@ -107,7 +108,7 @@ const AttachFile = ({
                   marginRight: 7,
                   width: "100%",
                   height: 60,
-                  color: colorMode === "dark" ? "#fff" : "#000"
+                  color: colorMode === "dark" ? "#fff" : "#000",
                 }}
               >
                 Attach File

@@ -1,12 +1,13 @@
 import { IconButton } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
-import Emoji from '../icons/Emoji';
+import Emoji from "../icons/Emoji";
 
 const ShowEmoji = ({
   showGifPicker,
   colorMode,
   setShowGifPicker,
-  setShowPicker
+  setShowPicker,
+  showPicker,
 }) => {
   return (
     <>
@@ -14,9 +15,19 @@ const ShowEmoji = ({
         <IconButton
           style={{
             marginRight: 7,
-            color: colorMode === "dark" ? "#898787" : "#707070"
+            color: colorMode === "dark" ? "#898787" : "#707070",
           }}
           onClick={() => setShowGifPicker((val: any) => !val)}
+        >
+          <Close />
+        </IconButton>
+      ) : showPicker ? (
+        <IconButton
+          style={{
+            marginRight: 7,
+            color: colorMode === "dark" ? "#898787" : "#707070",
+          }}
+          onClick={() => setShowPicker((val: any) => !val)}
         >
           <Close />
         </IconButton>
@@ -24,7 +35,7 @@ const ShowEmoji = ({
         <IconButton
           style={{
             marginRight: 7,
-            color: colorMode === "dark" ? "#898787" : "#707070"
+            color: colorMode === "dark" ? "#898787" : "#707070",
           }}
           onClick={() => setShowPicker((val: any) => !val)}
         >

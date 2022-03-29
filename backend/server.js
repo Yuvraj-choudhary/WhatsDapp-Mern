@@ -5,7 +5,6 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
-const Pusher = require("pusher");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -22,7 +21,7 @@ db.once("open", () => {
   console.log(`Database connection established`);
 });
 
-app.use(express.json({ limit: "1024mb", extended: true }));
+app.use(express.json({ limit: "4096mb", extended: true }));
 
 const PORT = process.env.PORT || 8000;
 

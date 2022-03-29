@@ -44,8 +44,9 @@ const ChatScreen = ({
   setVideo,
   onEmojiClick,
   setFile,
-  postFile
+  postFile,
 }) => {
+  const isPreview = pic || audio || video || file || gif;
   return (
     <>
       <ChatHeader
@@ -58,6 +59,12 @@ const ChatScreen = ({
         fetchAgain={fetchAgain}
         setFetchAgain={setFetchAgain}
         selectedChat={selectedChat}
+        isPreview={isPreview}
+        setPic={setPic}
+        setAudio={setAudio}
+        setVideo={setVideo}
+        setFile={setFile}
+        setGif={setGif}
       />
       {pic || audio || gif || video || file || showPicker ? (
         <></>

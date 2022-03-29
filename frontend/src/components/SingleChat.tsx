@@ -209,7 +209,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
 
   const sendMessage = async (e: any) => {
     if (
-      e.keyCode == 13 &&
+      e.keyCode === 13 &&
       newMessage.trim() !== "" &&
       (newMessage || pic || audio || gif || video)
     ) {
@@ -260,8 +260,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
 
   const sendMessageButton = async () => {
     if (
-      newMessage ||
-      newMessage.trim() !== "" ||
+      (newMessage && newMessage.trim() !== "") ||
       pic ||
       audio ||
       gif ||

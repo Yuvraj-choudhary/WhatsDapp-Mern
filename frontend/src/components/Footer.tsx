@@ -51,17 +51,6 @@ const Footer = ({
         <Box overflow="scroll">
           {pic && !showPicker ? (
             <Box alignItems="center" d="flex" flexDir="column">
-              <IconButton
-                onClick={() => {
-                  setPic();
-                }}
-                style={{
-                  marginTop: 8,
-                  color: colorMode === "dark" ? "#898787" : "#707070",
-                }}
-              >
-                <Close />
-              </IconButton>
               <ModalImage
                 showRotation={true}
                 showZoom={true}
@@ -76,17 +65,6 @@ const Footer = ({
           )}
           {audio && !showPicker ? (
             <Box alignItems="center" d="flex" flexDir="column">
-              <IconButton
-                onClick={() => {
-                  setAudio();
-                }}
-                style={{
-                  marginTop: 8,
-                  color: colorMode === "dark" ? "#898787" : "#707070",
-                }}
-              >
-                <Close />
-              </IconButton>
               <AudioPlayer src={audio} />
             </Box>
           ) : (
@@ -94,18 +72,6 @@ const Footer = ({
           )}
           {gif && !showPicker ? (
             <Box alignItems="center" d="flex" flexDir="column">
-              <IconButton
-                onClick={() => {
-                  setGif("");
-                }}
-                style={{
-                  marginTop: 8,
-                  color: colorMode === "dark" ? "#898787" : "#707070",
-                  alignSelf: "center",
-                }}
-              >
-                <Close />
-              </IconButton>
               <ModalImage
                 showRotation={true}
                 showZoom={true}
@@ -119,16 +85,6 @@ const Footer = ({
           )}
           {video && !showPicker ? (
             <Box alignItems="center" d="flex" flexDir="column">
-              <IconButton
-                onClick={() => setVideo()}
-                style={{
-                  marginTop: 8,
-                  color: colorMode === "dark" ? "#898787" : "#707070",
-                  alignSelf: "center",
-                }}
-              >
-                <Close />
-              </IconButton>
               <video src={video} controls={true} className="video"></video>
             </Box>
           ) : (
@@ -136,15 +92,6 @@ const Footer = ({
           )}
           {file && !showPicker ? (
             <Box alignItems="center" d="flex" flexDir="column">
-              <IconButton
-                onClick={() => setFile()}
-                style={{
-                  marginTop: 8,
-                  color: colorMode === "dark" ? "#898787" : "#707070",
-                }}
-              >
-                <Close />
-              </IconButton>
               <iframe src={file} className="file"></iframe>
             </Box>
           ) : (
@@ -214,19 +161,6 @@ const Footer = ({
                 postAudio={postAudio}
               />
             </FormControl>
-            {/* <Box
-              mt={5}
-              bg={colorMode === "dark" ? "#232b38" : "#e5e7eb"}
-              w="100%"
-              d="flex"
-              justifyContent="center"
-              alignItems="center"
-              h="125px"
-              mb={-2}
-              mr={-5}
-            >
-              <Image src={pic} className="ratio" />
-            </Box> */}
           </>
         ) : (
           <FormControl
@@ -244,7 +178,8 @@ const Footer = ({
               showGifPicker={showGifPicker}
               colorMode={colorMode}
               setShowGifPicker={setShowGifPicker}
-              setShowPicker={setShowPicker}
+                setShowPicker={setShowPicker}
+                showPicker={showPicker}
             />
             <AttachFile
               showPicker={showPicker}

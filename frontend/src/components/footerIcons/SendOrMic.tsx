@@ -19,8 +19,7 @@ const SendOrMic = ({
 }) => {
   return (
     <>
-      {newMessage ||
-      newMessage.trim() !== "" ||
+      {(newMessage && newMessage.trim() !== "") ||
       pic ||
       audio ||
       gif ||
