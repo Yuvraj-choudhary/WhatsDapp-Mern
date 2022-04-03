@@ -28,11 +28,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   const [pic, setPic]: any = useState("");
   const [audioLoading, setAudioLoading]: any = useState(false);
   const [audio, setAudio]: any = useState("");
+  const [isRecording, setIsRecording]: any = useState();
+  const [isAudioRecording, setIsAudioRecording]: any = useState(false);
   const [videoLoading, setVideoLoading]: any = useState(false);
   const [video, setVideo]: any = useState("");
   const [fileLoading, setFileLoading]: any = useState(false);
-  const [dataUri, setDataUri]: any = useState("");
+  const [star, setStar]: any = useState(false);
   const [file, setFile]: any = useState("");
+  const [isOnline, setIsOnline]: any = useState(false);
   const audioPlay = new Audio(
     "https://firebasestorage.googleapis.com/v0/b/storage-1a7bb.appspot.com/o/files%2Fimessage_send_sound%20(1).mp3?alt=media&token=6a7cf28e-d678-406a-9473-b1a6b4751cff"
   );
@@ -97,15 +100,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   useEffect(() => {
     socket.on("message received", (newMessages: any) => {
       if (
-        !selectedChatCompare || // if chat is not selected or doesn't match current chat
+        !selectedChatCompare ||
         selectedChatCompare._id !== newMessages.chat._id
       ) {
         if (!notification.includes(newMessages)) {
           setNotification([newMessages, ...notification]);
           setFetchAgain(!fetchAgain);
         }
+        setIsOnline(false);
       } else {
         setMessage([...message, newMessages]);
+        setIsOnline(true);
       }
     });
   });
@@ -231,6 +236,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
             chatId: selectedChat._id,
             gif: gif,
             video: video,
+            star: star,
           },
           config
         );
@@ -455,6 +461,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
           onEmojiClick={onEmojiClick}
           setFile={setFile}
           postFile={postFile}
+          star={star}
+          setStar={setStar}
+          isRecording={isRecording}
+          setIsRecording={setIsRecording}
+          isOnline={isOnline}
+          isAudioRecording={isAudioRecording}
+          setIsAudioRecording={setIsAudioRecording}
         />
       ) : (
         <Box d="flex" alignItems="center" justifyContent="center" h="100%">

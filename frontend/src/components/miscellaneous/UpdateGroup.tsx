@@ -259,7 +259,7 @@ const UpdateGroup = ({
   return (
     <>
       <Tooltip label="View the chat" hasArrow placement="bottom-end">
-        <Text p={5} fontSize={22} onClick={onOpen}>
+        <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
           Update Group
         </Text>
       </Tooltip>

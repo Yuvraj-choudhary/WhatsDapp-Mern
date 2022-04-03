@@ -1,15 +1,13 @@
-import { Box, FormControl, Image, useColorMode } from "@chakra-ui/react";
-import { IconButton } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import { Box, FormControl, useColorMode } from "@chakra-ui/react";
 import { EmojiPicker } from "react-emoji-search";
 import Picker from "react-giphy-component";
-import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
 import AttachFile from "./footerIcons/AttachFile";
 import SendOrMic from "./footerIcons/SendOrMic";
 import ShowEmoji from "./footerIcons/ShowEmoji";
 import InputRoot from "./InputRoot";
 import "./styles.css";
+import AudioPlayer from 'react-h5-audio-player';
 
 const Footer = ({
   sendMessage,
@@ -40,10 +38,18 @@ const Footer = ({
   onEmojiClick,
   fileLoading,
   setGifHandler,
+  isRecording,
+  setIsRecording,
+  isAudioRecording,
+  setIsAudioRecording,
 }) => {
   const { colorMode } = useColorMode();
+  const isPreview = pic || video || file || gif;
 
-  const isPreview = pic || audio || video || file || gif;
+  const onStop = (audioData) => {
+    console.log("audioData", audioData);
+    setAudio(audioData.url);
+  };
 
   return (
     <>
@@ -59,13 +65,6 @@ const Footer = ({
                 alt=""
                 className="image2"
               />
-            </Box>
-          ) : (
-            <></>
-          )}
-          {audio && !showPicker ? (
-            <Box alignItems="center" d="flex" flexDir="column">
-              <AudioPlayer src={audio} />
             </Box>
           ) : (
             <></>
@@ -138,9 +137,15 @@ const Footer = ({
               justifyContent="center"
               alignItems="center"
               px={20}
-              marginLeft={10}
               mt="auto"
             >
+              <ShowEmoji
+                showGifPicker={showGifPicker}
+                colorMode={colorMode}
+                setShowGifPicker={setShowGifPicker}
+                setShowPicker={setShowPicker}
+                showPicker={showPicker}
+              />
               <InputRoot
                 newMessage={newMessage}
                 typingHandler={typingHandler}
@@ -158,58 +163,80 @@ const Footer = ({
                 audioLoading={audioLoading}
                 videoLoading={videoLoading}
                 fileLoading={fileLoading}
-                postAudio={postAudio}
+                setIsAudioRecording={setIsAudioRecording}
+                isRecording={isRecording}
+                onStop={onStop}
+                isAudioRecording={isAudioRecording}
+                setIsRecording={setIsRecording}
               />
             </FormControl>
           </>
         ) : (
-          <FormControl
-            onKeyDown={sendMessage}
-            isRequired
-            w="100%"
-            fontFamily="Nunito"
-            d="flex"
-            justifyContent="center"
-            alignItems="center"
-            pt={3}
-            px={2}
-          >
-            <ShowEmoji
-              showGifPicker={showGifPicker}
-              colorMode={colorMode}
-              setShowGifPicker={setShowGifPicker}
-                setShowPicker={setShowPicker}
-                showPicker={showPicker}
-            />
-            <AttachFile
-              showPicker={showPicker}
-              showGifPicker={showGifPicker}
-              colorMode={colorMode}
-              setShowGifPicker={setShowGifPicker}
-              postDetails={postDetails}
-              postVideo={postVideo}
-              postFile={postFile}
-            />
-            <InputRoot
-              newMessage={newMessage}
-              typingHandler={typingHandler}
-              placeholder="Type a message"
-            />
-            <SendOrMic
-              newMessage={newMessage}
-              pic={pic}
-              audio={audio}
-              gif={gif}
-              video={video}
-              colorMode={colorMode}
-              sendMessageButton={sendMessageButton}
-              picLoading={picLoading}
-              audioLoading={audioLoading}
-              videoLoading={videoLoading}
-              fileLoading={fileLoading}
-              postAudio={postAudio}
-            />
-          </FormControl>
+          <>
+            <FormControl
+              onKeyDown={sendMessage}
+              isRequired
+              w="100%"
+              fontFamily="Nunito"
+              d="flex"
+              justifyContent="center"
+              alignItems="center"
+              pt={3}
+              px={2}
+            >
+              {audio ? (
+                <AudioPlayer
+                  src={audio}
+                  style={{
+                    backgroundColor: colorMode === "dark" ? "#232b38" : "#fff",
+                    color: colorMode === "dark" ? "#fff" : "#333",
+                  }}
+                />
+              ) : (
+                <>
+                  <ShowEmoji
+                    showGifPicker={showGifPicker}
+                    colorMode={colorMode}
+                    setShowGifPicker={setShowGifPicker}
+                    setShowPicker={setShowPicker}
+                    showPicker={showPicker}
+                  />
+                  <AttachFile
+                    showPicker={showPicker}
+                    showGifPicker={showGifPicker}
+                    colorMode={colorMode}
+                    setShowGifPicker={setShowGifPicker}
+                    postDetails={postDetails}
+                    postVideo={postVideo}
+                    postFile={postFile}
+                  />
+                  <InputRoot
+                    newMessage={newMessage}
+                    typingHandler={typingHandler}
+                    placeholder="Type a message"
+                  />
+                </>
+              )}
+              <SendOrMic
+                newMessage={newMessage}
+                pic={pic}
+                audio={audio}
+                gif={gif}
+                video={video}
+                colorMode={colorMode}
+                sendMessageButton={sendMessageButton}
+                picLoading={picLoading}
+                audioLoading={audioLoading}
+                videoLoading={videoLoading}
+                fileLoading={fileLoading}
+                setIsAudioRecording={setIsAudioRecording}
+                isRecording={isRecording}
+                onStop={onStop}
+                isAudioRecording={isAudioRecording}
+                setIsRecording={setIsRecording}
+              />
+            </FormControl>
+          </>
         )}
       </>
     </>

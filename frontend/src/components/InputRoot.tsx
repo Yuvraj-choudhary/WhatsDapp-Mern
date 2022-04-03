@@ -18,6 +18,7 @@ const InputRoot = ({ newMessage, typingHandler, placeholder }) => {
         background: colorMode === "dark" ? "#232b38" : "#f0f2f5",
         padding: "8px",
       }}
+      
       placeholder={placeholder}
       value={newMessage}
       onChange={(e) => typingHandler(e.target.value)}

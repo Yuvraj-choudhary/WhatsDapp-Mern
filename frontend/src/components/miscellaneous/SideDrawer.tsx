@@ -154,13 +154,15 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 hasArrow
                 placement="bottom-end"
               >
-                <Button
-                  variant="outline"
-                  onClick={onOpen}
-                  mr={2}
-                >
+                <Button variant="outline" onClick={onOpen} mr={2} d="flex" alignItems="center">
                   <Search2Icon />
-                  <Text d={{ base: "none", md: "flex" }} pl="4" pr="1">
+                  <Text
+                    fontFamily="Nunito"
+                    fontWeight="medium"
+                    d={{ base: "none", md: "initial" }}
+                    pl="3"
+                    pt="0.5"
+                  >
                     Search Users
                   </Text>
                 </Button>

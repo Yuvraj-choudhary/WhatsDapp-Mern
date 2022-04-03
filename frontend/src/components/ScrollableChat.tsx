@@ -1,15 +1,23 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box } from "@chakra-ui/react";
 import { Tooltip } from "@chakra-ui/tooltip";
+import { lazy } from "react";
 import ScrollableFeed from "react-scrollable-feed";
 import { isLastMessage, isSameSender } from "../config/ChatLogics";
 import { ChatState } from "../context/ChatProvider";
 import MessageLoader from "./MessageLoader";
-import MessageReceiver from "./MessageReceiver";
-import MessageSender from "./MessageSender";
 import "./styles.css";
+const MessageReceiver = lazy(() => import("./MessageReceiver"));
+const MessageSender = lazy(() => import("./MessageSender"));
 
-const ScrollableChat = ({ message, selectedChat, isTyping, deleteMessage }) => {
+const ScrollableChat = ({
+  message,
+  selectedChat,
+  isTyping,
+  deleteMessage,
+  star,
+  setStar,
+}) => {
   const { user }: any = ChatState();
 
   return (
@@ -20,7 +28,7 @@ const ScrollableChat = ({ message, selectedChat, isTyping, deleteMessage }) => {
           behavior: "smooth",
         });
       }}
-      className="px-5"
+      className="px-3 overflow-x-hidden"
     >
       {message &&
         message.map((m: any, i: any) => (
@@ -50,6 +58,8 @@ const ScrollableChat = ({ message, selectedChat, isTyping, deleteMessage }) => {
                   i={i}
                   m={m}
                   message={message}
+                  star={star}
+                  setStar={setStar}
                 />
               ) : (
                 <MessageReceiver
@@ -60,6 +70,8 @@ const ScrollableChat = ({ message, selectedChat, isTyping, deleteMessage }) => {
                   message={message}
                   selectedChat={selectedChat}
                   isTyping={isTyping}
+                  star={star}
+                  setStar={setStar}
                 />
               )}
             </div>

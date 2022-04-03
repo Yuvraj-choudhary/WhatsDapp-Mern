@@ -6,6 +6,7 @@ import {
   MenuItem,
   MenuList,
   Text,
+  useColorMode,
   useToast,
 } from "@chakra-ui/react";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
@@ -27,6 +28,8 @@ const MessageReceiver = ({
   user,
   selectedChat,
   isTyping,
+  star,
+  setStar,
 }) => {
   const formatDate = (date: any) => {
     return date < 10 ? "0" + date : date;
@@ -54,6 +57,7 @@ const MessageReceiver = ({
   ];
 
   const toast = useToast();
+  const { colorMode } = useColorMode();
   return (
     <>
       <Box
@@ -81,7 +85,6 @@ const MessageReceiver = ({
           padding: "10px 10px",
         }}
         maxWidth={{ base: "80%", xl: "50%" }}
-        minWidth={{ base: "10%", xl: "7%" }}
       >
         {m.image !== "" && (
           <ModalImage
@@ -99,6 +102,8 @@ const MessageReceiver = ({
             style={{
               marginTop: m.image ? "10px" : 0,
               marginBottom: m.gif ? "10px" : 0,
+              backgroundColor: colorMode === "dark" ? "#232b38" : "#fff",
+              color: colorMode === "dark" ? "#fff" : "#333",
             }}
           />
         )}
@@ -131,7 +136,7 @@ const MessageReceiver = ({
               alignItems="center"
             >
               <ExternalLinkIcon mr={1} />
-              <Text>Open file in New Tab</Text>
+              <Text fontFamily="Nunito">Open file in New Tab</Text>
             </Box>
           </a>
         )}
@@ -140,39 +145,56 @@ const MessageReceiver = ({
           showLoader={false}
           borderRadius={17}
           url={m.content}
-          margin={m.image !== "" || m.audio !== "" ? "10px 0px" : "0px"}
+          textAlign="center"
+          showPlaceholderIfNoImage={false}
         />
         <Linkify options={options}>
-          <Text color="white">{m.content}</Text>
+          <Text fontFamily="Nunito" color="white" mr={20}>
+            {m.content}
+          </Text>
         </Linkify>
         <Box d="flex" alignItems="center" justifyContent="center">
-          <Text fontSize="12px" marginRight="auto" d="flex" color="white">
+          <span
+            style={{
+              fontSize: "12px",
+              marginRight: "auto",
+              display: "flex",
+              color: "white",
+            }}
+          >
             {formatDate(days[new Date(m.createdAt).getDay()])}{" "}
             {formatDate(new Date(m.createdAt).getDate())}{" "}
             {formatDate(months[new Date(m.createdAt).getMonth()])}{" "}
-            {formatDate(new Date(m.createdAt).getHours())}:
-            {formatDate(new Date(m.createdAt).getMinutes())}
-          </Text>
+            {formatDate(
+              new Date(m.createdAt).toLocaleString("en-US", {
+                hour: "numeric",
+                hour12: true,
+                minute: "numeric",
+              })
+            )}
+          </span>
           <Menu>
             <MenuButton>
               <ChevronDownIcon fontSize="2xl" color="white" />
             </MenuButton>
             <MenuList>
               <MenuItem onClick={() => deleteMessage(m)}>Delete</MenuItem>
-              <MenuItem
-                onClick={() => {
-                  navigator.clipboard.writeText(m.content);
-                  toast({
-                    title: "Successfully copied the text to clipboard.",
-                    status: "success",
-                    position: "top",
-                    duration: 2000,
-                    isClosable: true,
-                  });
-                }}
-              >
-                Copy Text
-              </MenuItem>
+              {m.content !== "" && (
+                <MenuItem
+                  onClick={() => {
+                    navigator.clipboard.writeText(m.content);
+                    toast({
+                      title: "Successfully copied the text to clipboard.",
+                      status: "success",
+                      position: "top",
+                      duration: 2000,
+                      isClosable: true,
+                    });
+                  }}
+                >
+                  Copy Text
+                </MenuItem>
+              )}
             </MenuList>
           </Menu>
         </Box>

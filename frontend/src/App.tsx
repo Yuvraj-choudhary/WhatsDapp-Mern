@@ -26,6 +26,7 @@ const App = () => {
     }, 700);
 
     setTimeout(() => {
+      
       setLoading(false);
     }, 1222);
     return () => {
@@ -35,7 +36,7 @@ const App = () => {
 
   return (
     <Box
-      bgColor={colorMode === "dark" ? "#2d3748" : "#fff"}
+      bgColor={colorMode === "dark" ? "#2d3748" : "#fff"} 
       className="transition-all App"
       transition="1s"
     >

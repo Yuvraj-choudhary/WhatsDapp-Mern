@@ -6,6 +6,7 @@ const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
@@ -22,6 +23,11 @@ db.once("open", () => {
 });
 
 app.use(express.json({ limit: "4096mb", extended: true }));
+app.use(
+  cors({
+    origin: "https://chatdapp-mern.herokuapp.com",
+  })
+);
 
 const PORT = process.env.PORT || 8000;
 

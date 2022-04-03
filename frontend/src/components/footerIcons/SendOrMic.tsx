@@ -1,6 +1,7 @@
 import { Spinner } from "@chakra-ui/react";
+import AudioReactRecorder, { RecordState } from "@kazzkiq/audio-react-recorder";
 import { IconButton } from "@material-ui/core";
-import { Mic } from "@material-ui/icons";
+import { Mic, SettingsVoiceRounded } from "@material-ui/icons";
 import Send from "../icons/Send";
 
 const SendOrMic = ({
@@ -15,8 +16,18 @@ const SendOrMic = ({
   audioLoading,
   videoLoading,
   fileLoading,
-  postAudio,
+  setIsAudioRecording,
+  isRecording,
+  onStop,
+  isAudioRecording,
+  setIsRecording,
 }) => {
+  if (isAudioRecording === true) {
+    setIsRecording(RecordState.START);
+  } else {
+    setIsRecording(RecordState.STOP);
+  }
+
   return (
     <>
       {(newMessage && newMessage.trim() !== "") ||
@@ -46,28 +57,25 @@ const SendOrMic = ({
           <Spinner />
         </IconButton>
       ) : (
-        <label htmlFor="contained-button-file">
-          <input
-            id="contained-button-file"
-            type="file"
-            accept="audio/*"
-            capture
-            style={{
-              display: "none",
-            }}
-            onChange={(e: any) => postAudio(e.target.files[0])}
-          />
+        <>
           <IconButton
-            component="span"
             style={{
               marginLeft: 5,
               marginRight: -10,
               color: colorMode === "dark" ? "#898787" : "#707070",
             }}
+            onClick={() => setIsAudioRecording((e) => !e)}
           >
-            <Mic />
+            {isAudioRecording ? <SettingsVoiceRounded /> : <Mic />}
           </IconButton>
-        </label>
+          <AudioReactRecorder
+            state={isRecording}
+            onStop={(e) => onStop(e)}
+            canvasWidth="0px"
+            canvasHeight="0px"
+            type="audio/mp3"
+          />
+        </>
       )}
     </>
   );

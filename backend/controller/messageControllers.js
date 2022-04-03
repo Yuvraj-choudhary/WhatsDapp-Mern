@@ -4,7 +4,7 @@ const Message = require("../models/messageModel");
 const User = require("../models/userModels");
 
 const sendMessage = asyncHandler(async (req, res) => {
-  const { content, chatId, image, audio, gif, video, file } = req.body;
+  const { content, chatId, image, audio, gif, video, file, star } = req.body;
 
   if (!chatId) {
     return res.sendStatus(400);
@@ -19,6 +19,7 @@ const sendMessage = asyncHandler(async (req, res) => {
     video: video,
     file: file,
     chat: chatId,
+    star: star,
   };
 
   try {

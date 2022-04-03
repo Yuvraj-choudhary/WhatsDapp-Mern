@@ -1,8 +1,9 @@
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Spinner, Text } from "@chakra-ui/react";
+import { lazy, Suspense } from "react";
 import ChatHeader from "./ChatHeader";
 import Footer from "./Footer";
-import ScrollableChat from "./ScrollableChat";
 import "./styles.css";
+const ScrollableChat = lazy(() => import("./ScrollableChat"));
 
 const ChatScreen = ({
   colorMode,
@@ -45,8 +46,15 @@ const ChatScreen = ({
   onEmojiClick,
   setFile,
   postFile,
+  star,
+  setStar,
+  isOnline,
+  isRecording,
+  setIsRecording,
+  isAudioRecording,
+  setIsAudioRecording,
 }) => {
-  const isPreview = pic || audio || video || file || gif;
+  const isPreview = pic || video || file || gif;
   return (
     <>
       <ChatHeader
@@ -64,9 +72,10 @@ const ChatScreen = ({
         setAudio={setAudio}
         setVideo={setVideo}
         setFile={setFile}
+        isOnline={isOnline}
         setGif={setGif}
       />
-      {pic || audio || gif || video || file || showPicker ? (
+      {pic || gif || video || file || showPicker ? (
         <></>
       ) : (
         <Box
@@ -81,18 +90,35 @@ const ChatScreen = ({
           bg={colorMode === "dark" ? "#2d3748" : "white"}
         >
           {loading ? (
-            <Spinner size="xl" w={20} h={20} alignSelf="center" margin="auto" />
+            <Box
+              d="flex"
+              flexDir="column"
+              justifyContent="center"
+              alignItems="center"
+              h="100%"
+              w="100%"
+            >
+              <Spinner size="xl" w={20} h={20} mb={5} />
+              <Text fontFamily="nunito">
+                It's Taking time because You Have More high Resolution Images or
+                Very Long Messages
+              </Text>
+            </Box>
           ) : (
             <Box
               className="messages"
               bg={colorMode === "dark" ? "#2d3748" : "white"}
             >
-              <ScrollableChat
-                message={message}
-                selectedChat={selectedChat}
-                isTyping={isTyping}
-                deleteMessage={deleteMessage}
-              />
+              <Suspense fallback={<></>}>
+                <ScrollableChat
+                  message={message}
+                  selectedChat={selectedChat}
+                  isTyping={isTyping}
+                  deleteMessage={deleteMessage}
+                  star={star}
+                  setStar={setStar}
+                />
+              </Suspense>
             </Box>
           )}
         </Box>
@@ -126,6 +152,10 @@ const ChatScreen = ({
         setFile={setFile}
         postFile={postFile}
         setGifHandler={setGifHandler}
+        isRecording={isRecording}
+        setIsRecording={setIsRecording}
+        isAudioRecording={isAudioRecording}
+        setIsAudioRecording={setIsAudioRecording}
       />
     </>
   );

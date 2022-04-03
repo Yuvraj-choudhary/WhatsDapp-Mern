@@ -23,7 +23,7 @@ const ProfileModel = ({ user, children }) => {
         <span onClick={onOpen}>{children}</span>
       ) : (
         <Tooltip label="View the chat" hasArrow placement="bottom-end">
-          <Text p={5} fontSize={22} onClick={onOpen}>
+          <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
             View Profile
           </Text>
         </Tooltip>
@@ -53,14 +53,10 @@ const ProfileModel = ({ user, children }) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Avatar
-              boxSize="250px"
-              src={user.pic}
-              name={user.name}
-            />
+            <Avatar boxSize="250px" src={user.pic} name={user.name} />
           </ModalBody>
           <ModalFooter d="flex" alignItems="center" justifyContent="center">
-            <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
+            <Text  fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
               Email: {user.email}
             </Text>
           </ModalFooter>

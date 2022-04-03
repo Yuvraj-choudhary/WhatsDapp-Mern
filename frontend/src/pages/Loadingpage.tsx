@@ -21,10 +21,16 @@ const Loadingpage = ({ colorMode, progress }) => {
         }}
       />
 
-      <Text mt={10} color="#4f5f69">
+      <Text mt={10} color="#4f5f69" fontFamily="Nunito">
         ChatDapp
       </Text>
-      <Text mt={3} color="#909ea8" display="flex" alignItems="center">
+      <Text
+        mt={3}
+        color="#909ea8"
+        display="flex"
+        alignItems="center"
+        fontFamily="Nunito"
+      >
         <Lock />
         End-To-end encrypted
       </Text>

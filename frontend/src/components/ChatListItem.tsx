@@ -50,7 +50,7 @@ const ChatListItem = ({
       </Text>
       {chat.latestMessage && (
         <>
-          <Text fontSize="xs">
+          <Text fontSize="xs" fontWeight="hairline" fontFamily="Nunito">
             <b>{chat.latestMessage.sender.name}: </b>
             {chat.latestMessage.content.length > 50
               ? chat.latestMessage.content.substring(0, 51) + "..."

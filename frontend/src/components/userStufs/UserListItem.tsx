@@ -19,7 +19,7 @@ const UserListItem = ({ user, handleFunction }) => {
       _hover={{
         backgroundColor: "#38B2AC",
         color: "white",
-        boxShadow: "md"
+        boxShadow: "md",
       }}
     >
       <Avatar
@@ -30,8 +30,8 @@ const UserListItem = ({ user, handleFunction }) => {
         src={user.pic}
       />
       <Box>
-        <Text>{user.name}</Text>
-        <Text fontSize="xs">
+        <Text fontFamily="Nunito">{user.name}</Text>
+        <Text fontFamily="Nunito" fontSize="xs">
           <b>Email : </b>
           {user.email}
         </Text>
