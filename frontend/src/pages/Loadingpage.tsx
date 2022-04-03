@@ -1,14 +1,34 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { useEffect } from "react";
 import chatdapp from "../512x512.png";
 import Lock from "../components/icons/Lock";
 
-const Loadingpage = ({ colorMode, progress }) => {
+const Loadingpage = ({ colorMode, progress, setLoading, setProgress }) => {
+  useEffect(() => {
+    setLoading(true);
+    const timer = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress === 100) {
+          return 0;
+        }
+        const diff = 150;
+        return Math.min(oldProgress + diff, 100);
+      });
+    }, 700);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1222);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
   return (
     <Box
       className="component"
       bg={colorMode === "dark" ? "#2d3748" : "#fff"}
-      d={{ base: "none", xl: "flex" }}
+      h="100vh"
     >
       <Image src={chatdapp} width={70} mb={10} />
 
