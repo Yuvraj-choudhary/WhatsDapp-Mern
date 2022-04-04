@@ -28,7 +28,7 @@ const ScrollableChat = ({
           behavior: "smooth",
         });
       }}
-      className="px-3 overflow-x-hidden"
+      className="px-3 pt-3 overflow-x-hidden"
     >
       {message &&
         message.map((m: any, i: any) => (

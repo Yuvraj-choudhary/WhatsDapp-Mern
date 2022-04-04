@@ -48,7 +48,6 @@ const ChatScreen = ({
   postFile,
   star,
   setStar,
-  isOnline,
   isRecording,
   setIsRecording,
   isAudioRecording,
@@ -72,7 +71,6 @@ const ChatScreen = ({
         setAudio={setAudio}
         setVideo={setVideo}
         setFile={setFile}
-        isOnline={isOnline}
         setGif={setGif}
       />
       {pic || gif || video || file || showPicker ? (

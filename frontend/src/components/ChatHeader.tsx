@@ -33,7 +33,6 @@ const ChatHeader = ({
   setAudio,
   setVideo,
   setFile,
-  isOnline,
   setGif,
 }) => {
   return (
@@ -126,11 +125,6 @@ const ChatHeader = ({
                     >
                       {selectedChat.chatName}
                     </Text>
-                    {isOnline && (
-                      <Text ml={3} fontSize="sm">
-                        Online
-                      </Text>
-                    )}
                   </Box>
                 </>
               )}

@@ -42,6 +42,7 @@ db.once("open", () => {
         file: messageDetails.file,
         audio: messageDetails.audio,
         video: messageDetails.video,
+        image: messageDetails.image,
         gif: messageDetails.gif,
         readBy: messageDetails.readBy,
         sender: messageDetails.sender,

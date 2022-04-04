@@ -74,14 +74,13 @@ const MessageReceiver = ({
               ? isTyping
                 ? "20px"
                 : "20px 20px 20px 9px"
-              : isTyping
-              ? 0
               : "20px",
           marginBottom:
             isSameSender(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)
-              ? "20px"
-              : "0px",
+                ? 20
+                : "0",
+             
           padding: "10px 10px",
         }}
         maxWidth={{ base: "80%", xl: "50%" }}
@@ -149,7 +148,7 @@ const MessageReceiver = ({
           showPlaceholderIfNoImage={false}
         />
         <Linkify options={options}>
-          <Text fontFamily="Nunito" color="white" mr={20}>
+          <Text fontFamily="Nunito" color="white">
             {m.content}
           </Text>
         </Linkify>

@@ -35,7 +35,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   const [fileLoading, setFileLoading]: any = useState(false);
   const [star, setStar]: any = useState(false);
   const [file, setFile]: any = useState("");
-  const [isOnline, setIsOnline]: any = useState(false);
   const audioPlay = new Audio(
     "https://firebasestorage.googleapis.com/v0/b/storage-1a7bb.appspot.com/o/files%2Fimessage_send_sound%20(1).mp3?alt=media&token=6a7cf28e-d678-406a-9473-b1a6b4751cff"
   );
@@ -107,10 +106,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
           setNotification([newMessages, ...notification]);
           setFetchAgain(!fetchAgain);
         }
-        setIsOnline(false);
       } else {
         setMessage([...message, newMessages]);
-        setIsOnline(true);
       }
     });
   });
@@ -465,7 +462,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
           setStar={setStar}
           isRecording={isRecording}
           setIsRecording={setIsRecording}
-          isOnline={isOnline}
           isAudioRecording={isAudioRecording}
           setIsAudioRecording={setIsAudioRecording}
         />

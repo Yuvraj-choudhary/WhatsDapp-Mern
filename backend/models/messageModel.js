@@ -4,7 +4,7 @@ const messageSchema = mongoose.Schema(
   {
     sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     content: { type: String, trim: true, default: "" },
-    image: String,
+    image: { type: String, trim: true, default: "" },
     file: { type: String, default: "" },
     star: { type: Boolean, default: false },
     audio: { type: String, trim: true, default: "" },

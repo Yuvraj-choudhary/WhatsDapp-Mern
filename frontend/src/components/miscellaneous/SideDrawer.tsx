@@ -27,7 +27,7 @@ import {
   Text,
   Tooltip,
   useColorMode,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -154,7 +154,13 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 hasArrow
                 placement="bottom-end"
               >
-                <Button variant="outline" onClick={onOpen} mr={2} d="flex" alignItems="center">
+                <Button
+                  variant="outline"
+                  onClick={onOpen}
+                  mr={2}
+                  d="flex"
+                  alignItems="center"
+                >
                   <Search2Icon />
                   <Text
                     fontFamily="Nunito"

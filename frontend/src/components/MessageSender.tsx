@@ -136,12 +136,10 @@ const MessageSender = ({
           borderRadius={17}
           url={m.content}
           textAlign="center"
-          showPlaceholderIfNoImage={false}        
+          showPlaceholderIfNoImage={false}
         />
         <Linkify options={options}>
-          <Text fontFamily="Nunito" mr={20}>
-            {m.content}
-          </Text>
+          <Text fontFamily="Nunito">{m.content}</Text>
         </Linkify>
         <Box
           d="flex"
