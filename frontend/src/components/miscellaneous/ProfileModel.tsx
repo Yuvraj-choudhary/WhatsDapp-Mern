@@ -19,7 +19,7 @@ const ProfileModel = ({ user, children }) => {
   return (
     <Box>
       {children ? (
-        <Text fontFamily="Nunito" p={2} fontSize={18} onClick={onOpen}>
+        <Text onClick={onOpen}>
           {children}
         </Text>
       ) : (

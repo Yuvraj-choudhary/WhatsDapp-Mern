@@ -56,6 +56,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
       h={{ base: isHidden ? "calc(100vh - 24px)" : "100%" }}
       w={{ base: "100%", xl: "30%" }}
       backgroundColor={colorMode === "dark" ? "#2d3748" : "#fff"}
+      pb={5}
     >
       <Box
         pb={2}

@@ -10,8 +10,8 @@ import {
   MenuList,
   SlideFade,
   Text,
-  Tooltip,
 } from "@chakra-ui/react";
+import { Button } from "@material-ui/core";
 import { Close, MoreVert, Refresh } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { getSender, getSenderFull, getSenderPic } from "../config/ChatLogics";
@@ -91,38 +91,43 @@ const ChatHeader = ({
           {message && (
             <>
               {!selectedChat.isGroupChat ? (
-                <>
-                  <Avatar
-                    name={getSender(user, selectedChat.users)}
-                    src={getSenderPic(user, selectedChat.users)}
-                    ml={{
-                      base: 3,
-                      xl: 0,
-                    }}
-                  />
-
-                  <Text
-                    ml={2}
-                    textOverflow="ellipsis"
-                    whiteSpace="nowrap"
-                    maxWidth="fit-content"
-                    fontFamily="Nunito"
-                    overflow="hidden"
-                  >
-                    {getSender(user, selectedChat.users)}
-                  </Text>
-                </>
+                <ProfileModel user={getSenderFull(user, selectedChat.users)}>
+                  <Box d="flex" cursor="pointer">
+                    <Avatar
+                      name={getSender(user, selectedChat.users)}
+                      src={getSenderPic(user, selectedChat.users)}
+                      ml={{
+                        base: 3,
+                        xl: 0,
+                      }}
+                    />
+                    <Text
+                      ml={2}
+                      textOverflow="ellipsis"
+                      whiteSpace="nowrap"
+                      maxWidth="fit-content"
+                      fontFamily="Nunito"
+                      overflow="hidden"
+                    >
+                      {getSender(user, selectedChat.users)}
+                    </Text>
+                  </Box>
+                </ProfileModel>
               ) : (
-                <>
-                  <Avatar
-                    name={selectedChat.chatName}
-                    src={selectedChat.pic}
-                    ml={{
-                      base: 3,
-                      xl: 0,
-                    }}
-                  />
-                  <Box>
+                <UpdateGroup
+                  fetchMessages={fetchMessages}
+                  fetchAgain={fetchAgain}
+                  setFetchAgain={setFetchAgain}
+                >
+                  <Box  d="flex" cursor="pointer">
+                    <Avatar
+                      name={selectedChat.chatName}
+                      src={selectedChat.pic}
+                      ml={{
+                        base: 3,
+                        xl: 0,
+                      }}
+                    />
                     <Text
                       ml={2}
                       textOverflow="ellipsis"
@@ -134,7 +139,7 @@ const ChatHeader = ({
                       {selectedChat.chatName}
                     </Text>
                   </Box>
-                </>
+                </UpdateGroup>
               )}
               <Box marginLeft="auto" d="flex">
                 <IconButton
@@ -154,14 +159,14 @@ const ChatHeader = ({
                     boxShadow="2xl"
                   >
                     <MenuItem borderRadius="24px 24px 0 0">
-                        <Text
-                          p={5}
-                          fontSize={22}
-                          onClick={() => deleteChat()}
-                          fontFamily="Nunito"
-                        >
-                          Delete {selectedChat.isGroupChat ? "Group" : "Chat"}
-                        </Text>
+                      <Text
+                        p={5}
+                        fontSize={22}
+                        onClick={() => deleteChat()}
+                        fontFamily="Nunito"
+                      >
+                        Delete {selectedChat.isGroupChat ? "Group" : "Chat"}
+                      </Text>
                     </MenuItem>
 
                     <MenuDivider />
@@ -179,6 +184,7 @@ const ChatHeader = ({
                           fetchMessages={fetchMessages}
                           fetchAgain={fetchAgain}
                           setFetchAgain={setFetchAgain}
+                          children={null}
                         />
                       </MenuItem>
                     )}

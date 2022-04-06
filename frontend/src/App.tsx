@@ -2,10 +2,10 @@ import { Box, useColorMode } from "@chakra-ui/react";
 import { lazy, Suspense, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Chatpage from "./pages/Chatpage";
 const Loadingpage = lazy(() => import("./pages/Loadingpage"));
 const NotFound = lazy(() => import("./pages/404"));
 const Homepage = lazy(() => import("./pages/Homepage"));
-const Chatpage = lazy(() => import("./pages/Chatpage"));
 
 const App = () => {
   const [loading, setLoading] = useState(true);

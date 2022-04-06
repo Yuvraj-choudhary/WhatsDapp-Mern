@@ -7,7 +7,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("chat"))
 
 root.render(
   <ChakraProvider>
@@ -16,9 +16,9 @@ root.render(
         <App />
       </ChatProvider>
     </BrowserRouter>
-  </ChakraProvider>,
-  document.getElementById("root")
+  </ChakraProvider>
 );
+
 document.addEventListener("contextmenu", (e) => {
   e.preventDefault();
 });

@@ -60,6 +60,7 @@ const MessageSender = ({
           marginLeft: "auto",
           boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 40%)",
           marginTop: 1.5,
+          marginRight: 5,
           borderRadius:
             isSameReceiver(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)

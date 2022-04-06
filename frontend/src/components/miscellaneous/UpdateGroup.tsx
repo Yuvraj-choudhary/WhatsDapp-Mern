@@ -21,14 +21,18 @@ import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../userStufs/UserBadgeItem";
 import UserListItem from "../userStufs/UserListItem";
 
-const UpdateGroup = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
+const UpdateGroup = ({
+  fetchMessages,
+  fetchAgain,
+  setFetchAgain,
+  children,
+}) => {
   const { isOpen, onOpen, onClose }: any = useDisclosure();
   const [groupChatName, setGroupChatName]: any = useState();
   const [search, setSearch]: any = useState("");
   const [searchResult, setSearchResult]: any = useState([]);
   const [loading, setLoading]: any = useState(false);
   const [renameloading, setRenameLoading]: any = useState(false);
-  const [picLoading, setPicLoading]: any = useState(false);
   const [pic, setPic]: any = useState();
   const toast = useToast();
 
@@ -64,25 +68,25 @@ const UpdateGroup = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     }
   };
 
-    const postDetails = (file: any) => {
-      if (!file.type.match("image.*")) {
-        alert("Please select image only.");
-      } else {
-        var reader = new FileReader();
+  const postDetails = (file: any) => {
+    if (!file.type.match("image.*")) {
+      alert("Please select image only.");
+    } else {
+      var reader = new FileReader();
 
-        reader.addEventListener(
-          "load",
-          () => {
-            setPic(reader.result);
-          },
-          false
-        );
+      reader.addEventListener(
+        "load",
+        () => {
+          setPic(reader.result);
+        },
+        false
+      );
 
-        if (file) {
-          reader.readAsDataURL(file);
-        }
+      if (file) {
+        reader.readAsDataURL(file);
       }
-    };
+    }
+  };
 
   const handleRename = async () => {
     if (!groupChatName) return;
@@ -226,9 +230,15 @@ const UpdateGroup = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   return (
     <>
-      <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
-        Update Group
-      </Text>
+      {children ? (
+        <Text onClick={onOpen}>
+          {children}
+        </Text>
+      ) : (
+        <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
+          Update Group
+        </Text>
+      )}
 
       <Modal
         size="3xl"

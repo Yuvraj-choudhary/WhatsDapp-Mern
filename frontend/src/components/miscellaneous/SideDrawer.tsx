@@ -154,24 +154,16 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 hasArrow
                 placement="bottom-end"
               >
-                <Button
+                <IconButton
                   variant=""
                   onClick={onOpen}
                   mr={2}
                   d="flex"
                   alignItems="center"
-                >
-                  <Search2Icon />
-                  <Text
-                    fontFamily="Nunito"
-                    fontWeight="medium"
-                    d={{ base: "none", md: "initial" }}
-                    pl="3"
-                    pt="0.5"
-                  >
-                    Search Users
-                  </Text>
-                </Button>
+                  aria-label="Search"
+                  icon={<Search2Icon />}
+                  isRound
+                />
               </Tooltip>
               <IconButton
                 aria-label="hi"
@@ -272,12 +264,16 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                   boxShadow="2xl"
                 >
                   <MenuItem borderRadius="24px 24px 0 0">
-                    <ProfileModel user={user}>My Profile</ProfileModel>
+                    <ProfileModel user={user}>
+                      <Box fontFamily="Nunito" p={3} fontSize={18}>
+                        My Profile
+                      </Box>
+                    </ProfileModel>
                   </MenuItem>
                   <MenuDivider />
                   <MenuItem>
                     <Text
-                      p={2}
+                      p={3}
                       fontSize={18}
                       onClick={logoutHandler}
                       fontFamily="Nunito"
@@ -289,7 +285,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                   <MenuItem borderRadius="0 0 24px 24px">
                     <SearchModal>
                       <Text
-                        p={2}
+                        p={3}
                         fontSize={18}
                         onClick={logoutHandler}
                         fontFamily="Nunito"
