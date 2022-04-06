@@ -24,12 +24,11 @@ const ChatListItem = ({
       py={2}
       borderRadius="xl"
       key={chat._id}
-      boxShadow={selectedChat === chat ? "2xl" : "inner"}
-      className="transition-all duration-700 ease-in-out"
+      boxShadow="inner"
+      className="transition-all duration-500 ease-in-out drop-shadow-lg hover:shadow-2xl"
       _hover={{
-        backgroundColor: "#38B2AC",
         color: "white",
-        boxShadow: "md",
+        bg: "#38B2AC",
       }}
     >
       <Text fontFamily="Nunito" fontSize={18} alignItems="center" d="flex">

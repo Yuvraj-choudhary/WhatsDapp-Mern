@@ -99,7 +99,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   useEffect(() => {
     socket.on("message received", (newMessages: any) => {
       if (
-        !selectedChatCompare ||
+        !selectedChatCompare || // if chat is not selected or doesn't match current chat
         selectedChatCompare._id !== newMessages.chat._id
       ) {
         if (!notification.includes(newMessages)) {
@@ -215,7 +215,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       newMessage.trim() !== "" &&
       (newMessage || pic || audio || gif || video)
     ) {
-      e.preventDefault();
+      socket.emit("stop typing", selectedChat._id);
       try {
         const config = {
           headers: {
@@ -269,6 +269,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       gif ||
       video
     ) {
+            socket.emit("stop typing", selectedChat._id);
       try {
         const config = {
           headers: {

@@ -52,15 +52,15 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
       d={{ base: selectedChat ? "none" : "flex", xl: "flex" }}
       flexDir="column"
       alignItems="center"
-      p={3}
       bg="white"
       h={{ base: isHidden ? "calc(100vh - 24px)" : "100%" }}
       w={{ base: "100%", xl: "30%" }}
       backgroundColor={colorMode === "dark" ? "#2d3748" : "#fff"}
     >
       <Box
-        pb={3}
-        px={3}
+        pb={2}
+        pt={3}
+        px="15px"
         fontSize={{ base: "28px", xl: "30px" }}
         fontFamily="Nunito"
         d="flex"
@@ -72,6 +72,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
           placeholder="Search Chats"
           value={searchChat}
           onChange={(e) => setSearchChat(e.target.value)}
+          borderColor="rgb(255 255 255 / 0%)"
         />
         <GroupChatModel>
           <IconButton style={{ marginLeft: 7, color: "#898787" }}>
@@ -82,7 +83,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
       <Box
         d="flex"
         flexDir="column"
-        p={3}
+        pt={3}
         w="100%"
         h="100vh"
         borderRadius="3xl"

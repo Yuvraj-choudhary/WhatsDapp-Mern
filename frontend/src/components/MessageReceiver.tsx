@@ -78,12 +78,12 @@ const MessageReceiver = ({
           marginBottom:
             isSameSender(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)
-                ? 20
-                : "0",
-             
+              ? 20
+              : "0",
+
           padding: "10px 10px",
         }}
-        maxWidth={{ base: "80%", xl: "50%" }}
+        maxWidth={{ base: "80%", xl: "63%" }}
       >
         {m.image !== "" && (
           <ModalImage
@@ -119,7 +119,7 @@ const MessageReceiver = ({
           <video
             src={m.video}
             controls={true}
-            className="rounded-2xl w-full max-h-[30px]"
+            className="rounded-2xl w-full max-h-full"
           ></video>
         )}
         {m.file !== "" && (
@@ -145,7 +145,6 @@ const MessageReceiver = ({
           borderRadius={17}
           url={m.content}
           textAlign="center"
-          showPlaceholderIfNoImage={false}
         />
         <Linkify options={options}>
           <Text fontFamily="Nunito" color="white">
@@ -176,7 +175,7 @@ const MessageReceiver = ({
             <MenuButton>
               <ChevronDownIcon fontSize="2xl" color="white" />
             </MenuButton>
-            <MenuList>
+            <MenuList borderColor="#d3d3d300">
               <MenuItem onClick={() => deleteMessage(m)}>Delete</MenuItem>
               {m.content !== "" && (
                 <MenuItem

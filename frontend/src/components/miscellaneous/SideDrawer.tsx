@@ -155,7 +155,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 placement="bottom-end"
               >
                 <Button
-                  variant="outline"
+                  variant=""
                   onClick={onOpen}
                   mr={2}
                   d="flex"
@@ -176,7 +176,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
               <IconButton
                 aria-label="hi"
                 icon={<ChevronUpIcon fontSize="2xl" />}
-                variant="outline"
+                variant=""
+                isRound
                 onClick={() => {
                   setIsHidden(true);
                 }}
@@ -188,7 +189,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 fontWeight="bold"
                 fontFamily="Nunito"
                 d={{ base: "none", md: "flex" }}
-                variant="outline"
+                variant=""
               >
                 Chat Dapp
               </Button>
@@ -198,7 +199,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 onClick={() => toggleColorMode()}
                 aria-label="mode"
                 mr={2}
-                variant="outline"
+                variant=""
+                isRound
               >
                 {colorMode === "dark" ? (
                   <SunIcon fontSize="xl" m={1} />
@@ -207,7 +209,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 )}
               </IconButton>
               <Menu>
-                <MenuButton p={1} as={Button} mr={2} variant="outline">
+                <MenuButton p={1} as={IconButton} mr={2} variant="" isRound>
                   <NotificationBadge
                     count={notification.length}
                     effect={Effect.SCALE}
@@ -215,8 +217,17 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                   <BellIcon fontSize="2xl" m={1} />
                 </MenuButton>
 
-                <MenuList p={2}>
-                  {!notification.length && "No New Messages"}
+                <MenuList
+                  p={2}
+                  borderColor="#d3d3d300"
+                  boxShadow="2xl"
+                  borderRadius="25px"
+                >
+                  {!notification.length && (
+                    <Text fontFamily="Nunito" p={3} fontSize={18}>
+                      No New Messages
+                    </Text>
+                  )}
                   {notification.map((notif: any) => (
                     <MenuItem
                       key={notif._id}
@@ -227,12 +238,14 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                         );
                       }}
                     >
-                      {notif.chat.isGroupChat
-                        ? `New Message in ${notif.chat.chatName}`
-                        : `New Message from ${getSender(
-                            user,
-                            notif.chat.users
-                          )}`}
+                      <Text fontFamily="Nunito" p={3} fontSize={18}>
+                        {notif.chat.isGroupChat
+                          ? `New Message in ${notif.chat.chatName}`
+                          : `New Message from ${getSender(
+                              user,
+                              notif.chat.users
+                            )}`}
+                      </Text>
                     </MenuItem>
                   ))}
                 </MenuList>
@@ -241,7 +254,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 <MenuButton
                   as={Button}
                   rightIcon={<ChevronDownIcon />}
-                  variant="outline"
+                  variant=""
+                  isRound
                 >
                   <Box display="flex" alignItems="center">
                     <Avatar
@@ -252,26 +266,57 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     />
                   </Box>
                 </MenuButton>
-                <MenuList>
-                  <ProfileModel user={user}>
-                    <MenuItem>My Profile</MenuItem>
-                  </ProfileModel>
+                <MenuList
+                  borderColor="#d3d3d300"
+                  borderRadius="33px"
+                  boxShadow="2xl"
+                >
+                  <MenuItem borderRadius="24px 24px 0 0">
+                    <ProfileModel user={user}>My Profile</ProfileModel>
+                  </MenuItem>
                   <MenuDivider />
-                  <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+                  <MenuItem>
+                    <Text
+                      p={2}
+                      fontSize={18}
+                      onClick={logoutHandler}
+                      fontFamily="Nunito"
+                    >
+                      Logout
+                    </Text>
+                  </MenuItem>
                   <MenuDivider />
-                  <SearchModal>
-                    <MenuItem>Search Web</MenuItem>
-                  </SearchModal>
+                  <MenuItem borderRadius="0 0 24px 24px">
+                    <SearchModal>
+                      <Text
+                        p={2}
+                        fontSize={18}
+                        onClick={logoutHandler}
+                        fontFamily="Nunito"
+                      >
+                        Search Web
+                      </Text>
+                    </SearchModal>
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Box>
           </Box>
 
           <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="xl">
-            <DrawerOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
+            <DrawerOverlay bg="none" backdropFilter="auto" backdropBlur="6px" />
             <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
+              <DrawerCloseButton
+                borderRadius="50%"
+                fontSize="15px"
+                variant=""
+              />
+              <DrawerHeader
+                borderBottomWidth="1px"
+                borderColor="rgb(255 255 255 / 0%)"
+              >
+                Search Users
+              </DrawerHeader>
 
               <DrawerBody>
                 <Box d="flex" pb={2}>
@@ -280,8 +325,9 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     mr={2}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    borderColor="rgb(255 255 255 / 0%)"
                   />
-                  <Button variant="outline" onClick={handleSearch}>
+                  <Button variant="" onClick={handleSearch}>
                     Go
                   </Button>
                 </Box>

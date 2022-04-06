@@ -181,7 +181,7 @@ const GroupChatModel = ({ children }) => {
           >
             Create Group Chat
           </ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
             d="flex"
             flexDir="column"

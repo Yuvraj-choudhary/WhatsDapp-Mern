@@ -40,7 +40,7 @@ const SearchModal = ({ children }) => {
           >
             Search The Web
           </ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody>
             <FormControl isRequired d="flex">
               <Input
@@ -65,8 +65,7 @@ const SearchModal = ({ children }) => {
               )}
             </FormControl>
           </ModalBody>
-          <ModalFooter>
-          </ModalFooter>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

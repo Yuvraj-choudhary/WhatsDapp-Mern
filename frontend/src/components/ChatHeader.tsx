@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { Close, MoreVert, Refresh } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
 import { getSender, getSenderFull, getSenderPic } from "../config/ChatLogics";
 import ProfileModel from "./miscellaneous/ProfileModel";
 import UpdateGroup from "./miscellaneous/UpdateGroup";
@@ -35,6 +36,7 @@ const ChatHeader = ({
   setFile,
   setGif,
 }) => {
+  const history = useHistory();
   return (
     <Text
       fontSize={{
@@ -61,7 +63,8 @@ const ChatHeader = ({
                 setGif("");
               }}
               aria-label="back"
-              variant="outline"
+              variant=""
+              isRound
             />
             <Text fontFamily="Nunito" ml={3}>
               Preview
@@ -76,9 +79,14 @@ const ChatHeader = ({
               xl: "none",
             }}
             icon={<ArrowBackIcon />}
-            onClick={() => setSelectedChat()}
+            onClick={() => {
+              setSelectedChat();
+              history.push("/@");
+            }}
             aria-label="back"
-            variant="outline"
+            fontSize="2xl"
+            variant=""
+            isRound
           />
           {message && (
             <>
@@ -133,19 +141,19 @@ const ChatHeader = ({
                   icon={<Refresh />}
                   onClick={() => fetchMessages()}
                   aria-label="refresh"
-                  variant="outline"
+                  variant=""
+                  isRound
                 />
                 <Menu>
-                  <MenuButton as={IconButton} ml={2} variant="outline">
+                  <MenuButton as={IconButton} ml={2} variant="" isRound>
                     <MoreVert />
                   </MenuButton>
-                  <MenuList>
-                    <MenuItem>
-                      <Tooltip
-                        label="Delete the chat"
-                        hasArrow
-                        placement="bottom-end"
-                      >
+                  <MenuList
+                    borderColor="#d3d3d300"
+                    borderRadius="33px"
+                    boxShadow="2xl"
+                  >
+                    <MenuItem borderRadius="24px 24px 0 0">
                         <Text
                           p={5}
                           fontSize={22}
@@ -154,20 +162,19 @@ const ChatHeader = ({
                         >
                           Delete {selectedChat.isGroupChat ? "Group" : "Chat"}
                         </Text>
-                      </Tooltip>
                     </MenuItem>
 
                     <MenuDivider />
 
                     {!selectedChat.isGroupChat ? (
-                      <MenuItem>
+                      <MenuItem borderRadius="0 0 24px 24px">
                         <ProfileModel
                           user={getSenderFull(user, selectedChat.users)}
                           children={null}
                         />
                       </MenuItem>
                     ) : (
-                      <MenuItem>
+                      <MenuItem borderRadius="0 0 24px 24px">
                         <UpdateGroup
                           fetchMessages={fetchMessages}
                           fetchAgain={fetchAgain}

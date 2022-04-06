@@ -1,5 +1,6 @@
-import { Box, Spinner, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { lazy, Suspense } from "react";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import ChatHeader from "./ChatHeader";
 import Footer from "./Footer";
 import "./styles.css";
@@ -96,8 +97,11 @@ const ChatScreen = ({
               h="100%"
               w="100%"
             >
-              <Spinner size="xl" w={20} h={20} mb={5} />
-              <Text fontFamily="nunito">
+              <ClimbingBoxLoader
+                size={30}
+                color={colorMode === "dark" ? "#efeff1" : "#1a202c"}
+              />
+              <Text fontFamily="nunito" mt={20}>
                 It's Taking time because You Have More high Resolution Images or
                 Very Long Messages
               </Text>

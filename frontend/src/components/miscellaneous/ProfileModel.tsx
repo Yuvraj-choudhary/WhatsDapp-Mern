@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Modal,
   ModalBody,
@@ -10,8 +11,6 @@ import {
   Text,
   Tooltip,
   useDisclosure,
-  Image,
-  Avatar,
 } from "@chakra-ui/react";
 
 const ProfileModel = ({ user, children }) => {
@@ -20,13 +19,13 @@ const ProfileModel = ({ user, children }) => {
   return (
     <Box>
       {children ? (
-        <span onClick={onOpen}>{children}</span>
+        <Text fontFamily="Nunito" p={2} fontSize={18} onClick={onOpen}>
+          {children}
+        </Text>
       ) : (
-        <Tooltip label="View the chat" hasArrow placement="bottom-end">
           <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
             View Profile
           </Text>
-        </Tooltip>
       )}
 
       <Modal
@@ -46,7 +45,7 @@ const ProfileModel = ({ user, children }) => {
           >
             {user.name}
           </ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
             d="flex"
             flexDir="column"
@@ -56,7 +55,7 @@ const ProfileModel = ({ user, children }) => {
             <Avatar boxSize="250px" src={user.pic} name={user.name} />
           </ModalBody>
           <ModalFooter d="flex" alignItems="center" justifyContent="center">
-            <Text  fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
+            <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
               Email: {user.email}
             </Text>
           </ModalFooter>

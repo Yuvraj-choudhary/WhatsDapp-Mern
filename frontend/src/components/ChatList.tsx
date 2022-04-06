@@ -12,7 +12,7 @@ const ChatItem = ({
   chats,
 }) => {
   return (
-    <Stack overflowY="scroll" w="100%" h="100vh">
+    <Stack overflowY="scroll" w="100%" h="100vh" paddingInline="15px">
       {chats
         .filter((chat) => {
           if (searchChat === "") {

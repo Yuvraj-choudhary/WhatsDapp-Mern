@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import PulseLoader from "react-spinners/PulseLoader";
+import SyncLoader from "react-spinners/SyncLoader";
 
 const MessageLoader = () => {
   return (
@@ -8,13 +8,12 @@ const MessageLoader = () => {
         backgroundColor: "#2b6bed",
         boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 20%)",
         marginLeft: 0,
-        marginTop: 6,
         borderRadius: "20px 20px 20px 9px",
         marginBottom: "20px",
-        padding: "10px 10px",
+        padding: "20px",
       }}
     >
-      <PulseLoader color="#cfcfcf" />
+      <SyncLoader color="#fff" />
     </Box>
   );
 };

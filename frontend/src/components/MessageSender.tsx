@@ -72,7 +72,7 @@ const MessageSender = ({
               : "20px",
           padding: "10px 10px",
         }}
-        maxWidth={{ base: "80%", xl: "50%" }}
+        maxWidth={{ base: "80%", xl: "63%" }}
       >
         {m.image !== "" && (
           <ModalImage
@@ -136,7 +136,6 @@ const MessageSender = ({
           borderRadius={17}
           url={m.content}
           textAlign="center"
-          showPlaceholderIfNoImage={false}
         />
         <Linkify options={options}>
           <Text fontFamily="Nunito">{m.content}</Text>

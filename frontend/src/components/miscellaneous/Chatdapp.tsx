@@ -33,7 +33,7 @@ const Chatdapp = ({ children }) => {
             d="flex"
             justifyContent="center"
           ></ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
             d="flex"
             flexDir="column"
@@ -61,8 +61,7 @@ const Chatdapp = ({ children }) => {
               </a>
             </Text>
           </ModalBody>
-          <ModalFooter>
-          </ModalFooter>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

@@ -3,19 +3,19 @@ import { Skeleton } from "@chakra-ui/skeleton";
 
 const ChatLoading = () => {
   return (
-    <Stack>
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
-      <Skeleton height="45px" borderRadius="xl" />
+    <Stack paddingInline="15px">
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
+      <Skeleton height="45px" borderRadius="xl" boxShadow="inner" className="drop-shadow-lg" />
     </Stack>
   );
 };

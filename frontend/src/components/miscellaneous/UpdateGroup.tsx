@@ -12,9 +12,8 @@ import {
   ModalOverlay,
   Spinner,
   Text,
-  Tooltip,
   useDisclosure,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -22,19 +21,15 @@ import { ChatState } from "../../context/ChatProvider";
 import UserBadgeItem from "../userStufs/UserBadgeItem";
 import UserListItem from "../userStufs/UserListItem";
 
-const UpdateGroup = ({
-  fetchMessages,
-  fetchAgain,
-  setFetchAgain
-}) => {
+const UpdateGroup = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose }: any = useDisclosure();
   const [groupChatName, setGroupChatName]: any = useState();
   const [search, setSearch]: any = useState("");
   const [searchResult, setSearchResult]: any = useState([]);
   const [loading, setLoading]: any = useState(false);
   const [renameloading, setRenameLoading]: any = useState(false);
-    const [picLoading, setPicLoading]: any = useState(false);
-    const [pic, setPic]: any = useState();
+  const [picLoading, setPicLoading]: any = useState(false);
+  const [pic, setPic]: any = useState();
   const toast = useToast();
 
   const { selectedChat, setSelectedChat, user }: any = ChatState();
@@ -49,8 +44,8 @@ const UpdateGroup = ({
       setLoading(true);
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       };
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       console.log(data);
@@ -63,11 +58,31 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom-left"
+        position: "bottom-left",
       });
       setLoading(false);
     }
   };
+
+    const postDetails = (file: any) => {
+      if (!file.type.match("image.*")) {
+        alert("Please select image only.");
+      } else {
+        var reader = new FileReader();
+
+        reader.addEventListener(
+          "load",
+          () => {
+            setPic(reader.result);
+          },
+          false
+        );
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      }
+    };
 
   const handleRename = async () => {
     if (!groupChatName) return;
@@ -76,14 +91,15 @@ const UpdateGroup = ({
       setRenameLoading(true);
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       };
       const { data } = await axios.put(
         `/api/chat/rename`,
         {
           chatId: selectedChat._id,
-          chatName: groupChatName
+          chatName: groupChatName,
+          pic: pic,
         },
         config
       );
@@ -99,7 +115,7 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       setRenameLoading(false);
     }
@@ -113,7 +129,7 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       return;
     }
@@ -124,7 +140,7 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       return;
     }
@@ -133,14 +149,14 @@ const UpdateGroup = ({
       setLoading(true);
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       };
       const { data } = await axios.put(
         `/api/chat/groupadd`,
         {
           chatId: selectedChat._id,
-          userId: user1._id
+          userId: user1._id,
         },
         config
       );
@@ -155,7 +171,7 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       setLoading(false);
     }
@@ -169,7 +185,7 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       return;
     }
@@ -178,14 +194,14 @@ const UpdateGroup = ({
       setLoading(true);
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       };
       const { data } = await axios.put(
         `/api/chat/groupremove`,
         {
           chatId: selectedChat._id,
-          userId: user1._id
+          userId: user1._id,
         },
         config
       );
@@ -201,68 +217,18 @@ const UpdateGroup = ({
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       setLoading(false);
     }
     setGroupChatName("");
   };
 
-    // const handleSubmit = async () => {
-    //   if (!groupChatName || !selectedUser) {
-    //     toast({
-    //       title: "Please fill all the feilds",
-    //       status: "warning",
-    //       duration: 5000,
-    //       isClosable: true,
-    //       position: "top"
-    //     });
-    //     return;
-    //   }
-
-    //   try {
-    //     const config = {
-    //       headers: {
-    //         Authorization: `Bearer ${user.token}`
-    //       }
-    //     };
-    //     const { data } = await axios.post(
-    //       `/api/chat/group`,
-    //       {
-    //         name: groupChatName,
-    //         pic: pic,
-    //         users: JSON.stringify(selectedUser.map((u: any) => u._id))
-    //       },
-    //       config
-    //     );
-    //     setChats([data, ...chats]);
-    //     onClose();
-    //     toast({
-    //       title: "New Group Chat Created!",
-    //       status: "success",
-    //       duration: 5000,
-    //       isClosable: true,
-    //       position: "bottom"
-    //     });
-    //   } catch (error: any) {
-    //     toast({
-    //       title: "Failed to Create the Chat!",
-    //       description: error.response.data,
-    //       status: "error",
-    //       duration: 5000,
-    //       isClosable: true,
-    //       position: "bottom"
-    //     });
-    //   }
-    // };
-
   return (
     <>
-      <Tooltip label="View the chat" hasArrow placement="bottom-end">
-        <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
-          Update Group
-        </Text>
-      </Tooltip>
+      <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
+        Update Group
+      </Text>
 
       <Modal
         size="3xl"
@@ -282,7 +248,7 @@ const UpdateGroup = ({
             {selectedChat.chatName}
           </ModalHeader>
 
-          <ModalCloseButton />
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
             d="flex"
             flexDir="column"
@@ -314,6 +280,14 @@ const UpdateGroup = ({
               >
                 Update
               </Button>
+            </FormControl>
+            <FormControl>
+              <Input
+                type="file"
+                p={1.5}
+                accept="image/*"
+                onChange={(e: any) => postDetails(e.target.files[0])}
+              />
             </FormControl>
             <FormControl>
               <Input
