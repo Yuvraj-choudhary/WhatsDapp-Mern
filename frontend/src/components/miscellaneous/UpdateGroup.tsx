@@ -235,7 +235,7 @@ const UpdateGroup = ({
           {children}
         </Text>
       ) : (
-        <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
+        <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
           Update Group
         </Text>
       )}

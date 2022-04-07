@@ -11,7 +11,6 @@ import {
   SlideFade,
   Text,
 } from "@chakra-ui/react";
-import { Button } from "@material-ui/core";
 import { Close, MoreVert, Refresh } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { getSender, getSenderFull, getSenderPic } from "../config/ChatLogics";
@@ -119,7 +118,7 @@ const ChatHeader = ({
                   fetchAgain={fetchAgain}
                   setFetchAgain={setFetchAgain}
                 >
-                  <Box  d="flex" cursor="pointer">
+                  <Box d="flex" cursor="pointer">
                     <Avatar
                       name={selectedChat.chatName}
                       src={selectedChat.pic}
@@ -157,29 +156,47 @@ const ChatHeader = ({
                     borderColor="#d3d3d300"
                     borderRadius="33px"
                     boxShadow="2xl"
+                      padding={1.5}
+                      className="transition-all duration-300 ease-in-out"
                   >
-                    <MenuItem borderRadius="24px 24px 0 0">
+                    <MenuItem
+                      borderRadius="24px 24px 0 0"
+                      boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
+                      className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                      d="flex"
+                      justifyContent="center"
+                    >
                       <Text
-                        p={5}
-                        fontSize={22}
+                        p={4}
+                        fontSize={18}
                         onClick={() => deleteChat()}
                         fontFamily="Nunito"
                       >
                         Delete {selectedChat.isGroupChat ? "Group" : "Chat"}
                       </Text>
                     </MenuItem>
-
-                    <MenuDivider />
-
+                    <MenuDivider marginTop="0.2rem" marginBottom="0.2rem" />
                     {!selectedChat.isGroupChat ? (
-                      <MenuItem borderRadius="0 0 24px 24px">
+                      <MenuItem
+                        borderRadius="0 0 24px 24px"
+                        boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
+                        className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                        d="flex"
+                        justifyContent="center"
+                      >
                         <ProfileModel
                           user={getSenderFull(user, selectedChat.users)}
                           children={null}
                         />
                       </MenuItem>
                     ) : (
-                      <MenuItem borderRadius="0 0 24px 24px">
+                      <MenuItem
+                        borderRadius="0 0 24px 24px"
+                        boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
+                        className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                        d="flex"
+                        justifyContent="center"
+                      >
                         <UpdateGroup
                           fetchMessages={fetchMessages}
                           fetchAgain={fetchAgain}

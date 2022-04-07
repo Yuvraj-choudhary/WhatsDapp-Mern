@@ -108,6 +108,7 @@ const Form = ({
           variant="solid"
           colorScheme="red"
           width="100%"
+          disabled={process.env.NODE_ENV === "production"}
           onClick={() => {
             setEmail("guestUser@example.com");
             setPassword("1234567");

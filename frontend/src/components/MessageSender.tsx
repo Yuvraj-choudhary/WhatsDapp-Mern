@@ -170,7 +170,7 @@ const MessageSender = ({
             <MenuButton>
               <ChevronDownIcon fontSize="2xl" color="GrayText" />
             </MenuButton>
-            <MenuList>
+            <MenuList borderRadius="2xl" boxShadow="2xl">
               <MenuItem onClick={() => deleteMessage(m)}>Delete</MenuItem>
               {m.content !== "" && (
                 <MenuItem

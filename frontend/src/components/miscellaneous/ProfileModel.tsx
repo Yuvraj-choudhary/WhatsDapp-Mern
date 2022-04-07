@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Img,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -19,13 +20,11 @@ const ProfileModel = ({ user, children }) => {
   return (
     <Box>
       {children ? (
-        <Text onClick={onOpen}>
-          {children}
-        </Text>
+        <Text onClick={onOpen}>{children}</Text>
       ) : (
-          <Text fontFamily="Nunito" p={5} fontSize={22} onClick={onOpen}>
-            View Profile
-          </Text>
+        <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
+          View Profile
+        </Text>
       )}
 
       <Modal
@@ -52,7 +51,11 @@ const ProfileModel = ({ user, children }) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Avatar boxSize="250px" src={user.pic} name={user.name} />
+            <Img
+              borderRadius="full"
+              src={user.pic}
+              alt={user.name}
+            />
           </ModalBody>
           <ModalFooter d="flex" alignItems="center" justifyContent="center">
             <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">

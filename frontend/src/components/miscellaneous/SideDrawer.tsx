@@ -201,77 +201,106 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 )}
               </IconButton>
               <Menu>
-                <MenuButton p={1} as={IconButton} mr={2} variant="" isRound>
+                <MenuButton as={IconButton} mr={2} variant="" isRound>
                   <NotificationBadge
                     count={notification.length}
                     effect={Effect.SCALE}
+                    style={{
+                      padding: "3.2px 6px",
+                      right: "4px",
+                      top: "-1px"
+                    }}
                   />
                   <BellIcon fontSize="2xl" m={1} />
                 </MenuButton>
 
                 <MenuList
-                  p={2}
                   borderColor="#d3d3d300"
+                  borderRadius="33px"
                   boxShadow="2xl"
-                  borderRadius="25px"
+                  padding={1.5}
+                  className="transition-all duration-300 ease-in-out"
                 >
                   {!notification.length && (
-                    <Text fontFamily="Nunito" p={3} fontSize={18}>
+                    <Text
+                      boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
+                      className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                      d="flex"
+                      justifyContent="center"
+                      fontFamily="Nunito"
+                      p={3}
+                      fontSize={18}
+                      borderRadius="24px"
+                    >
                       No New Messages
                     </Text>
                   )}
                   {notification.map((notif: any) => (
-                    <MenuItem
-                      key={notif._id}
-                      onClick={() => {
-                        setSelectedChat(notif.chat);
-                        setNotification(
-                          notification.filter((n) => n !== notif)
-                        );
-                      }}
-                    >
-                      <Text fontFamily="Nunito" p={3} fontSize={18}>
-                        {notif.chat.isGroupChat
-                          ? `New Message in ${notif.chat.chatName}`
-                          : `New Message from ${getSender(
-                              user,
-                              notif.chat.users
-                            )}`}
-                      </Text>
-                    </MenuItem>
+                    <>
+                      <MenuItem
+                        key={notif._id}
+                        onClick={() => {
+                          setSelectedChat(notif.chat);
+                          setNotification(
+                            notification.filter((n) => n !== notif)
+                          );
+                        }}
+                        borderRadius="24px"
+                        boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
+                        className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                        d="flex"
+                        justifyContent="center"
+                      >
+                        <Text fontFamily="Nunito" p={3} fontSize={18}>
+                          {notif.chat.isGroupChat
+                            ? `New Message in ${notif.chat.chatName}`
+                            : `New Message from ${getSender(
+                                user,
+                                notif.chat.users
+                              )}`}
+                        </Text>
+                      </MenuItem>
+                      <MenuDivider marginTop="0.2rem" marginBottom={"0.2rem"} />
+                    </>
                   ))}
                 </MenuList>
               </Menu>
               <Menu>
-                <MenuButton
-                  as={Button}
-                  rightIcon={<ChevronDownIcon />}
-                  variant=""
-                  isRound
-                >
-                  <Box display="flex" alignItems="center">
-                    <Avatar
-                      size={"sm"}
-                      cursor="pointer"
-                      name={user.name}
-                      src={user.pic}
-                    />
-                  </Box>
+                <MenuButton as={IconButton} variant="" isRound mr={2}>
+                  <Avatar
+                    size={"sm"}
+                    cursor="pointer"
+                    name={user.name}
+                    src={user.pic}
+                  />
                 </MenuButton>
                 <MenuList
                   borderColor="#d3d3d300"
                   borderRadius="33px"
                   boxShadow="2xl"
+                  padding={1.5}
+                  className="transition-all duration-300 ease-in-out"
                 >
-                  <MenuItem borderRadius="24px 24px 0 0">
+                  <MenuItem
+                    borderRadius="24px 24px 0 0"
+                    boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
+                    className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                    d="flex"
+                    justifyContent="center"
+                  >
                     <ProfileModel user={user}>
                       <Box fontFamily="Nunito" p={3} fontSize={18}>
                         My Profile
                       </Box>
                     </ProfileModel>
                   </MenuItem>
-                  <MenuDivider />
-                  <MenuItem>
+                  <MenuDivider marginTop="0.2rem" marginBottom="0.2rem" />
+                  <MenuItem
+                    boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
+                    className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                    d="flex"
+                    justifyContent="center"
+                  >
                     <Text
                       p={3}
                       fontSize={18}
@@ -281,15 +310,16 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                       Logout
                     </Text>
                   </MenuItem>
-                  <MenuDivider />
-                  <MenuItem borderRadius="0 0 24px 24px">
+                  <MenuDivider marginTop="0.2rem" marginBottom="0.2rem" />
+                  <MenuItem
+                    borderRadius="0 0 24px 24px"
+                    boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
+                    className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                    d="flex"
+                    justifyContent="center"
+                  >
                     <SearchModal>
-                      <Text
-                        p={3}
-                        fontSize={18}
-                        onClick={logoutHandler}
-                        fontFamily="Nunito"
-                      >
+                      <Text p={3} fontSize={18} fontFamily="Nunito">
                         Search Web
                       </Text>
                     </SearchModal>

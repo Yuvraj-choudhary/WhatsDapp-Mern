@@ -24,7 +24,7 @@ const ChatListItem = ({
       py={2}
       borderRadius="xl"
       key={chat._id}
-      className="transition-all duration-500 ease-in-out shadow-inner drop-shadow-lg hover:shadow-2xl"
+      className="transition-all duration-200 ease-in-out shadow-inner drop-shadow-md hover:shadow-2xl"
       _hover={{
         color: "white",
         bg: "#38B2AC",

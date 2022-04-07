@@ -16,9 +16,9 @@ const InputRoot = ({ newMessage, typingHandler, placeholder }) => {
         borderRadius: "10px",
         outline: "none",
         background: colorMode === "dark" ? "#232b38" : "#f0f2f5",
-        padding: "8px",
-        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+        padding: "8px"
       }}
+      className="shadow-inner"
       placeholder={placeholder}
       value={newMessage}
       onChange={(e) => typingHandler(e.target.value)}
