@@ -52,7 +52,7 @@ const ProfileModel = ({ user, children }) => {
             justifyContent="space-between"
           >
             <Img
-              borderRadius="full"
+              borderRadius="30px"
               src={user.pic}
               alt={user.name}
             />

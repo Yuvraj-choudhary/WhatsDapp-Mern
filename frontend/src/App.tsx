@@ -20,7 +20,6 @@ const App = () => {
       transition="1s"
     >
       {!loading ? (
-        <Router>
           <Suspense fallback={<></>}>
             <Switch>
               <Route path="/" component={Homepage} exact />
@@ -28,7 +27,6 @@ const App = () => {
               <Route component={NotFound} />
             </Switch>
           </Suspense>
-        </Router>
       ) : (
         <Box d={{ base: "none", xl: "flex" }} w="100%">
           <Suspense fallback={<></>}>

@@ -8,6 +8,7 @@ import ChatList from "./ChatList";
 import ChatLoading from "./ChatLoading";
 import GroupAdd from "./icons/GroupAdd";
 import GroupChatModel from "./miscellaneous/GroupChatModel";
+import "./styles.css";
 
 const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
   const [loggedUser, setLoggedUser]: any = useState();
@@ -74,9 +75,13 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
           value={searchChat}
           onChange={(e) => setSearchChat(e.target.value)}
           borderColor="rgb(255 255 255 / 0%)"
+          boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
         />
         <GroupChatModel>
-          <IconButton style={{ marginLeft: 7, color: "#898787" }}>
+          <IconButton
+            style={{ marginLeft: 7, color: "#898787" }}
+            className="button-inner-effect"
+          >
             <GroupAdd />
           </IconButton>
         </GroupChatModel>

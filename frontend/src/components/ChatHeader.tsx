@@ -76,7 +76,8 @@ const ChatHeader = ({
             d={{
               base: "flex",
               xl: "none",
-            }}
+              }}
+              mr={2}
             icon={<ArrowBackIcon />}
             onClick={() => {
               setSelectedChat();
@@ -86,22 +87,23 @@ const ChatHeader = ({
             fontSize="2xl"
             variant=""
             isRound
+            className="button-inner-effect"
           />
           {message && (
             <>
               {!selectedChat.isGroupChat ? (
                 <ProfileModel user={getSenderFull(user, selectedChat.users)}>
-                  <Box d="flex" cursor="pointer">
+                  <Box
+                    d="flex"
+                      cursor="pointer"
+                    className="button-inner-effect rounded-full"
+                  >
                     <Avatar
                       name={getSender(user, selectedChat.users)}
                       src={getSenderPic(user, selectedChat.users)}
-                      ml={{
-                        base: 3,
-                        xl: 0,
-                      }}
                     />
                     <Text
-                      ml={2}
+                      mx={2}
                       textOverflow="ellipsis"
                       whiteSpace="nowrap"
                       maxWidth="fit-content"
@@ -147,17 +149,24 @@ const ChatHeader = ({
                   aria-label="refresh"
                   variant=""
                   isRound
+                  className="button-inner-effect"
                 />
                 <Menu>
-                  <MenuButton as={IconButton} ml={2} variant="" isRound>
+                  <MenuButton
+                    as={IconButton}
+                    ml={2}
+                    variant=""
+                    isRound
+                    className="button-inner-effect"
+                  >
                     <MoreVert />
                   </MenuButton>
                   <MenuList
                     borderColor="#d3d3d300"
                     borderRadius="33px"
                     boxShadow="2xl"
-                      padding={1.5}
-                      className="transition-all duration-300 ease-in-out"
+                    padding={1.5}
+                    className="transition-all duration-300 ease-in-out"
                   >
                     <MenuItem
                       borderRadius="24px 24px 0 0"

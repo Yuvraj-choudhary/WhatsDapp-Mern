@@ -3,6 +3,7 @@ import AudioReactRecorder, { RecordState } from "@kazzkiq/audio-react-recorder";
 import { IconButton } from "@material-ui/core";
 import { Mic, SettingsVoiceRounded } from "@material-ui/icons";
 import Send from "../icons/Send";
+import "../styles.css";
 
 const SendOrMic = ({
   newMessage,
@@ -39,9 +40,11 @@ const SendOrMic = ({
           <IconButton
             style={{
               marginLeft: 5,
+              marginRight: -10,
               color: colorMode === "dark" ? "#898787" : "#707070",
             }}
             onClick={sendMessageButton}
+            className="button-inner-effect"
           >
             <Send />
           </IconButton>
@@ -51,8 +54,10 @@ const SendOrMic = ({
           disableRipple
           style={{
             marginLeft: 7,
+            marginRight: -10,
             color: colorMode === "dark" ? "#898787" : "#707070",
           }}
+          className="button-inner-effect"
         >
           <Spinner />
         </IconButton>
@@ -65,6 +70,7 @@ const SendOrMic = ({
               color: colorMode === "dark" ? "#898787" : "#707070",
             }}
             onClick={() => setIsAudioRecording((e) => !e)}
+            className="button-inner-effect"
           >
             {isAudioRecording ? <SettingsVoiceRounded /> : <Mic />}
           </IconButton>

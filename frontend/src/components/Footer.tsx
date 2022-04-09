@@ -136,7 +136,6 @@ const Footer = ({
               d="flex"
               justifyContent="center"
               alignItems="center"
-              px={20}
               mt="auto"
             >
               <ShowEmoji

@@ -53,7 +53,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   const fetchMessages = async () => {
     if (!selectedChat) return;
 
-    try {
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -71,16 +70,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       setLoading(false);
 
       socket.emit("join chat", selectedChat._id);
-    } catch (error) {
-      toast({
-        title: "Error Occurred!",
-        description: "Failed to Load the Messages",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-    }
+    
   };
 
   useEffect(() => {
@@ -112,23 +102,48 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
     });
   });
 
-  const postDetails = (file: any) => {
-    if (!file.type.match("image.*")) {
-      alert("Please select image only.");
+  const postDetails = (pics) => {
+    setPicLoading(true);
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "chat-app-mern");
+      data.append("cloud_name", "yuvraj-choudahry-dev");
+      fetch(
+        "https://api.cloudinary.com/v1_1/yuvraj-choudahry-dev/image/upload",
+        {
+          method: "post",
+          body: data,
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+          setPicLoading(false);
+        })
+        .catch((err) => {
+          setPicLoading(false);
+        });
     } else {
-      var reader = new FileReader();
-
-      reader.addEventListener(
-        "load",
-        () => {
-          setPic(reader.result);
-        },
-        false
-      );
-
-      if (file) {
-        reader.readAsDataURL(file);
-      }
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setPicLoading(false);
+      return;
     }
   };
 

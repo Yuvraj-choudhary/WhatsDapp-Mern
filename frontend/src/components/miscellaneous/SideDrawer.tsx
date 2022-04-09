@@ -41,6 +41,7 @@ import UserListItem from "../userStufs/UserListItem";
 import Chatdapp from "./Chatdapp";
 import ProfileModel from "./ProfileModel";
 import SearchModal from "./SearchModal";
+import "../styles.css";
 
 const SideDrawer = ({ isHidden, setIsHidden }) => {
   const [search, setSearch]: any = useState("");
@@ -163,6 +164,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                   aria-label="Search"
                   icon={<Search2Icon />}
                   isRound
+                  className="button-inner-effect"
                 />
               </Tooltip>
               <IconButton
@@ -173,6 +175,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 onClick={() => {
                   setIsHidden(true);
                 }}
+                className="button-inner-effect"
               />
             </Box>
             <Chatdapp>
@@ -182,6 +185,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 fontFamily="Nunito"
                 d={{ base: "none", md: "flex" }}
                 variant=""
+                className="button-inner-effect"
               >
                 Chat Dapp
               </Button>
@@ -193,6 +197,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 mr={2}
                 variant=""
                 isRound
+                className="button-inner-effect"
               >
                 {colorMode === "dark" ? (
                   <SunIcon fontSize="xl" m={1} />
@@ -201,14 +206,20 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 )}
               </IconButton>
               <Menu>
-                <MenuButton as={IconButton} mr={2} variant="" isRound>
+                <MenuButton
+                  as={IconButton}
+                  mr={2}
+                  variant=""
+                  isRound
+                  className="button-inner-effect"
+                >
                   <NotificationBadge
                     count={notification.length}
                     effect={Effect.SCALE}
                     style={{
                       padding: "3.2px 6px",
                       right: "4px",
-                      top: "-1px"
+                      top: "-1px",
                     }}
                   />
                   <BellIcon fontSize="2xl" m={1} />
@@ -266,7 +277,13 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 </MenuList>
               </Menu>
               <Menu>
-                <MenuButton as={IconButton} variant="" isRound mr={2}>
+                <MenuButton
+                  as={IconButton}
+                  variant=""
+                  isRound
+                  mr={2}
+                  className="button-inner-effect"
+                >
                   <Avatar
                     size={"sm"}
                     cursor="pointer"
@@ -352,8 +369,13 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     borderColor="rgb(255 255 255 / 0%)"
+                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
                   />
-                  <Button variant="" onClick={handleSearch}>
+                  <Button
+                    variant=""
+                    onClick={handleSearch}
+                    className="button-inner-effect"
+                  >
                     Go
                   </Button>
                 </Box>

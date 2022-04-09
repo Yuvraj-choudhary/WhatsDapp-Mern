@@ -1,6 +1,7 @@
-import { ChevronDownIcon, ExternalLinkIcon, StarIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Image,
   Menu,
   MenuButton,
   MenuItem,
@@ -13,6 +14,8 @@ import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Linkify from "linkify-react";
 import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import { isLastMessage, isSameReceiver } from "../config/ChatLogics";
 import "./styles.css";
 
@@ -76,18 +79,17 @@ const MessageSender = ({
         maxWidth={{ base: "80%", xl: "63%" }}
       >
         {m.image !== "" && (
-          <ModalImage
-            showRotation={true}
-            showZoom={true}
-            showDownload={true}
-            src={m.image || m.content}
-            alt=""
-            className="image"
-          />
+          <Zoom
+            transitionDuration={600}
+            zoomZindex={0}
+            overlayBgColorEnd="RGBA(255,255,255,0.09)"
+          >
+            <Image src={m.image} alt="" className="image" />
+          </Zoom>
         )}
         {m.audio !== "" && (
           <AudioPlayer
-            src={m.audio || m.content}
+            src={m.audio}
             style={{
               marginTop: m.image ? "10px" : 0,
               marginBottom: m.gif ? "10px" : 0,

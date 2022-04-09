@@ -9,6 +9,7 @@ import {
 import { IconButton } from "@material-ui/core";
 import { Gif } from "@material-ui/icons";
 import Attach from "../icons/Attach";
+import "../styles.css";
 
 const AttachFile = ({
   showPicker,
@@ -30,6 +31,7 @@ const AttachFile = ({
               color: colorMode === "dark" ? "#898787" : "#707070",
             }}
             onClick={() => setShowGifPicker(true)}
+            className="button-inner-effect"
           >
             <Gif />
           </IconButton>
@@ -43,6 +45,7 @@ const AttachFile = ({
               marginLeft: -15,
               color: colorMode === "dark" ? "#898787" : "#707070",
             }}
+            className="button-inner-effect"
           >
             <Attach />
           </MenuButton>
