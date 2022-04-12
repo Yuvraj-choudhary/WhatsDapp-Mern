@@ -40,6 +40,7 @@ const sendMessage = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
+
 const allMessages = asyncHandler(async (req, res) => {
   try {
     const messages = await Message.find({ chat: req.params.chatId })

@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.🎚️{
+      opacity: 1;
+    transform: none;
+    width: 100%;
+    overflow: scroll;
+}
+
 .message {
   display: flex;
   width: 100%;

@@ -4,7 +4,7 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import ChatHeader from "./ChatHeader";
 import Footer from "./Footer";
 import "./styles.css";
-const ScrollableChat = lazy(() => import("./ScrollableChat"));
+import ScrollableChat from './ScrollableChat';
 
 const ChatScreen = ({
   colorMode,
@@ -73,6 +73,10 @@ const ChatScreen = ({
         setVideo={setVideo}
         setFile={setFile}
         setGif={setGif}
+        pic={pic}
+        video={video}
+        file={file}
+        gif={gif}
       />
       {pic || gif || video || file || showPicker ? (
         <></>
@@ -111,7 +115,6 @@ const ChatScreen = ({
               className="messages"
               bg={colorMode === "dark" ? "#2d3748" : "white"}
             >
-              <Suspense fallback={<></>}>
                 <ScrollableChat
                   message={message}
                   selectedChat={selectedChat}
@@ -120,7 +123,6 @@ const ChatScreen = ({
                   star={star}
                   setStar={setStar}
                 />
-              </Suspense>
             </Box>
           )}
         </Box>

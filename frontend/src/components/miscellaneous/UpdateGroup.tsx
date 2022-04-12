@@ -231,9 +231,7 @@ const UpdateGroup = ({
   return (
     <>
       {children ? (
-        <Text onClick={onOpen}>
-          {children}
-        </Text>
+        <Text onClick={onOpen}>{children}</Text>
       ) : (
         <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
           Update Group
@@ -248,7 +246,7 @@ const UpdateGroup = ({
         motionPreset="slideInBottom"
       >
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-        <ModalContent minHeight="450px">
+        <ModalContent h="auto">
           <ModalHeader
             fontSize="35px"
             fontFamily="Nunito"
@@ -279,6 +277,8 @@ const UpdateGroup = ({
                 placeholder="Group Name"
                 mb={3}
                 value={groupChatName}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
                 onChange={(e) => setGroupChatName(e.target.value)}
               />
               <Button
@@ -295,7 +295,10 @@ const UpdateGroup = ({
               <Input
                 type="file"
                 p={1.5}
+                mb={3}
                 accept="image/*"
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
                 onChange={(e: any) => postDetails(e.target.files[0])}
               />
             </FormControl>
@@ -304,6 +307,8 @@ const UpdateGroup = ({
                 placeholder="Add User to group"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
               />
             </FormControl>
 

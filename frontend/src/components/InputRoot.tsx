@@ -1,12 +1,19 @@
 import { useColorMode } from "@chakra-ui/react";
 import { TextareaAutosize } from "@material-ui/core";
 
-const InputRoot = ({ newMessage, typingHandler, placeholder }) => {
+const InputRoot = ({
+  newMessage,
+  typingHandler,
+  placeholder,
+  setShowPicker,
+}) => {
   const { colorMode } = useColorMode();
   return (
     <TextareaAutosize
       minRows={1}
       maxRows={4}
+      onFocus={() => setShowPicker(false)}
+      
       style={{
         width: "100%",
         minHeight: "47px",

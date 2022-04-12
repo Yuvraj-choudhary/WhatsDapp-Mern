@@ -23,6 +23,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: true
 });
 
 const db = mongoose.connection;
@@ -31,6 +32,7 @@ db.once("open", () => {
   console.log(`Database connection established`);
   const msgCollection = db.collection("messages");
   const changeStreamMsg = msgCollection.watch();
+  
 
   changeStreamMsg.on("change", (change) => {
     console.log(change);
@@ -48,6 +50,10 @@ db.once("open", () => {
         sender: messageDetails.sender,
         chat: messageDetails.chat,
       });
+      if (change.operationType === "delete") {
+        const messageDetails = change.fullDocument;
+        pusher.trigger("messages", "deleted", {});
+      }
     } else {
       console.log("Error triggering Pusher");
     }

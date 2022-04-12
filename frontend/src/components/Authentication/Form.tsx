@@ -39,6 +39,8 @@ const Form = ({
           <Input
             placeholder="Enter Your Name"
             onChange={(e) => setName(e.target.value)}
+            borderColor="rgb(255 255 255 / 0%)"
+            boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
           />
         </FormControl>
       )}
@@ -48,6 +50,8 @@ const Form = ({
           type="button"
           value={email ? email : "Get The Email From Google"}
           onClick={() => signInWithGoogle()}
+          borderColor="rgb(255 255 255 / 0%)"
+          boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
         />
       </FormControl>
       <FormControl id="password" isRequired>
@@ -58,6 +62,8 @@ const Form = ({
             value={password}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
+            borderColor="rgb(255 255 255 / 0%)"
+            boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -75,6 +81,8 @@ const Form = ({
                 type={show ? "text" : "password"}
                 placeholder="Confirm password"
                 onChange={(e) => setConfirmpassword(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
               />
               <InputRightElement width="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -90,6 +98,8 @@ const Form = ({
               p={1.5}
               accept="image/*"
               onChange={(e: any) => postDetails(e.target.files[0])}
+              borderColor="rgb(255 255 255 / 0%)"
+              boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
             />
           </FormControl>
         </>
@@ -108,7 +118,7 @@ const Form = ({
           variant="solid"
           colorScheme="red"
           width="100%"
-          disabled={process.env.NODE_ENV === "production"}
+          // disabled={process.env.NODE_ENV === "production"}
           onClick={() => {
             setEmail("guestUser@example.com");
             setPassword("1234567");

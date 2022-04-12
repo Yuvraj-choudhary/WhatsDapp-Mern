@@ -1,6 +1,8 @@
 import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import Zoom from "react-medium-image-zoom";
 import {
   Box,
+  Image,
   Menu,
   MenuButton,
   MenuItem,
@@ -19,6 +21,7 @@ import {
   isSameSenderMargin,
 } from "../config/ChatLogics";
 import "./styles.css";
+import "react-medium-image-zoom/dist/styles.css";
 
 const MessageReceiver = ({
   m,
@@ -86,14 +89,13 @@ const MessageReceiver = ({
         maxWidth={{ base: "80%", xl: "63%" }}
       >
         {m.image !== "" && (
-          <ModalImage
-            showRotation={true}
-            showZoom={true}
-            showDownload={true}
-            src={m.image || m.content}
-            alt=""
-            className="image"
-          />
+          <Zoom
+            transitionDuration={600}
+            zoomZindex={0}
+            overlayBgColorEnd="RGBA(255,255,255,0.09)"
+          >
+            <Image src={m.image} alt="" className="image" />
+          </Zoom>
         )}
         {m.audio !== "" && (
           <AudioPlayer

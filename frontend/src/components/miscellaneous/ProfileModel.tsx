@@ -22,20 +22,20 @@ const ProfileModel = ({ user, children }) => {
       {children ? (
         <Text onClick={onOpen}>{children}</Text>
       ) : (
-        <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
+        <Text fontFamily="Nunmito" p={4} fontSize={18} onClick={onOpen}>
           View Profile
         </Text>
       )}
 
       <Modal
-        size="3xl"
+        size="4xl"
         isOpen={isOpen}
         onClose={onClose}
         isCentered
         motionPreset="slideInBottom"
       >
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-        <ModalContent minHeight="450px">
+        <ModalContent h="auto">
           <ModalHeader
             fontSize="40px"
             fontFamily="Nunito"
@@ -52,7 +52,8 @@ const ProfileModel = ({ user, children }) => {
             justifyContent="space-between"
           >
             <Img
-              borderRadius="30px"
+              borderRadius="5%"
+              w="400px"
               src={user.pic}
               alt={user.name}
             />

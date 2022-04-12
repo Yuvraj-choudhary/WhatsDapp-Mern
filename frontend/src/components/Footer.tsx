@@ -1,13 +1,15 @@
-import { Box, FormControl, useColorMode } from "@chakra-ui/react";
+import { Box, FormControl, SlideFade, useColorMode } from "@chakra-ui/react";
 import { EmojiPicker } from "react-emoji-search";
 import Picker from "react-giphy-component";
+import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
+import Zoom from "react-medium-image-zoom";
 import AttachFile from "./footerIcons/AttachFile";
 import SendOrMic from "./footerIcons/SendOrMic";
 import ShowEmoji from "./footerIcons/ShowEmoji";
 import InputRoot from "./InputRoot";
 import "./styles.css";
-import AudioPlayer from 'react-h5-audio-player';
+import "react-medium-image-zoom/dist/styles.css";  
 
 const Footer = ({
   sendMessage,
@@ -57,14 +59,20 @@ const Footer = ({
         <Box overflow="scroll">
           {pic && !showPicker ? (
             <Box alignItems="center" d="flex" flexDir="column">
-              <ModalImage
-                showRotation={true}
-                showZoom={true}
-                showDownload={true}
-                src={pic}
-                alt=""
-                className="image2"
-              />
+              <Zoom
+                transitionDuration={600}
+                zoomZindex={0}
+                overlayBgColorEnd="RGBA(255,255,255,0.09)"
+              >
+                <ModalImage
+                  showRotation={true}
+                  showZoom={true}
+                  showDownload={true}
+                  src={pic}
+                  alt=""
+                  className="image2"
+                />
+              </Zoom>
             </Box>
           ) : (
             <></>
@@ -97,36 +105,40 @@ const Footer = ({
             <></>
           )}
         </Box>
-        {showPicker && !showGifPicker ? (
-          <EmojiPicker
-            emojiVersion={14.0}
-            emojiSize={45}
-            onEmojiClick={(e) => onEmojiClick(e)}
-            set="native"
-            tabsVariant="fullWidth"
-            styles={{
-              backgroundColor: colorMode === "dark" ? "#2d3748" : "#fff",
-              indicatorColor: colorMode !== "dark" ? "#232b38" : "#f9f2f5",
-              fontColor: "lightgrey",
-              searchBackgroundColor:
-                colorMode === "dark" ? "#232b38" : "#f9f2f5",
-              tabsFontColor: colorMode !== "dark" ? "#232b38" : "#f9f9f9",
-              searchFontColor: "lightgrey",
-              skinTonePickerBackgroundColor:
-                colorMode === "dark" ? "#232b38" : "#f9f2f5",
-            }}
-            mode={colorMode === "dark" ? "dark" : "light"}
-          />
-        ) : (
-          <></>
-        )}
-        {showGifPicker && (
-          <Picker
-            apiKey="P9bkVJ0Z7fcRkW7dRCrZz7BgNsrtc30f"
-            onSelected={(p: any) => setGifHandler(p.downsized.url)}
-            width="100%"
-          />
-        )}
+        <SlideFade in={showPicker} className="🎚️">
+          {showPicker && !showGifPicker ? (
+            <EmojiPicker
+              emojiVersion={14.0}
+              emojiSize={40}
+              sheetSize={32}
+              emojiSpacing={20}
+              onEmojiClick={(e) => onEmojiClick(e)}
+              set="native"
+              tabsVariant="fullWidth"
+              styles={{
+                backgroundColor: colorMode === "dark" ? "#2d3748" : "#fff",
+                indicatorColor: colorMode !== "dark" ? "#232b38" : "#f9f2f5",
+                fontColor: "lightgrey",
+                searchBackgroundColor:
+                  colorMode === "dark" ? "#232b38" : "#f9f2f5",
+                tabsFontColor: colorMode !== "dark" ? "#232b38" : "#f9f9f9",
+                searchFontColor: "lightgrey",
+                skinTonePickerBackgroundColor:
+                  colorMode === "dark" ? "#232b38" : "#f9f2f5",
+              }}
+              mode={colorMode === "dark" ? "dark" : "light"}
+            />
+          ) : (
+            <></>
+          )}
+          {showGifPicker && (
+            <Picker
+              apiKey="P9bkVJ0Z7fcRkW7dRCrZz7BgNsrtc30f"
+              onSelected={(p: any) => setGifHandler(p.downsized.url)}
+              width="100%"
+            />
+          )}
+        </SlideFade>
         {isPreview ? (
           <>
             <FormControl
@@ -149,6 +161,7 @@ const Footer = ({
                 newMessage={newMessage}
                 typingHandler={typingHandler}
                 placeholder="Add a caption..."
+                setShowPicker={setShowPicker}
               />
               <SendOrMic
                 newMessage={newMessage}
@@ -213,6 +226,7 @@ const Footer = ({
                     newMessage={newMessage}
                     typingHandler={typingHandler}
                     placeholder="Type a message"
+                    setShowPicker={setShowPicker}
                   />
                 </>
               )}

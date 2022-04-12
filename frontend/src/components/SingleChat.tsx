@@ -2,6 +2,7 @@ import { Box, Text, useColorMode, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useEffect, useState } from "react";
+import Resizer from "react-image-file-resizer";
 import io from "socket.io-client";
 import { ChatState } from "../context/ChatProvider";
 import { storage } from "../firebase";
@@ -53,6 +54,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   const fetchMessages = async () => {
     if (!selectedChat) return;
 
+    try {
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -65,12 +67,20 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
         `/api/message/${selectedChat._id}`,
         config
       );
-
       setMessage(data);
       setLoading(false);
 
       socket.emit("join chat", selectedChat._id);
-    
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: "Failed to Load the Messages",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
   };
 
   useEffect(() => {
@@ -103,48 +113,20 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   });
 
   const postDetails = (pics) => {
-    setPicLoading(true);
-    if (pics === undefined) {
-      toast({
-        title: "Please Select an Image!",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      return;
-    }
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
-      const data = new FormData();
-      data.append("file", pics);
-      data.append("upload_preset", "chat-app-mern");
-      data.append("cloud_name", "yuvraj-choudahry-dev");
-      fetch(
-        "https://api.cloudinary.com/v1_1/yuvraj-choudahry-dev/image/upload",
-        {
-          method: "post",
-          body: data,
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setPic(data.url.toString());
-          setPicLoading(false);
-        })
-        .catch((err) => {
-          setPicLoading(false);
-        });
-    } else {
-      toast({
-        title: "Please Select an Image!",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      setPicLoading(false);
-      return;
-    }
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        pics,
+        940,
+        780,
+        "PNG",
+        1000,
+        0,
+        (uri) => {
+          setPic(uri);
+        },
+        "base64"
+      );
+    });
   };
 
   const postVideo = (e: any) => {
@@ -284,7 +266,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       gif ||
       video
     ) {
-            socket.emit("stop typing", selectedChat._id);
+      socket.emit("stop typing", selectedChat._id);
       try {
         const config = {
           headers: {

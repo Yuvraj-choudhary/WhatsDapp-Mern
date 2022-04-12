@@ -34,6 +34,10 @@ const ChatHeader = ({
   setVideo,
   setFile,
   setGif,
+  pic,
+  video,
+  file,
+  gif,
 }) => {
   const history = useHistory();
   return (
@@ -51,14 +55,14 @@ const ChatHeader = ({
       bg={colorMode === "dark" ? "#2d3748" : "white"}
     >
       {isPreview ? (
-        <SlideFade in={isPreview} offsetY="2000px">
+        <SlideFade in={pic || video || file || gif} offsetY="2000px">
           <Box d="flex">
             <IconButton
               icon={<Close />}
               onClick={() => {
                 setPic("");
                 setVideo("");
-                setFile("");
+                setFile("i");
                 setGif("");
               }}
               aria-label="back"
@@ -76,8 +80,8 @@ const ChatHeader = ({
             d={{
               base: "flex",
               xl: "none",
-              }}
-              mr={2}
+            }}
+            mr={2}
             icon={<ArrowBackIcon />}
             onClick={() => {
               setSelectedChat();
@@ -95,7 +99,7 @@ const ChatHeader = ({
                 <ProfileModel user={getSenderFull(user, selectedChat.users)}>
                   <Box
                     d="flex"
-                      cursor="pointer"
+                    cursor="pointer"
                     className="button-inner-effect rounded-full"
                   >
                     <Avatar

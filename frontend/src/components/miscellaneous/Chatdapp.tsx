@@ -26,7 +26,7 @@ const Chatdapp = ({ children }) => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-        <ModalContent minHeight="450px">
+        <ModalContent h="auto">
           <ModalHeader
             fontSize="40px"
             fontFamily="Nunito"

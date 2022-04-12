@@ -21,6 +21,7 @@ import { ChatState } from "../../context/ChatProvider";
 import axios from "axios";
 import UserListItem from "../userStufs/UserListItem";
 import UserBadgeItem from "../userStufs/UserBadgeItem";
+import "../styles.css";
 
 const GroupChatModel = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -165,14 +166,14 @@ const GroupChatModel = ({ children }) => {
       <span onClick={onOpen}>{children}</span>
 
       <Modal
-        size="3xl"
+        size="4xl"
         isOpen={isOpen}
         onClose={onClose}
         isCentered
         motionPreset="slideInBottom"
       >
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-        <ModalContent minHeight="450px">
+        <ModalContent minHeight="550px">
           <ModalHeader
             fontSize="35px"
             fontFamily="Nunito"
@@ -191,23 +192,35 @@ const GroupChatModel = ({ children }) => {
             <FormControl>
               <Input
                 placeholder="Chat Name"
-                mb={3}
+                mb={30}
+                p={1.5}
+                h="50px"
                 onChange={(e) => setGroupChatName(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
               />
             </FormControl>
             <FormControl>
               <Input
                 type="file"
                 p={1.5}
+                h="50px"
+                mb={30}
                 accept="image/*"
                 onChange={(e: any) => postDetails(e.target.files[0])}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
               />
             </FormControl>
             <FormControl>
               <Input
                 placeholder="Add Users eg: yuvraj, gorge, dani, dream"
-                mb={1}
+                mb={30}
+                p={1.5}
+                h="50px"
                 onChange={(e) => handleSearch(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
               />
             </FormControl>
             <Box w="100%" d="flex" flexWrap="wrap">
