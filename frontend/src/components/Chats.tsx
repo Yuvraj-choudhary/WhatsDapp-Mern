@@ -15,7 +15,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
   const { selectedChat, setSelectedChat, user, chats, setChats }: any =
     ChatState();
   const { colorMode } = useColorMode();
-  const [searchChat, setSearchChat]: any = useState(""); 
+  const [searchChat, setSearchChat]: any = useState("");
 
   const toast = useToast();
 

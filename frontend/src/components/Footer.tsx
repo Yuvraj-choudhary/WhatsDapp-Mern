@@ -142,13 +142,15 @@ const Footer = ({
         {isPreview ? (
           <>
             <FormControl
+              onKeyDown={sendMessage}
               isRequired
               w="100%"
               fontFamily="Nunito"
               d="flex"
               justifyContent="center"
               alignItems="center"
-              mt="auto"
+              pt={3}
+              px={2}
             >
               <ShowEmoji
                 showGifPicker={showGifPicker}

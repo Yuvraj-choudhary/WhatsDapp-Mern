@@ -3,7 +3,7 @@
 }
 
 .⛔-anim {
-  animation: fade 1.5s ease-in-out forwards;
+  animation: fade 0.7s ease-in-out forwards;
 }
 
 .home {
@@ -31,4 +31,8 @@
 
 .chat-box {
   height: calc(100vh - 60px);
+}
+
+.leftwatermark{
+display: none
 }

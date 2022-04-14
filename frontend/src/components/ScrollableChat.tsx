@@ -43,7 +43,9 @@ const ScrollableChat = ({
                     hasArrow
                   >
                     <Avatar
-                      mt="35px"
+                    mt="auto"
+                    mb="40px"
+                    d="flex"
                       mr={1}
                       size="sm"
                       name={m.sender.name}

@@ -23,7 +23,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: true
+  useFindAndModify: true,
 });
 
 const db = mongoose.connection;
@@ -31,8 +31,9 @@ const db = mongoose.connection;
 db.once("open", () => {
   console.log(`Database connection established`);
   const msgCollection = db.collection("messages");
+  const chatCollection = db.collection("chats");
   const changeStreamMsg = msgCollection.watch();
-  
+  const changeStreamChat = chatCollection.watch();
 
   changeStreamMsg.on("change", (change) => {
     console.log(change);
@@ -48,14 +49,22 @@ db.once("open", () => {
         gif: messageDetails.gif,
         readBy: messageDetails.readBy,
         sender: messageDetails.sender,
-        chat: messageDetails.chat,
+        chat: messageDetails.chat
       });
-      if (change.operationType === "delete") {
-        const messageDetails = change.fullDocument;
-        pusher.trigger("messages", "deleted", {});
-      }
     } else {
       console.log("Error triggering Pusher");
+    }
+  });
+
+  changeStreamChat.on("change", (change) => {
+    console.log(change);
+    if (change.operationType === "update") {
+      const chatDetails = change.updateDescription.updatedFields;
+      pusher.trigger("chats", "updated", {
+        chatName: chatDetails.chatName,
+        pic: chatDetails.pic,
+        latestMessage: chatDetails.latestMessage,
+      });
     }
   });
 });

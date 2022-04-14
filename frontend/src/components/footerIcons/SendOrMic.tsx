@@ -42,6 +42,7 @@ const SendOrMic = ({
               marginLeft: 5,
               marginRight: -10,
               color: colorMode === "dark" ? "#898787" : "#707070",
+                          marginTop: "auto",
             }}
             onClick={sendMessageButton}
             className="button-inner-effect"
@@ -56,6 +57,7 @@ const SendOrMic = ({
             marginLeft: 7,
             marginRight: -10,
             color: colorMode === "dark" ? "#898787" : "#707070",
+                        marginTop: "auto",
           }}
           className="button-inner-effect"
         >
@@ -68,6 +70,7 @@ const SendOrMic = ({
               marginLeft: 5,
               marginRight: -10,
               color: colorMode === "dark" ? "#898787" : "#707070",
+                          marginTop: "auto",
             }}
             onClick={() => setIsAudioRecording((e) => !e)}
             className="button-inner-effect"

@@ -16,6 +16,7 @@ const ShowEmoji = ({
         <IconButton
           style={{
             marginRight: 7,
+            marginTop: "auto",
             color: colorMode === "dark" ? "#898787" : "#707070",
           }}
           onClick={() => setShowGifPicker((val: any) => !val)}
@@ -27,6 +28,7 @@ const ShowEmoji = ({
         <IconButton
           style={{
             marginRight: 7,
+            marginTop: "auto",
             color: colorMode === "dark" ? "#898787" : "#707070",
           }}
           onClick={() => setShowPicker((val: any) => !val)}
@@ -38,6 +40,7 @@ const ShowEmoji = ({
         <IconButton
           style={{
             marginRight: 5,
+            marginTop: "auto",
             color: colorMode === "dark" ? "#898787" : "#707070",
           }}
           onClick={() => setShowPicker((val: any) => !val)}

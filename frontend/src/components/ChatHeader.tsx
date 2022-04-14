@@ -39,7 +39,28 @@ const ChatHeader = ({
   file,
   gif,
 }) => {
+  console.log(message);
   const history = useHistory();
+
+  const formatDate = (date: any) => {
+    return date < 10 ? "0" + date : date;
+  };
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   return (
     <Text
       fontSize={{
@@ -133,16 +154,51 @@ const ChatHeader = ({
                         xl: 0,
                       }}
                     />
-                    <Text
-                      ml={2}
-                      textOverflow="ellipsis"
-                      whiteSpace="nowrap"
-                      maxWidth="fit-content"
-                      overflow="hidden"
-                      fontFamily="Nunito"
-                    >
-                      {selectedChat.chatName}
-                    </Text>
+                    <Box>
+                      <Text
+                        ml={2}
+                        textOverflow="ellipsis"
+                        whiteSpace="nowrap"
+                        maxWidth="fit-content"
+                        overflow="hidden"
+                        fontFamily="Nunito"
+                      >
+                        {selectedChat.chatName}
+                      </Text>
+
+                      <Text ml={4} fontSize="small" mt="-9px">
+                        Last Seen{" "}
+                        {formatDate(
+                          days[
+                            new Date(
+                              selectedChat.latestMessage.createdAt
+                            ).getDay()
+                          ]
+                        )}{" "}
+                        {formatDate(
+                          new Date(
+                            selectedChat.latestMessage.createdAt
+                          ).getDate()
+                        )}{" "}
+                        {formatDate(
+                          months[
+                            new Date(
+                              selectedChat.latestMessage.createdAt
+                            ).getMonth()
+                          ]
+                        )}{" "}
+                        {formatDate(
+                          new Date(
+                            selectedChat.latestMessage.createdAt
+                          ).toLocaleString("en-US", {
+                            hour: "numeric",
+                            hour12: true,
+                            minute: "numeric",
+                            year: "numeric",
+                          })
+                        )}
+                      </Text>
+                    </Box>
                   </Box>
                 </UpdateGroup>
               )}
