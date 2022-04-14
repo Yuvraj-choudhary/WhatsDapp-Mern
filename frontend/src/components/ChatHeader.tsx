@@ -127,16 +127,51 @@ const ChatHeader = ({
                       name={getSender(user, selectedChat.users)}
                       src={getSenderPic(user, selectedChat.users)}
                     />
-                    <Text
-                      mx={2}
-                      textOverflow="ellipsis"
-                      whiteSpace="nowrap"
-                      maxWidth="fit-content"
-                      fontFamily="Nunito"
-                      overflow="hidden"
-                    >
-                      {getSender(user, selectedChat.users)}
-                    </Text>
+                    <Box>
+                      <Text
+                        ml={2}
+                        textOverflow="ellipsis"
+                        whiteSpace="nowrap"
+                        maxWidth="fit-content"
+                        overflow="hidden"
+                        fontFamily="Nunito"
+                      >
+                        {selectedChat.chatName}
+                      </Text>
+
+                      <Text ml={4} fontSize="small" mt="-9px">
+                        Last Seen{" "}
+                        {formatDate(
+                          days[
+                            new Date(
+                              selectedChat.latestMessage.createdAt
+                            ).getDay()
+                          ]
+                        )}{" "}
+                        {formatDate(
+                          new Date(
+                            selectedChat.latestMessage.createdAt
+                          ).getDate()
+                        )}{" "}
+                        {formatDate(
+                          months[
+                            new Date(
+                              selectedChat.latestMessage.createdAt
+                            ).getMonth()
+                          ]
+                        )}{" "}
+                        {formatDate(
+                          new Date(
+                            selectedChat.latestMessage.createdAt
+                          ).toLocaleString("en-US", {
+                            hour: "numeric",
+                            hour12: true,
+                            minute: "numeric",
+                            year: "numeric",
+                          })
+                        )}
+                      </Text>
+                    </Box>
                   </Box>
                 </ProfileModel>
               ) : (
