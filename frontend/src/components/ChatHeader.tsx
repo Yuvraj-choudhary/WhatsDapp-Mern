@@ -129,14 +129,14 @@ const ChatHeader = ({
                     />
                     <Box>
                       <Text
-                        ml={2}
+                        mx={2}
                         textOverflow="ellipsis"
                         whiteSpace="nowrap"
                         maxWidth="fit-content"
-                        overflow="hidden"
                         fontFamily="Nunito"
+                        overflow="hidden"
                       >
-                        {selectedChat.chatName}
+                        {getSender(user, selectedChat.users)}
                       </Text>
 
                       <Text ml={4} fontSize="small" mt="-9px">
