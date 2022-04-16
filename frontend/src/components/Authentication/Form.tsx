@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { auth } from "../../firebase";
+import "../styles.css";
 
 const Form = ({
   setName,
@@ -110,15 +111,16 @@ const Form = ({
         style={{ marginTop: 15 }}
         onClick={submitHandler}
         isLoading={picLoading}
+        className="button-inner-effect"
       >
         {isLogin ? "Login" : "Sign Up"}
       </Button>
       {isLogin && (
         <Button
           variant="solid"
-          colorScheme="red"
           width="100%"
           // disabled={process.env.NODE_ENV === "production"}
+          className="button-inner-effect"
           onClick={() => {
             setEmail("guestUser@example.com");
             setPassword("1234567");

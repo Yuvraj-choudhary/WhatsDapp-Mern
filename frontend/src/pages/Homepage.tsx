@@ -30,29 +30,25 @@ function Homepage() {
           d="flex"
           justifyContent="center"
           p={3}
-          bg="white"
           w="100%"
           m="40px 0 15px 0"
           borderRadius="3xl"
           borderWidth="1px"
+          shadow="2xl"
         >
-          <Text fontSize="4xl" fontFamily="nunito" color="black">
+          <Text fontSize="4xl" fontFamily="nunito">
             Chat Dapp
           </Text>
         </Box>
-        <Box
-          bg="white"
-          color="black"
-          w="100%"
-          p={5}
-          borderRadius="3xl"
-          borderWidth="1px"
-          shadow="xl"
-        >
-          <Tabs isFitted variant="soft-rounded">
+        <Box w="100%" p={5} borderRadius="3xl" borderWidth="1px" shadow="2xl">
+          <Tabs isFitted variant="enclosed">
             <TabList mb="1em">
-              <Tab>Login</Tab>
-              <Tab>Sign Up</Tab>
+              <Tab className="button-inner-effect" mr={2}>
+                Login
+              </Tab>
+              <Tab className="button-inner-effect" ml={2}>
+                Sign Up
+              </Tab>
             </TabList>
             <TabPanels>
               <TabPanel>

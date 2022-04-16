@@ -1,9 +1,7 @@
 {
   "name": "Chat Dapp",
   "short_name": "Chatdapp",
-  "theme_color": "#fff",
   "description": "Progressive Web App",
-  "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
