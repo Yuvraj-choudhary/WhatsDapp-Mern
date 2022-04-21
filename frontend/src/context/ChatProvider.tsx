@@ -9,6 +9,7 @@ const ChatProvider = ({ children }) => {
   const [userPic, setUserPic]: any = useState();
   const [notification, setNotification]: any = useState([]);
   const [chats, setChats]: any = useState();
+  const [isLoggedIn, setIsLoggedIn]:any = useState()
 
   const history = useHistory();
 
@@ -16,7 +17,7 @@ const ChatProvider = ({ children }) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
     setUser(userInfo);
 
-    if (!userInfo) history.push("/");
+    if (!userInfo) setIsLoggedIn(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
@@ -32,7 +33,9 @@ const ChatProvider = ({ children }) => {
         chats,
         setChats,
         userPic,
-        setUserPic
+        setUserPic,
+        isLoggedIn,
+        setIsLoggedIn,
       }}
     >
       {children}

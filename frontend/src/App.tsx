@@ -1,8 +1,10 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 import { lazy, Suspense, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import { ChatState } from "./context/ChatProvider";
 import Chatpage from "./pages/Chatpage";
+import Text from "./pages/Text";
 const Loadingpage = lazy(() => import("./pages/Loadingpage"));
 const NotFound = lazy(() => import("./pages/404"));
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -10,6 +12,7 @@ const Homepage = lazy(() => import("./pages/Homepage"));
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const { isLoggedIn }: any = ChatState();
 
   const { colorMode } = useColorMode();
 
@@ -33,13 +36,19 @@ const App = () => {
           </Box>
         }
       >
-        <Switch>
-          <Route path="/" component={Homepage} exact />
-          <Route path="/@" component={Chatpage} />
-          <Route component={NotFound} />
-        </Switch>
+        <Router>
+          {!isLoggedIn ? (
+            <Homepage />
+          ) : (
+            <Switch>
+              <Route path="/" component={Chatpage} exact />
+              <Route path="/$" component={Text} />
+              <Route component={NotFound} />
+            </Switch>
+          )}
+        </Router>
       </Suspense>
-      </Box>
+    </Box>
   );
 };
 

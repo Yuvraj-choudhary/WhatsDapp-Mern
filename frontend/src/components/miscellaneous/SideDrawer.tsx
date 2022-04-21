@@ -16,6 +16,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  Hide,
   IconButton,
   Input,
   Menu,
@@ -23,6 +24,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Show,
   Spinner,
   Text,
   Tooltip,
@@ -37,11 +39,11 @@ import { getSender } from "../../config/ChatLogics";
 import { ChatState } from "../../context/ChatProvider";
 import ChatLoading from "../ChatLoading";
 import Moon from "../icons/Moon";
+import "../styles.css";
 import UserListItem from "../userStufs/UserListItem";
 import Chatdapp from "./Chatdapp";
 import ProfileModel from "./ProfileModel";
 import SearchModal from "./SearchModal";
-import "../styles.css";
 
 const SideDrawer = ({ isHidden, setIsHidden }) => {
   const [search, setSearch]: any = useState("");
@@ -58,6 +60,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
     setNotification,
     notification,
     selectedChat,
+    setIsLoggedIn,
   }: any = ChatState();
   const history = useHistory();
   const toast = useToast();
@@ -65,7 +68,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
 
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
-    history.push("/");
+    setIsLoggedIn(false);
   };
 
   const handleSearch = async () => {
@@ -150,23 +153,44 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
             d={{ base: !selectedChat ? "flex" : "none", xl: "flex" }}
           >
             <Box d="flex">
-              <Tooltip
-                label="Search Users to chats"
-                hasArrow
-                placement="bottom-end"
-              >
-                <IconButton
-                  variant=""
-                  onClick={onOpen}
-                  mr={2}
-                  d="flex"
-                  alignItems="center"
-                  aria-label="Search"
-                  icon={<Search2Icon />}
-                  isRound
-                  className="button-inner-effect"
-                />
-              </Tooltip>
+              <Show below="xl">
+                <Tooltip
+                  label="Search Users to chats"
+                  hasArrow
+                  placement="bottom-end"
+                >
+                  <IconButton
+                    variant=""
+                    onClick={onOpen}
+                    mr={2}
+                    d="flex"
+                    alignItems="center"
+                    aria-label="Search"
+                    icon={<Search2Icon />}
+                    isRound
+                    className="button-inner-effect"
+                  />
+                </Tooltip>
+              </Show>
+              <Hide below="xl">
+                <Tooltip
+                  label="Search Users to chats"
+                  hasArrow
+                  placement="bottom-end"
+                >
+                  <Button
+                    variant=""
+                    onClick={onOpen}
+                    mr={2}
+                    className="button-inner-effect"
+                  >
+                    <Search2Icon />
+                    <Text d={{ base: "none", md: "flex" }} pl="4" pr="1">
+                      Search Users
+                    </Text>
+                  </Button>
+                </Tooltip>
+              </Hide>
               <IconButton
                 aria-label="hi"
                 icon={<ChevronUpIcon fontSize="2xl" />}

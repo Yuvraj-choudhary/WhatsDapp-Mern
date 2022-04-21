@@ -12,15 +12,18 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import { ChatState } from "../context/ChatProvider";
 import "./styles.css";
 
 function Homepage() {
   const history = useHistory();
 
+  const { setIsLoggedIn }:any = ChatState();
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo")!);
 
-    if (user) history.push("/@");
+    if (user) setIsLoggedIn(true);
   }, [history]);
 
   return (

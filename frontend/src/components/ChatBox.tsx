@@ -14,7 +14,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain, isHidden, setIsHidden }) => {
       overflow="hidden"
       p={3}
       bg={colorMode === "dark" ? "#2d3748" : "white"}
-      w={{ base: "100%", xl: "70%" }}
+      w={{ base: "100%", xl: "78%" }}
       h={{
         base: selectedChat && "100vh",
         xl: isHidden ? "calc(100vh - 24px)" : "100%",

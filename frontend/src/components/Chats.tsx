@@ -55,7 +55,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
       alignItems="center"
       bg="white"
       h={{ base: isHidden ? "calc(100vh - 24px)" : "100%" }}
-      w={{ base: "100%", xl: "30%" }}
+      w={{ base: "100%", xl: "22%" }}
       backgroundColor={colorMode === "dark" ? "#2d3748" : "#fff"}
       pb={5}
     >

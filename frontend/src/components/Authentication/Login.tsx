@@ -11,7 +11,6 @@ const Login = () => {
   const [confirmpassword, setConfirmpassword]:any = useState();
   const [picLoading, setPicLoading]: any = useState(false);
   const toast = useToast();
-  const history = useHistory();
 
   const handleClick = () => setShow(!show);
 
@@ -45,7 +44,6 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       window.location.reload();
-      history.push("/@");
     } catch (error: any) {
       toast({
         title: "Error Occured!",
