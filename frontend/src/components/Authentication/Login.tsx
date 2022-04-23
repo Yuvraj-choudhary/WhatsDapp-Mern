@@ -3,12 +3,16 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import Form from "./Form";
+const ENDPOINT =
+  process.env.NODE_ENV === "production"
+    ? "https://chatdapp-mern.herokuapp.com"
+    : "http://localhost:8000";
 const Login = () => {
   const [email, setEmail]: any = useState("");
-  const [password, setPassword]:any = useState("");
-  const [show, setShow]:any = useState(false);
-  const [loading, setLoading]:any = useState(false);
-  const [confirmpassword, setConfirmpassword]:any = useState();
+  const [password, setPassword]: any = useState("");
+  const [show, setShow]: any = useState(false);
+  const [loading, setLoading]: any = useState(false);
+  const [confirmpassword, setConfirmpassword]: any = useState();
   const [picLoading, setPicLoading]: any = useState(false);
   const toast = useToast();
 
@@ -22,7 +26,7 @@ const Login = () => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       setLoading(false);
       return;
@@ -31,12 +35,12 @@ const Login = () => {
     try {
       const config = {
         headers: {
-          "Content-type": "application/json"
-        }
+          "Content-type": "application/json",
+        },
       };
 
       const { data } = await axios.post(
-        "/api/user/login",
+        `${ENDPOINT}/api/user/login`,
         { email, password },
         config
       );
@@ -51,7 +55,7 @@ const Login = () => {
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
       setLoading(false);
     }
