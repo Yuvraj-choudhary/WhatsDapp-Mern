@@ -1,13 +1,13 @@
-import { Avatar, Box, Text, useColorMode } from '@chakra-ui/react';
+import { Avatar, Box, Text, useColorMode } from "@chakra-ui/react";
 
 const UserListItem = ({ user, handleFunction }) => {
-    const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   return (
     <Box
       onClick={handleFunction}
       cursor="pointer"
       w="100%"
-      d="flex"
+      display="flex"
       alignItems="center"
       px={3}
       py={2}

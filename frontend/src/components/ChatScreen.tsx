@@ -1,10 +1,9 @@
 import { Box, Text } from "@chakra-ui/react";
-import { lazy, Suspense } from "react";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import ChatHeader from "./ChatHeader";
 import Footer from "./Footer";
+import ScrollableChat from "./ScrollableChat";
 import "./styles.css";
-import ScrollableChat from './ScrollableChat';
 
 const ChatScreen = ({
   colorMode,
@@ -82,9 +81,9 @@ const ChatScreen = ({
         <></>
       ) : (
         <Box
-          d="flex"
+          display="flex"
           flexDir="column"
-          justifyContent="flex-end"
+          justifyContent="ntent="flex-end"
           paddingInline={3}
           w="100%"
           h="100%"
@@ -94,9 +93,9 @@ const ChatScreen = ({
         >
           {loading ? (
             <Box
-              d="flex"
+              display="flex"
               flexDir="column"
-              justifyContent="center"
+              justifyContent="ntent="center"
               alignItems="center"
               h="100%"
               w="100%"
@@ -115,14 +114,14 @@ const ChatScreen = ({
               className="messages"
               bg={colorMode === "dark" ? "#2d3748" : "white"}
             >
-                <ScrollableChat
-                  message={message}
-                  selectedChat={selectedChat}
-                  isTyping={isTyping}
-                  deleteMessage={deleteMessage}
-                  star={star}
-                  setStar={setStar}
-                />
+              <ScrollableChat
+                message={message}
+                selectedChat={selectedChat}
+                isTyping={isTyping}
+                deleteMessage={deleteMessage}
+                star={star}
+                setStar={setStar}
+              />
             </Box>
           )}
         </Box>

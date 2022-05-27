@@ -4,7 +4,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { IconButton } from "@material-ui/core";
 import { Gif } from "@material-ui/icons";
@@ -62,8 +62,8 @@ const AttachFile = ({
               borderRadius="24px 24px 0 0"
               boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
               className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-              d="flex"
-              justifyContent="center"
+              display=
+              justifyContent="ntent="ntent="center"
             >
               <label htmlFor="icon-button-file">
                 <input
@@ -84,8 +84,8 @@ const AttachFile = ({
             <MenuItem
               boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
               className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-              d="flex"
-              justifyContent="center"
+              display=
+              justifyContent="ntent="ntent="center"
             >
               <label htmlFor="contained-button">
                 <input
@@ -104,11 +104,11 @@ const AttachFile = ({
             </MenuItem>
             <MenuDivider marginTop="0.2rem" marginBottom="0.2rem" />
             <MenuItem
-              d="flex"
+              display=
               borderRadius="0 0 24px 24px"
               boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
               className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-              justifyContent="center"
+              justifyContent="ntent="ntent="center"
             >
               <label htmlFor="contained">
                 <input

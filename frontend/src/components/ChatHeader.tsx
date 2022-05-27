@@ -71,13 +71,13 @@ const ChatHeader = ({
       pb={3}
       px={2}
       w="100%"
-      d="flex"
+      display="flex"
       alignItems="center"
       bg={colorMode === "dark" ? "#2d3748" : "white"}
     >
       {isPreview ? (
         <SlideFade in={pic || video || file || gif} offsetY="2000px">
-          <Box d="flex">
+          <Box display="flex">
             <IconButton
               icon={<Close />}
               onClick={() => {
@@ -98,7 +98,7 @@ const ChatHeader = ({
       ) : (
         <>
           <IconButton
-            d={{
+            display={{
               base: "flex",
               xl: "none",
             }}
@@ -119,7 +119,7 @@ const ChatHeader = ({
               {!selectedChat.isGroupChat ? (
                 <ProfileModel user={getSenderFull(user, selectedChat.users)}>
                   <Box
-                    d="flex"
+                    display="flex"
                     cursor="pointer"
                     className="button-inner-effect rounded-full"
                   >
@@ -180,7 +180,7 @@ const ChatHeader = ({
                   fetchAgain={fetchAgain}
                   setFetchAgain={setFetchAgain}
                 >
-                  <Box d="flex" cursor="pointer">
+                  <Box display="flex" cursor="pointer">
                     <Avatar
                       name={selectedChat.chatName}
                       src={selectedChat.pic}
@@ -237,7 +237,7 @@ const ChatHeader = ({
                   </Box>
                 </UpdateGroup>
               )}
-              <Box marginLeft="auto" d="flex">
+              <Box marginLeft="auto" display="flex">
                 <IconButton
                   icon={<Refresh />}
                   onClick={() => fetchMessages()}
@@ -267,8 +267,8 @@ const ChatHeader = ({
                       borderRadius="24px 24px 0 0"
                       boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
                       className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                      d="flex"
-                      justifyContent="center"
+                      display="flex"
+                      justifyContent="ntent="center"
                     >
                       <Text
                         p={4}
@@ -285,8 +285,8 @@ const ChatHeader = ({
                         borderRadius="0 0 24px 24px"
                         boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                         className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                        d="flex"
-                        justifyContent="center"
+                        display="flex"
+                        justifyContent="ntent="center"
                       >
                         <ProfileModel
                           user={getSenderFull(user, selectedChat.users)}
@@ -298,8 +298,8 @@ const ChatHeader = ({
                         borderRadius="0 0 24px 24px"
                         boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                         className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                        d="flex"
-                        justifyContent="center"
+                        display="flex"
+                        justifyContent="ntent="center"
                       >
                         <UpdateGroup
                           fetchMessages={fetchMessages}

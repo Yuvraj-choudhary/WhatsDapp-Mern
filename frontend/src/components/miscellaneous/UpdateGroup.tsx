@@ -250,20 +250,20 @@ const UpdateGroup = ({
           <ModalHeader
             fontSize="35px"
             fontFamily="Nunito"
-            d="flex"
-            justifyContent="center"
+            display="flex"
+            justifyContent="ntent="center"
           >
             {selectedChat.chatName}
           </ModalHeader>
 
           <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
-            d="flex"
+            display="flex"
             flexDir="column"
             alignItems="center"
-            justifyContent="center"
+            justifyContent="ntent="center"
           >
-            <Box w="100%" d="flex" flexWrap="wrap" pb={3}>
+            <Box w="100%" display="flex" flexWrap="wrap" pb={3}>
               {selectedChat.users.map((u) => (
                 <UserBadgeItem
                   key={u._id}
@@ -272,7 +272,7 @@ const UpdateGroup = ({
                 />
               ))}
             </Box>
-            <FormControl d="flex">
+            <FormControl display="flex">
               <Input
                 placeholder="Group Name"
                 mb={3}

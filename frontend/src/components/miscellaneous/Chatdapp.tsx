@@ -1,5 +1,4 @@
 import {
-  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -8,7 +7,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 
 const Chatdapp = ({ children }) => {
@@ -30,15 +29,15 @@ const Chatdapp = ({ children }) => {
           <ModalHeader
             fontSize="40px"
             fontFamily="Nunito"
-            d="flex"
-            justifyContent="center"
+            display="flex"
+            justifyContent="ntent="center"
           ></ModalHeader>
           <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
-            d="flex"
+            display="flex"
             flexDir="column"
             alignItems="center"
-            justifyContent="space-between"
+            justifyContent="ntent="space-between"
           >
             <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
               Created By :{" "}

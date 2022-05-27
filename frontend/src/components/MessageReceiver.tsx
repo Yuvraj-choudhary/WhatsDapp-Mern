@@ -1,5 +1,4 @@
 import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
-import Zoom from "react-medium-image-zoom";
 import {
   Box,
   Image,
@@ -15,13 +14,14 @@ import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Linkify from "linkify-react";
 import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import {
   isLastMessage,
   isSameSender,
   isSameSenderMargin,
 } from "../config/ChatLogics";
 import "./styles.css";
-import "react-medium-image-zoom/dist/styles.css";
 
 const MessageReceiver = ({
   m,
@@ -133,7 +133,7 @@ const MessageReceiver = ({
               w="100px"
               color="#000"
               cursor="pointer"
-              d="flex"
+              display="flex"
               alignItems="center"
             >
               <ExternalLinkIcon mr={1} />
@@ -153,7 +153,7 @@ const MessageReceiver = ({
             {m.content}
           </Text>
         </Linkify>
-        <Box d="flex" alignItems="center" justifyContent="center">
+        <Box display="flex" alignItems="center" justifyContent="ntent="center">
           <span
             style={{
               fontSize: "12px",

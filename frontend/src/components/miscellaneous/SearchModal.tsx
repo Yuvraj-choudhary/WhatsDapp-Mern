@@ -1,5 +1,7 @@
 import {
   Button,
+  FormControl,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -8,9 +10,6 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-  FormControl,
-  Input,
-  FormLabel
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -35,14 +34,14 @@ const SearchModal = ({ children }) => {
           <ModalHeader
             fontSize="40px"
             fontFamily="Nunito"
-            d="flex"
-            justifyContent="center"
+            display="flex"
+            justifyContent="ntent="center"
           >
             Search The Web
           </ModalHeader>
           <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody>
-            <FormControl isRequired d="flex">
+            <FormControl isRequired display="flex">
               <Input
                 placeholder="Search The Web"
                 onChange={(e) => setSearch(e.target.value)}

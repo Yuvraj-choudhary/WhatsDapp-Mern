@@ -1,5 +1,8 @@
 import {
+  Box,
   Button,
+  FormControl,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -7,21 +10,16 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-  useToast,
-  Input,
   Spinner,
-  Box
+  useDisclosure,
+  useToast
 } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { ChatState } from "../../context/ChatProvider";
 import axios from "axios";
-import UserListItem from "../userStufs/UserListItem";
-import UserBadgeItem from "../userStufs/UserBadgeItem";
+import { useState } from "react";
+import { ChatState } from "../../context/ChatProvider";
 import "../styles.css";
+import UserBadgeItem from "../userStufs/UserBadgeItem";
+import UserListItem from "../userStufs/UserListItem";
 
 const GroupChatModel = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,8 +46,8 @@ const GroupChatModel = ({ children }) => {
 
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       };
 
       const { data } = await axios.get(`/api/user?search=${search}`, config);
@@ -62,7 +60,7 @@ const GroupChatModel = ({ children }) => {
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
     }
   };
@@ -78,7 +76,7 @@ const GroupChatModel = ({ children }) => {
         "https://api.cloudinary.com/v1_1/yuvraj-choudahry-dev/image/upload",
         {
           method: "post",
-          body: data
+          body: data,
         }
       )
         .then((res) => res.json())
@@ -102,7 +100,7 @@ const GroupChatModel = ({ children }) => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "top"
+        position: "top",
       });
       return;
     }
@@ -110,15 +108,15 @@ const GroupChatModel = ({ children }) => {
     try {
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`
-        }
+          Authorization: `Bearer ${user.token}`,
+        },
       };
       const { data } = await axios.post(
         `/api/chat/group`,
         {
           name: groupChatName,
           pic: pic,
-          users: JSON.stringify(selectedUser.map((u: any) => u._id))
+          users: JSON.stringify(selectedUser.map((u: any) => u._id)),
         },
         config
       );
@@ -129,7 +127,7 @@ const GroupChatModel = ({ children }) => {
         status: "success",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
     } catch (error: any) {
       toast({
@@ -138,7 +136,7 @@ const GroupChatModel = ({ children }) => {
         status: "error",
         duration: 5000,
         isClosable: true,
-        position: "bottom"
+        position: "bottom",
       });
     }
   };
@@ -154,7 +152,7 @@ const GroupChatModel = ({ children }) => {
         status: "warning",
         duration: 5000,
         isClosable: true,
-        position: "top"
+        position: "top",
       });
       return;
     }
@@ -177,17 +175,17 @@ const GroupChatModel = ({ children }) => {
           <ModalHeader
             fontSize="35px"
             fontFamily="Nunito"
-            d="flex"
-            justifyContent="center"
+            display="flex"
+            justifyContent="ntent="center"
           >
             Create Group Chat
           </ModalHeader>
           <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
           <ModalBody
-            d="flex"
+            display="flex"
             flexDir="column"
             alignItems="center"
-            justifyContent="center"
+            justifyContent="ntent="center"
           >
             <FormControl>
               <Input
@@ -223,7 +221,7 @@ const GroupChatModel = ({ children }) => {
                 boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
               />
             </FormControl>
-            <Box w="100%" d="flex" flexWrap="wrap">
+            <Box w="100%" display="flex" flexWrap="wrap">
               {selectedUser.map((u) => (
                 <UserBadgeItem
                   key={user._id}
@@ -233,7 +231,7 @@ const GroupChatModel = ({ children }) => {
               ))}
             </Box>
             {loading ? (
-              <Spinner ml="auto" d="flex" />
+              <Spinner ml="auto" display="flex" />
             ) : (
               searchResult
                 ?.slice(0, 4)

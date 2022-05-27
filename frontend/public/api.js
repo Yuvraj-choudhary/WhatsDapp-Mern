@@ -7,7 +7,7 @@
     ? (exports.JitsiMeetExternalAPI = t())
     : (e.JitsiMeetExternalAPI = t());
 })(self, function () {
-  return (() => {
+return (() => {
     var e = {
         754: (e, t, n) => {
           "use strict";

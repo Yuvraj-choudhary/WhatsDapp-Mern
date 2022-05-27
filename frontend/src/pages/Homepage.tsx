@@ -12,26 +12,23 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
-import { ChatState } from "../context/ChatProvider";
 import "./styles.css";
 
 function Homepage() {
   const history = useHistory();
 
-  const { setIsLoggedIn }:any = ChatState();
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo")!);
 
-    if (user) setIsLoggedIn(true);
+    if (user) history.push("/@");
   }, [history]);
 
   return (
     <div className="home">
       <Container maxW="xl" centerContent>
         <Box
-          d="flex"
-          justifyContent="center"
+          display="flex"
+          justifyContent="ntent="center"
           p={3}
           w="100%"
           m="40px 0 15px 0"

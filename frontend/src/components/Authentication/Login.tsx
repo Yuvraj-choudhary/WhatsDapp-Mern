@@ -3,10 +3,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import Form from "./Form";
-const ENDPOINT =
-  process.env.NODE_ENV === "production"
-    ? "https://chatdapp-mern.herokuapp.com"
-    : "http://localhost:8000";
 const Login = () => {
   const [email, setEmail]: any = useState("");
   const [password, setPassword]: any = useState("");
@@ -15,6 +11,7 @@ const Login = () => {
   const [confirmpassword, setConfirmpassword]: any = useState();
   const [picLoading, setPicLoading]: any = useState(false);
   const toast = useToast();
+  const history = useHistory();
 
   const handleClick = () => setShow(!show);
 
@@ -39,8 +36,8 @@ const Login = () => {
         },
       };
 
-      const { data } = await axios.post(
-        `${ENDPOINT}/api/user/login`,
+      const {data} = await axios.post(
+        "/api/user/login",
         { email, password },
         config
       );
@@ -48,10 +45,11 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       window.location.reload();
+      history.push("/@");
     } catch (error: any) {
       toast({
         title: "Error Occured!",
-        description: error.response.data.message,
+        description: error,
         status: "error",
         duration: 5000,
         isClosable: true,

@@ -7,16 +7,15 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
-const root = ReactDOM.createRoot(document.getElementById("chat"))
-
-root.render(
+ReactDOM.render(
   <ChakraProvider>
     <BrowserRouter>
       <ChatProvider>
         <App />
       </ChatProvider>
     </BrowserRouter>
-  </ChakraProvider>
+  </ChakraProvider>,
+  document.getElementById("chat")
 );
 
 document.addEventListener("contextmenu", (e) => {

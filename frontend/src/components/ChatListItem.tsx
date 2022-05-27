@@ -30,7 +30,12 @@ const ChatListItem = ({
         bg: "#38B2AC",
       }}
     >
-      <Text fontFamily="Nunito" fontSize={18} alignItems="center" d="flex">
+      <Text
+        fontFamily="Nunito"
+        fontSize={18}
+        alignItems="center"
+        display="flex"
+      >
         <Avatar
           name={
             !chat.isGroupChat

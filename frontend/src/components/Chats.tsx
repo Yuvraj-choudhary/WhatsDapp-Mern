@@ -50,7 +50,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
 
   return (
     <Box
-      d={{ base: selectedChat ? "none" : "flex", xl: "flex" }}
+      display={{ base: selectedChat ? "none" : "flex", xl: "flex" }}
       flexDir="column"
       alignItems="center"
       bg="white"
@@ -65,9 +65,9 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
         px="15px"
         fontSize={{ base: "28px", xl: "30px" }}
         fontFamily="Nunito"
-        d="flex"
+        display="flex"
         w="100%"
-        justifyContent="space-between"
+        justifyContent="ntent="space-between"
         alignItems="center"
       >
         <Input
@@ -87,7 +87,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
         </GroupChatModel>
       </Box>
       <Box
-        d="flex"
+        display="flex"
         flexDir="column"
         pt={3}
         w="100%"

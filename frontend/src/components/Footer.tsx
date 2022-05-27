@@ -4,12 +4,12 @@ import Picker from "react-giphy-component";
 import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
 import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import AttachFile from "./footerIcons/AttachFile";
 import SendOrMic from "./footerIcons/SendOrMic";
 import ShowEmoji from "./footerIcons/ShowEmoji";
 import InputRoot from "./InputRoot";
 import "./styles.css";
-import "react-medium-image-zoom/dist/styles.css";  
 
 const Footer = ({
   sendMessage,
@@ -58,7 +58,7 @@ const Footer = ({
       <>
         <Box overflow="scroll">
           {pic && !showPicker ? (
-            <Box alignItems="center" d="flex" flexDir="column">
+            <Box alignItems="center" display="flex" flexDir="column">
               <Zoom
                 transitionDuration={600}
                 zoomZindex={0}
@@ -78,7 +78,7 @@ const Footer = ({
             <></>
           )}
           {gif && !showPicker ? (
-            <Box alignItems="center" d="flex" flexDir="column">
+            <Box alignItems="center" display="flex" flexDir="column">
               <ModalImage
                 showRotation={true}
                 showZoom={true}
@@ -91,14 +91,14 @@ const Footer = ({
             <></>
           )}
           {video && !showPicker ? (
-            <Box alignItems="center" d="flex" flexDir="column">
+            <Box alignItems="center" display="flex" flexDir="column">
               <video src={video} controls={true} className="video"></video>
             </Box>
           ) : (
             <></>
           )}
           {file && !showPicker ? (
-            <Box alignItems="center" d="flex" flexDir="column">
+            <Box alignItems="center" display="flex" flexDir="column">
               <iframe src={file} className="file"></iframe>
             </Box>
           ) : (
@@ -146,8 +146,8 @@ const Footer = ({
               isRequired
               w="100%"
               fontFamily="Nunito"
-              d="flex"
-              justifyContent="center"
+              display="flex"
+              justifyContent="ntent="center"
               alignItems="center"
               pt={3}
               px={2}
@@ -192,8 +192,8 @@ const Footer = ({
               isRequired
               w="100%"
               fontFamily="Nunito"
-              d="flex"
-              justifyContent="center"
+              display="flex"
+              justifyContent="ntent="center"
               alignItems="center"
               pt={3}
               px={2}

@@ -12,18 +12,9 @@ const Chatpage = () => {
   const [isHidden, setIsHidden]: any = useState(false);
 
   return (
-    <Box
-      style={{ width: "100%" }}
-      overflow="hidden"
-      className="chat-anim"
-    >
+    <Box style={{ width: "100%" }} overflow="hidden" className="chat-anim">
       {user && <SideDrawer isHidden={isHidden} setIsHidden={setIsHidden} />}
-      <Box
-        d="flex"
-        justifyContent="space-between"
-        w="100%"
-        className="chat-box"
-      >
+      <Box display="flex" justifyContent="ntent="space-between" w="100%" className="chat-box">
         {user && (
           <Chats
             fetchAgain={fetchAgain}

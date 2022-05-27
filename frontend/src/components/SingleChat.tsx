@@ -64,7 +64,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `${ENDPOINT}/api/message/${selectedChat._id}`,
+        `/api/message/${selectedChat._id}`,
         config
       );
       setMessage(data);
@@ -412,7 +412,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
     }
   };
 
-
   return (
     <>
       {selectedChat ? (
@@ -465,7 +464,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
           setIsAudioRecording={setIsAudioRecording}
         />
       ) : (
-        <Box d="flex" alignItems="center" justifyContent="center" h="100%">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="ntent="center"
+          h="100%"
+        >
           <Text fontSize="3xl" pb={3} fontFamily="Nunito">
             Click on a user or a group to start chating
           </Text>

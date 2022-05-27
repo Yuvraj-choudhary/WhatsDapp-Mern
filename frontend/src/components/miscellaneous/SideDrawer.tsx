@@ -141,18 +141,18 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
   return (
     <>
       {!isHidden ? (
-        <Box d={isHidden ? "none" : "flex"}>
+        <Box display={isHidden ? "none" : "flex"}>
           <Box
-            justifyContent="space-between"
+            justifyContent="ntent="etween"
             alignItems="center"
             bg={colorMode === "dark" ? "#2d3748" : "white"}
             w="100%"
             p="5px 10px 5px 10px"
             borderWidth="5px"
             borderColor={colorMode === "dark" ? "#232b38" : "#e5e7eb"}
-            d={{ base: !selectedChat ? "flex" : "none", xl: "flex" }}
+            display={{ base: !selectedChat ? "flex" : "none", xl: "flex" }}
           >
-            <Box d="flex">
+            <Box display="flex">
               <Show below="xl">
                 <Tooltip
                   label="Search Users to chats"
@@ -163,7 +163,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     variant=""
                     onClick={onOpen}
                     mr={2}
-                    d="flex"
+                    display="flex"
                     alignItems="center"
                     aria-label="Search"
                     icon={<Search2Icon />}
@@ -185,7 +185,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     className="button-inner-effect"
                   >
                     <Search2Icon />
-                    <Text d={{ base: "none", md: "flex" }} pl="4" pr="1">
+                    <Text display={{ base: "none", md: "flex" }} pl="4" pr="1">
                       Search Users
                     </Text>
                   </Button>
@@ -207,7 +207,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                 fontSize="2xl"
                 fontWeight="bold"
                 fontFamily="Nunito"
-                d={{ base: "none", md: "flex" }}
+                display={{ base: "none", md: "flex" }}
                 variant=""
                 className="button-inner-effect"
               >
@@ -260,8 +260,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     <Text
                       boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                       className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                      d="flex"
-                      justifyContent="center"
+                      display="flex"
+                      justifyContent="ntent="
                       fontFamily="Nunito"
                       p={3}
                       fontSize={18}
@@ -283,8 +283,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                         borderRadius="24px"
                         boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
                         className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                        d="flex"
-                        justifyContent="center"
+                        display="flex"
+                        justifyContent="ntent="
                       >
                         <Text fontFamily="Nunito" p={3} fontSize={18}>
                           {notif.chat.isGroupChat
@@ -326,8 +326,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     borderRadius="24px 24px 0 0"
                     boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
                     className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                    d="flex"
-                    justifyContent="center"
+                    display="flex"
+                    justifyContent="ntent="
                   >
                     <ProfileModel user={user}>
                       <Box fontFamily="Nunito" p={3} fontSize={18}>
@@ -339,8 +339,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                   <MenuItem
                     boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                     className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                    d="flex"
-                    justifyContent="center"
+                    display="flex"
+                    justifyContent="ntent="
                   >
                     <Text
                       p={3}
@@ -356,8 +356,8 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     borderRadius="0 0 24px 24px"
                     boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                     className="transition-all duration-1000 ease-in-out hover:shadow-sm"
-                    d="flex"
-                    justifyContent="center"
+                    display="flex"
+                    justifyContent="ntent="
                   >
                     <SearchModal>
                       <Text p={3} fontSize={18} fontFamily="Nunito">
@@ -386,7 +386,7 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
               </DrawerHeader>
 
               <DrawerBody>
-                <Box d="flex" pb={2}>
+                <Box display="flex" pb={2}>
                   <Input
                     placeholder="Search by name or email"
                     mr={2}
@@ -414,15 +414,15 @@ const SideDrawer = ({ isHidden, setIsHidden }) => {
                     />
                   ))
                 )}
-                {loadingChat && <Spinner ml="auto" d="flex" />}
+                {loadingChat && <Spinner ml="auto" display="flex" />}
               </DrawerBody>
             </DrawerContent>
           </Drawer>
         </Box>
       ) : (
         <Box
-          d={{ base: !selectedChat ? "flex" : "none", xl: "flex" }}
-          justifyContent="center"
+          display={{ base: !selectedChat ? "flex" : "none", xl: "flex" }}
+          justifyContent="ntent="
           onClick={() => {
             setIsHidden(false);
           }}

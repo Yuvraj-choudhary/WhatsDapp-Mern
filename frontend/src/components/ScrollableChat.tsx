@@ -1,7 +1,7 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box } from "@chakra-ui/react";
 import { Tooltip } from "@chakra-ui/tooltip";
-import {lazy} from "react";
+import { lazy } from "react";
 import ScrollableFeed from "react-scrollable-feed";
 import { isLastMessage, isSameSender } from "../config/ChatLogics";
 import { ChatState } from "../context/ChatProvider";
@@ -43,9 +43,9 @@ const ScrollableChat = ({
                     hasArrow
                   >
                     <Avatar
-                    mt="auto"
-                    mb="40px"
-                    d="flex"
+                      mt="auto"
+                      mb="40px"
+                      display="flex"
                       mr={1}
                       size="sm"
                       name={m.sender.name}
@@ -80,7 +80,7 @@ const ScrollableChat = ({
           </>
         ))}
       {isTyping ? (
-        <Box d="flex" alignItems="center">
+        <Box display="flex" alignItems="center">
           <MessageLoader />
         </Box>
       ) : (

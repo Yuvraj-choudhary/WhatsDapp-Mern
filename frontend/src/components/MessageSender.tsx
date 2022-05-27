@@ -8,7 +8,7 @@ import {
   MenuList,
   Text,
   useColorMode,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Linkify from "linkify-react";
@@ -82,7 +82,7 @@ const MessageSender = ({
           <Zoom
             transitionDuration={600}
             zoomZindex={0}
-            overlayBgColorEnd="RGBA(255,255,255,0.09)"
+            overlayBgColorEndisplay="RGBA(255,255,255,0.09)"
           >
             <Image src={m.image} alt="" className="image" />
           </Zoom>
@@ -124,9 +124,9 @@ const MessageSender = ({
               px="30px"
               color="#000"
               cursor="pointer"
-              d="flex"
+              display="flex"
               alignItems="center"
-              justifyContent="center"
+              justifyContent="ntent="center"
             >
               <ExternalLinkIcon mr={1} />
               <Text fontFamily="Nunito">Open file in New Tab</Text>
@@ -144,10 +144,10 @@ const MessageSender = ({
           <Text fontFamily="Nunito">{m.content}</Text>
         </Linkify>
         <Box
-          d="flex"
+          display="flex"
           position="relative"
           alignItems="center"
-          justifyContent="center"
+          justifyContent="ntent="center"
         >
           <span
             style={{

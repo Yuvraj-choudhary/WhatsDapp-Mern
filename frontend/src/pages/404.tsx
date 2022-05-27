@@ -1,6 +1,6 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import "./styles.css"
+import "./styles.css";
 
 const NotFound = () => {
   const history = useHistory();
@@ -8,10 +8,10 @@ const NotFound = () => {
   return (
     <>
       <Box
-        d="flex"
+        display="flex"
         w="100%"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="ntent="center"
         flexDir="column"
         className="⛔-anim"
       >
