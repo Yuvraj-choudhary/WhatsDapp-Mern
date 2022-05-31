@@ -22,13 +22,8 @@ const ScrollableChat = ({
 
   return (
     <ScrollableFeed
-      animateScroll={(element) => {
-        element.scrollTo({
-          top: element.scrollHeight,
-          behavior: "smooth",
-        });
-      }}
-      className="px-3 pt-3 overflow-x-hidden"
+
+
     >
       {message &&
         message.map((m: any, i: any) => (

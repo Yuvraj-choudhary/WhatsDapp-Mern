@@ -1,14 +1,14 @@
 import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-  useColorMode,
-  useToast
+    Box,
+    Image,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList,
+    Text,
+    useColorMode,
+    useToast
 } from "@chakra-ui/react";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Linkify from "linkify-react";
@@ -82,7 +82,6 @@ const MessageSender = ({
           <Zoom
             transitionDuration={600}
             zoomZindex={0}
-            overlayBgColorEndisplay="RGBA(255,255,255,0.09)"
           >
             <Image src={m.image} alt="" className="image" />
           </Zoom>
@@ -126,7 +125,7 @@ const MessageSender = ({
               cursor="pointer"
               display="flex"
               alignItems="center"
-              justifyContent="ntent="center"
+              justifyContent="center"
             >
               <ExternalLinkIcon mr={1} />
               <Text fontFamily="Nunito">Open file in New Tab</Text>
@@ -147,7 +146,7 @@ const MessageSender = ({
           display="flex"
           position="relative"
           alignItems="center"
-          justifyContent="ntent="center"
+          justifyContent="center"
         >
           <span
             style={{

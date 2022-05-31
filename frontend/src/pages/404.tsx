@@ -11,7 +11,7 @@ const NotFound = () => {
         display="flex"
         w="100%"
         alignItems="center"
-        justifyContent="ntent="center"
+        justifyContent="center"
         flexDir="column"
         className="⛔-anim"
       >

@@ -11,7 +11,6 @@ const Login = () => {
   const [confirmpassword, setConfirmpassword]: any = useState();
   const [picLoading, setPicLoading]: any = useState(false);
   const toast = useToast();
-  const history = useHistory();
 
   const handleClick = () => setShow(!show);
 
@@ -36,7 +35,7 @@ const Login = () => {
         },
       };
 
-      const {data} = await axios.post(
+      const { data } = await axios.post(
         "/api/user/login",
         { email, password },
         config
@@ -45,11 +44,10 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       window.location.reload();
-      history.push("/@");
     } catch (error: any) {
       toast({
         title: "Error Occured!",
-        description: error,
+        description: error.response.data.message,
         status: "error",
         duration: 5000,
         isClosable: true,

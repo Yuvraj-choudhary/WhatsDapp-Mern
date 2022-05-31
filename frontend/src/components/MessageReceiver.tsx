@@ -1,14 +1,14 @@
 import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-  useColorMode,
-  useToast,
+    Box,
+    Image,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList,
+    Text,
+    useColorMode,
+    useToast
 } from "@chakra-ui/react";
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Linkify from "linkify-react";
@@ -17,9 +17,9 @@ import ModalImage from "react-image-modal";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import {
-  isLastMessage,
-  isSameSender,
-  isSameSenderMargin,
+    isLastMessage,
+    isSameSender,
+    isSameSenderMargin
 } from "../config/ChatLogics";
 import "./styles.css";
 
@@ -153,7 +153,7 @@ const MessageReceiver = ({
             {m.content}
           </Text>
         </Linkify>
-        <Box display="flex" alignItems="center" justifyContent="ntent="center">
+        <Box display="flex" alignItems="center" justifyContent="center">
           <span
             style={{
               fontSize: "12px",

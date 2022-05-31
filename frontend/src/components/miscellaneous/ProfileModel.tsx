@@ -1,15 +1,15 @@
 import {
-  Box,
-  Img,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
-  useDisclosure
+    Box,
+    Img,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Text,
+    useDisclosure
 } from "@chakra-ui/react";
 
 const ProfileModel = ({ user, children }) => {
@@ -38,7 +38,7 @@ const ProfileModel = ({ user, children }) => {
             fontSize="40px"
             fontFamily="Nunito"
             display="flex"
-            justifyContent="ntent="ntent="center"
+            justifyContent="center"
           >
             {user.name}
           </ModalHeader>
@@ -47,11 +47,11 @@ const ProfileModel = ({ user, children }) => {
             display="flex"
             flexDir="column"
             alignItems="center"
-            justifyContent="ntent="ntent="space-between"
+            justifyContent="space-between"
           >
             <Img borderRadius="5%" w="400px" src={user.pic} alt={user.name} />
           </ModalBody>
-          <ModalFooter display="flex" alignItems="center" justifyContent="ntent="ntent="center">
+          <ModalFooter display="flex" alignItems="center" justifyContent="center">
             <Text fontSize={{ base: "28px", md: "30px" }} fontFamily="Nunito">
               Email: {user.email}
             </Text>

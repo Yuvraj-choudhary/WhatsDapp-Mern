@@ -67,7 +67,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
         fontFamily="Nunito"
         display="flex"
         w="100%"
-        justifyContent="ntent="space-between"
+        justifyContent="space-between"
         alignItems="center"
       >
         <Input

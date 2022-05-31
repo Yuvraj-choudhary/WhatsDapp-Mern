@@ -1,15 +1,15 @@
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
-  Avatar,
-  Box,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  SlideFade,
-  Text,
+    Avatar,
+    Box,
+    IconButton,
+    Menu,
+    MenuButton,
+    MenuDivider,
+    MenuItem,
+    MenuList,
+    SlideFade,
+    Text
 } from "@chakra-ui/react";
 import { Close, MoreVert, Refresh } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
@@ -268,7 +268,7 @@ const ChatHeader = ({
                       boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
                       className="transition-all duration-1000 ease-in-out hover:shadow-sm"
                       display="flex"
-                      justifyContent="ntent="center"
+                      justifyContent="center"
                     >
                       <Text
                         p={4}
@@ -286,7 +286,7 @@ const ChatHeader = ({
                         boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                         className="transition-all duration-1000 ease-in-out hover:shadow-sm"
                         display="flex"
-                        justifyContent="ntent="center"
+                        justifyContent="center"
                       >
                         <ProfileModel
                           user={getSenderFull(user, selectedChat.users)}
@@ -299,7 +299,7 @@ const ChatHeader = ({
                         boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
                         className="transition-all duration-1000 ease-in-out hover:shadow-sm"
                         display="flex"
-                        justifyContent="ntent="center"
+                        justifyContent="center"
                       >
                         <UpdateGroup
                           fetchMessages={fetchMessages}

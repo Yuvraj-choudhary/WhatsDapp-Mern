@@ -1,15 +1,15 @@
 import {
-  Button,
-  FormControl,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
+    Button,
+    FormControl,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    useDisclosure
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -35,7 +35,7 @@ const SearchModal = ({ children }) => {
             fontSize="40px"
             fontFamily="Nunito"
             display="flex"
-            justifyContent="ntent="center"
+            justifyContent="center"
           >
             Search The Web
           </ModalHeader>

@@ -1,18 +1,18 @@
 import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Spinner,
-  useDisclosure,
-  useToast
+    Box,
+    Button,
+    FormControl,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Spinner,
+    useDisclosure,
+    useToast
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -176,7 +176,7 @@ const GroupChatModel = ({ children }) => {
             fontSize="35px"
             fontFamily="Nunito"
             display="flex"
-            justifyContent="ntent="center"
+            justifyContent="center"
           >
             Create Group Chat
           </ModalHeader>
@@ -185,7 +185,7 @@ const GroupChatModel = ({ children }) => {
             display="flex"
             flexDir="column"
             alignItems="center"
-            justifyContent="ntent="center"
+            justifyContent="center"
           >
             <FormControl>
               <Input

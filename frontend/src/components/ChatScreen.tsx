@@ -83,7 +83,7 @@ const ChatScreen = ({
         <Box
           display="flex"
           flexDir="column"
-          justifyContent="ntent="flex-end"
+          justifyContent="flex-end"
           paddingInline={3}
           w="100%"
           h="100%"
@@ -95,7 +95,7 @@ const ChatScreen = ({
             <Box
               display="flex"
               flexDir="column"
-              justifyContent="ntent="center"
+              justifyContent="center"
               alignItems="center"
               h="100%"
               w="100%"

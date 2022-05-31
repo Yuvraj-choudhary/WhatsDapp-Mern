@@ -147,7 +147,7 @@ const Footer = ({
               w="100%"
               fontFamily="Nunito"
               display="flex"
-              justifyContent="ntent="center"
+              justifyContent="center"
               alignItems="center"
               pt={3}
               px={2}
@@ -193,7 +193,7 @@ const Footer = ({
               w="100%"
               fontFamily="Nunito"
               display="flex"
-              justifyContent="ntent="center"
+              justifyContent="center"
               alignItems="center"
               pt={3}
               px={2}

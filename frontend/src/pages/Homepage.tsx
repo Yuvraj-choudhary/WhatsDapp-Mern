@@ -6,7 +6,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
@@ -28,7 +28,7 @@ function Homepage() {
       <Container maxW="xl" centerContent>
         <Box
           display="flex"
-          justifyContent="ntent="center"
+          justifyContent="center"
           p={3}
           w="100%"
           m="40px 0 15px 0"

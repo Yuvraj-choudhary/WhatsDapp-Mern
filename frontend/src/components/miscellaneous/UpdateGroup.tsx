@@ -1,19 +1,19 @@
 import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Spinner,
-  Text,
-  useDisclosure,
-  useToast,
+    Box,
+    Button,
+    FormControl,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Spinner,
+    Text,
+    useDisclosure,
+    useToast
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -251,7 +251,7 @@ const UpdateGroup = ({
             fontSize="35px"
             fontFamily="Nunito"
             display="flex"
-            justifyContent="ntent="center"
+            justifyContent="center"
           >
             {selectedChat.chatName}
           </ModalHeader>
@@ -261,7 +261,7 @@ const UpdateGroup = ({
             display="flex"
             flexDir="column"
             alignItems="center"
-            justifyContent="ntent="center"
+            justifyContent="center"
           >
             <Box w="100%" display="flex" flexWrap="wrap" pb={3}>
               {selectedChat.users.map((u) => (
