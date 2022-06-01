@@ -4,10 +4,12 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "nodejs": "node .",
+    "node": "node .",
+    "nodemon": "nodemon",
     "web": "cd frontend && yarn start",
     "mobile": "cd mobile && yarn start",
-    "deploy": "set NODE_ENV=production && cd frontend && yarn build && cd .."
+    "deploy": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
+    "dependencies": "yarn && cd frontend && yarn && cd .."
   },
   "author": "yuvraj-choudhary",
   "license": "ISC",

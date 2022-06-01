@@ -119,7 +119,7 @@ const Form = ({
         <Button
           variant="solid"
           width="100%"
-          // disabled={process.env.NODE_ENV === "production"}
+          disabled={process.env.NODE_ENV === "production"}
           className="button-inner-effect"
           onClick={() => {
             setEmail("guestUser@example.com");
