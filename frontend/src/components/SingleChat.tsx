@@ -9,10 +9,7 @@ import { storage } from "../firebase";
 import ChatScreen from "./ChatScreen";
 import "./styles.css";
 
-const ENDPOINT =
-  process.env.NODE_ENV === "production"
-    ? "https://chatdapp-mern.herokuapp.com"
-    : "http://localhost:8000";
+const ENDPOINT = "https://whatsdapp.herokuapp.com/";
 var socket: any, selectedChatCompare: any;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {

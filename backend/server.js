@@ -4,10 +4,8 @@ const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const {notFound, errorHandler} = require("./middleware/errorMiddleware");
-const path = require("path");
 const Pusher = require("pusher");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const pusher = new Pusher({
     appId: "1364139",
@@ -91,7 +89,7 @@ const server = app.listen(
 
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://whatsdapp.vercel.app/",
     },
 });
 
