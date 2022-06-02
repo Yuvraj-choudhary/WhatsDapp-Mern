@@ -13,7 +13,7 @@ import "./styles.css";
 const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
   const [loggedUser, setLoggedUser]: any = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats }: any =
-      ChatState();
+    ChatState();
   const { colorMode } = useColorMode();
   const [searchChat, setSearchChat]: any = useState("");
 
@@ -49,68 +49,68 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
   }, [fetchAgain]);
 
   return (
+    <Box
+      display={{ base: selectedChat ? "none" : "flex", xl: "flex" }}
+      flexDir="column"
+      alignItems="center"
+      bg="white"
+      h={{ base: isHidden ? "calc(100vh - 24px)" : "100%" }}
+      w={{ base: "100%", xl: "22%" }}
+      backgroundColor={colorMode === "dark" ? "#2d3748" : "#fff"}
+      pb={5}
+    >
       <Box
-          display={{ base: selectedChat ? "none" : "flex", xl: "flex" }}
-          flexDir="column"
-          alignItems="center"
-          bg="white"
-          h={{ base: isHidden ? "calc(100vh - 24px)" : "100%" }}
-          w={{ base: "100%", xl: "22%" }}
-          backgroundColor={colorMode === "dark" ? "#2d3748" : "#fff"}
-          pb={5}
+        pb={2}
+        pt={3}
+        px="15px"
+        fontSize={{ base: "28px", xl: "30px" }}
+        fontFamily="Nunito"
+        display="flex"
+        w="100%"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        <Box
-            pb={2}
-            pt={3}
-            px="15px"
-            fontSize={{ base: "28px", xl: "30px" }}
-            fontFamily="Nunito"
-            display="flex"
-            w="100%"
-            justifyContent="space-between"
-            alignItems="center"
-        >
-          <Input
-              placeholder="Search Chats"
-              value={searchChat}
-              onChange={(e) => setSearchChat(e.target.value)}
-              borderColor="rgb(255 255 255 / 0%)"
-              boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
-          />
-          <GroupChatModel>
-            <IconButton
-                style={{ marginLeft: 7, color: "#898787" }}
-                className="button-inner-effect"
-            >
-              <GroupAdd />
-            </IconButton>
-          </GroupChatModel>
-        </Box>
-        <Box
-            display="flex"
-            flexDir="column"
-            pt={3}
-            w="100%"
-            h="100vh"
-            borderRadius="3xl"
-            overflowY="hidden"
-        >
-          {chats ? (
-              <ChatList
-                  searchChat={searchChat}
-                  chats={chats}
-                  getSender={getSender}
-                  loggedUser={loggedUser}
-                  setSelectedChat={setSelectedChat}
-                  selectedChat={selectedChat}
-                  colorMode={colorMode}
-                  getSenderPic={getSenderPic}
-              />
-          ) : (
-              <ChatLoading />
-          )}
-        </Box>
+        <Input
+          placeholder="Search Chats"
+          value={searchChat}
+          onChange={(e) => setSearchChat(e.target.value)}
+          borderColor="rgb(255 255 255 / 0%)"
+          boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+        />
+        <GroupChatModel>
+          <IconButton
+            style={{ marginLeft: 7, color: "#898787" }}
+            className="button-inner-effect"
+          >
+            <GroupAdd />
+          </IconButton>
+        </GroupChatModel>
       </Box>
+      <Box
+        display="flex"
+        flexDir="column"
+        pt={3}
+        w="100%"
+        h="100vh"
+        borderRadius="3xl"
+        overflowY="hidden"
+      >
+        {chats ? (
+          <ChatList
+            searchChat={searchChat}
+            chats={chats}
+            getSender={getSender}
+            loggedUser={loggedUser}
+            setSelectedChat={setSelectedChat}
+            selectedChat={selectedChat}
+            colorMode={colorMode}
+            getSenderPic={getSenderPic}
+          />
+        ) : (
+          <ChatLoading />
+        )}
+      </Box>
+    </Box>
   );
 };
 

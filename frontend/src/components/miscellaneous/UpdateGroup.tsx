@@ -1,19 +1,19 @@
 import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Spinner,
-  Text,
-  useDisclosure,
-  useToast
+    Box,
+    Button,
+    FormControl,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Spinner,
+    Text,
+    useDisclosure,
+    useToast
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -22,11 +22,11 @@ import UserBadgeItem from "../userStufs/UserBadgeItem";
 import UserListItem from "../userStufs/UserListItem";
 
 const UpdateGroup = ({
-                       fetchMessages,
-                       fetchAgain,
-                       setFetchAgain,
-                       children,
-                     }) => {
+  fetchMessages,
+  fetchAgain,
+  setFetchAgain,
+  children,
+}) => {
   const { isOpen, onOpen, onClose }: any = useDisclosure();
   const [groupChatName, setGroupChatName]: any = useState();
   const [search, setSearch]: any = useState("");
@@ -75,11 +75,11 @@ const UpdateGroup = ({
       var reader = new FileReader();
 
       reader.addEventListener(
-          "load",
-          () => {
-            setPic(reader.result);
-          },
-          false
+        "load",
+        () => {
+          setPic(reader.result);
+        },
+        false
       );
 
       if (file) {
@@ -99,13 +99,13 @@ const UpdateGroup = ({
         },
       };
       const { data } = await axios.put(
-          `/api/chat/rename`,
-          {
-            chatId: selectedChat._id,
-            chatName: groupChatName,
-            pic: pic,
-          },
-          config
+        `/api/chat/rename`,
+        {
+          chatId: selectedChat._id,
+          chatName: groupChatName,
+          pic: pic,
+        },
+        config
       );
 
       console.log(data._id);
@@ -157,12 +157,12 @@ const UpdateGroup = ({
         },
       };
       const { data } = await axios.put(
-          `/api/chat/groupadd`,
-          {
-            chatId: selectedChat._id,
-            userId: user1._id,
-          },
-          config
+        `/api/chat/groupadd`,
+        {
+          chatId: selectedChat._id,
+          userId: user1._id,
+        },
+        config
       );
 
       setSelectedChat(data);
@@ -202,12 +202,12 @@ const UpdateGroup = ({
         },
       };
       const { data } = await axios.put(
-          `/api/chat/groupremove`,
-          {
-            chatId: selectedChat._id,
-            userId: user1._id,
-          },
-          config
+        `/api/chat/groupremove`,
+        {
+          chatId: selectedChat._id,
+          userId: user1._id,
+        },
+        config
       );
 
       user1._id === user._id ? setSelectedChat() : setSelectedChat(data);
@@ -229,109 +229,109 @@ const UpdateGroup = ({
   };
 
   return (
-      <>
-        {children ? (
-            <Text onClick={onOpen}>{children}</Text>
-        ) : (
-            <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
-              Update Group
-            </Text>
-        )}
+    <>
+      {children ? (
+        <Text onClick={onOpen}>{children}</Text>
+      ) : (
+        <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
+          Update Group
+        </Text>
+      )}
 
-        <Modal
-            size="3xl"
-            onClose={onClose}
-            isOpen={isOpen}
-            isCentered
-            motionPreset="slideInBottom"
-        >
-          <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-          <ModalContent h="auto">
-            <ModalHeader
-                fontSize="35px"
-                fontFamily="Nunito"
-                display="flex"
-                justifyContent="center"
-            >
-              {selectedChat.chatName}
-            </ModalHeader>
+      <Modal
+        size="3xl"
+        onClose={onClose}
+        isOpen={isOpen}
+        isCentered
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
+        <ModalContent h="auto">
+          <ModalHeader
+            fontSize="35px"
+            fontFamily="Nunito"
+            display="flex"
+            justifyContent="center"
+          >
+            {selectedChat.chatName}
+          </ModalHeader>
 
-            <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
-            <ModalBody
-                display="flex"
-                flexDir="column"
-                alignItems="center"
-                justifyContent="center"
-            >
-              <Box w="100%" display="flex" flexWrap="wrap" pb={3}>
-                {selectedChat.users.map((u) => (
-                    <UserBadgeItem
-                        key={u._id}
-                        user={u}
-                        handleFunction={() => handleRemove(u)}
-                    />
-                ))}
-              </Box>
-              <FormControl display="flex">
-                <Input
-                    placeholder="Group Name"
-                    mb={3}
-                    value={groupChatName}
-                    borderColor="rgb(255 255 255 / 0%)"
-                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
-                    onChange={(e) => setGroupChatName(e.target.value)}
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
+          <ModalBody
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Box w="100%" display="flex" flexWrap="wrap" pb={3}>
+              {selectedChat.users.map((u) => (
+                <UserBadgeItem
+                  key={u._id}
+                  user={u}
+                  handleFunction={() => handleRemove(u)}
                 />
-                <Button
-                    variant="solid"
-                    colorScheme="teal"
-                    ml={1}
-                    isLoading={renameloading}
-                    onClick={handleRename}
-                >
-                  Update
-                </Button>
-              </FormControl>
-              <FormControl>
-                <Input
-                    type="file"
-                    p={1.5}
-                    mb={3}
-                    accept="image/*"
-                    borderColor="rgb(255 255 255 / 0%)"
-                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
-                    onChange={(e: any) => postDetails(e.target.files[0])}
-                />
-              </FormControl>
-              <FormControl>
-                <Input
-                    placeholder="Add User to group"
-                    mb={1}
-                    onChange={(e) => handleSearch(e.target.value)}
-                    borderColor="rgb(255 255 255 / 0%)"
-                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
-                />
-              </FormControl>
-
-              {loading ? (
-                  <Spinner size="3xl" />
-              ) : (
-                  searchResult?.map((user) => (
-                      <UserListItem
-                          key={user._id}
-                          user={user}
-                          handleFunction={() => handleAddUser(user)}
-                      />
-                  ))
-              )}
-            </ModalBody>
-            <ModalFooter>
-              <Button onClick={() => handleRemove(user)} colorScheme="red">
-                Leave Group
+              ))}
+            </Box>
+            <FormControl display="flex">
+              <Input
+                placeholder="Group Name"
+                mb={3}
+                value={groupChatName}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+                onChange={(e) => setGroupChatName(e.target.value)}
+              />
+              <Button
+                variant="solid"
+                colorScheme="teal"
+                ml={1}
+                isLoading={renameloading}
+                onClick={handleRename}
+              >
+                Update
               </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
+            </FormControl>
+            <FormControl>
+              <Input
+                type="file"
+                p={1.5}
+                mb={3}
+                accept="image/*"
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+                onChange={(e: any) => postDetails(e.target.files[0])}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                placeholder="Add User to group"
+                mb={1}
+                onChange={(e) => handleSearch(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+              />
+            </FormControl>
+
+            {loading ? (
+              <Spinner size="3xl" />
+            ) : (
+              searchResult?.map((user) => (
+                <UserListItem
+                  key={user._id}
+                  user={user}
+                  handleFunction={() => handleAddUser(user)}
+                />
+              ))
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={() => handleRemove(user)} colorScheme="red">
+              Leave Group
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 

@@ -1,10 +1,13 @@
 .chat-anim {
-  animation: fade 1.5s ease-in-out forwards;
+  animation: fade 0.7s ease-in-out forwards;
+}
+
+.⛔-anim {
+  animation: fade 0.7s ease-in-out forwards;
 }
 
 .home {
   animation: fade 1s ease-in-out forwards;
-  background: linear-gradient(45deg, red, blue);
   background-position: center;
   background-size: cover;
   min-width: 100%;
@@ -15,7 +18,7 @@
 @keyframes fade {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.8);
     filter: blur(5px);
   }
   to {
@@ -27,4 +30,11 @@
 
 .chat-box {
   height: calc(100vh - 60px);
+}
+
+.button-inner-effect:hover {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  box-shadow: inset 0 1px 4px 2px rgba(0,0,0,0.1);
 }

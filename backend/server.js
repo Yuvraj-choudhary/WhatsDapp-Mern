@@ -70,9 +70,9 @@ db.once("open", () => {
 
 app.use(express.json({ limit: "100000000000mb", extended: true }));
 app.use(
-    cors({
-      origin: "https://chatdapp-mern.herokuapp.com",
-    })
+  cors({
+    origin: "https://chatdapp-mern.herokuapp.com",
+  })
 );
 
 const PORT = process.env.PORT || 8000;
@@ -89,7 +89,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname1, "/frontend/build")));
 
   app.get("*", (req, res) =>
-      res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
@@ -103,8 +103,8 @@ app.use(notFound);
 app.use(errorHandler);
 
 const server = app.listen(
-    PORT,
-    console.log(`Server listening on http://localhost:${PORT}`)
+  PORT,
+  console.log(`Server listening on http://localhost:${PORT}`)
 );
 
 const io = require("socket.io")(server, {

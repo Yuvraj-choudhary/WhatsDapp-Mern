@@ -15,8 +15,9 @@ ReactDOM.render(
       </ChatProvider>
     </BrowserRouter>
   </ChakraProvider>,
-  document.getElementById("root")
+  document.getElementById("chat")
 );
+
 document.addEventListener("contextmenu", (e) => {
   e.preventDefault();
 });

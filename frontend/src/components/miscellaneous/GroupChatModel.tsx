@@ -1,18 +1,18 @@
 import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Spinner,
-  useDisclosure,
-  useToast
+    Box,
+    Button,
+    FormControl,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Spinner,
+    useDisclosure,
+    useToast
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -73,20 +73,20 @@ const GroupChatModel = ({ children }) => {
       data.append("upload_preset", "chat-app-mern");
       data.append("cloud_name", "yuvraj-choudahry-dev");
       fetch(
-          "https://api.cloudinary.com/v1_1/yuvraj-choudahry-dev/image/upload",
-          {
-            method: "post",
-            body: data,
-          }
+        "https://api.cloudinary.com/v1_1/yuvraj-choudahry-dev/image/upload",
+        {
+          method: "post",
+          body: data,
+        }
       )
-          .then((res) => res.json())
-          .then((data) => {
-            setPic(data.url.toString());
-            setPicLoading(false);
-          })
-          .catch((err) => {
-            setPicLoading(false);
-          });
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+          setPicLoading(false);
+        })
+        .catch((err) => {
+          setPicLoading(false);
+        });
     } else {
       setPicLoading(false);
       return;
@@ -112,13 +112,13 @@ const GroupChatModel = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-          `/api/chat/group`,
-          {
-            name: groupChatName,
-            pic: pic,
-            users: JSON.stringify(selectedUser.map((u: any) => u._id)),
-          },
-          config
+        `/api/chat/group`,
+        {
+          name: groupChatName,
+          pic: pic,
+          users: JSON.stringify(selectedUser.map((u: any) => u._id)),
+        },
+        config
       );
       setChats([data, ...chats]);
       onClose();
@@ -160,98 +160,98 @@ const GroupChatModel = ({ children }) => {
   };
 
   return (
-      <>
-        <span onClick={onOpen}>{children}</span>
+    <>
+      <span onClick={onOpen}>{children}</span>
 
-        <Modal
-            size="4xl"
-            isOpen={isOpen}
-            onClose={onClose}
-            isCentered
-            motionPreset="slideInBottom"
-        >
-          <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-          <ModalContent minHeight="550px">
-            <ModalHeader
-                fontSize="35px"
-                fontFamily="Nunito"
-                display="flex"
-                justifyContent="center"
-            >
-              Create Group Chat
-            </ModalHeader>
-            <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
-            <ModalBody
-                display="flex"
-                flexDir="column"
-                alignItems="center"
-                justifyContent="center"
-            >
-              <FormControl>
-                <Input
-                    placeholder="Chat Name"
-                    mb={30}
-                    p={1.5}
-                    h="50px"
-                    onChange={(e) => setGroupChatName(e.target.value)}
-                    borderColor="rgb(255 255 255 / 0%)"
-                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+      <Modal
+        size="4xl"
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
+        <ModalContent minHeight="550px">
+          <ModalHeader
+            fontSize="35px"
+            fontFamily="Nunito"
+            display="flex"
+            justifyContent="center"
+          >
+            Create Group Chat
+          </ModalHeader>
+          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
+          <ModalBody
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <FormControl>
+              <Input
+                placeholder="Chat Name"
+                mb={30}
+                p={1.5}
+                h="50px"
+                onChange={(e) => setGroupChatName(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                type="file"
+                p={1.5}
+                h="50px"
+                mb={30}
+                accept="image/*"
+                onChange={(e: any) => postDetails(e.target.files[0])}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                placeholder="Add Users eg: yuvraj, gorge, dani, dream"
+                mb={30}
+                p={1.5}
+                h="50px"
+                onChange={(e) => handleSearch(e.target.value)}
+                borderColor="rgb(255 255 255 / 0%)"
+                boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
+              />
+            </FormControl>
+            <Box w="100%" display="flex" flexWrap="wrap">
+              {selectedUser.map((u) => (
+                <UserBadgeItem
+                  key={user._id}
+                  user={u}
+                  handleFunction={() => handleDelete(u)}
                 />
-              </FormControl>
-              <FormControl>
-                <Input
-                    type="file"
-                    p={1.5}
-                    h="50px"
-                    mb={30}
-                    accept="image/*"
-                    onChange={(e: any) => postDetails(e.target.files[0])}
-                    borderColor="rgb(255 255 255 / 0%)"
-                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
-                />
-              </FormControl>
-              <FormControl>
-                <Input
-                    placeholder="Add Users eg: yuvraj, gorge, dani, dream"
-                    mb={30}
-                    p={1.5}
-                    h="50px"
-                    onChange={(e) => handleSearch(e.target.value)}
-                    borderColor="rgb(255 255 255 / 0%)"
-                    boxShadow="inset 0 0 6px 2px rgba(0,0,0,0.2)"
-                />
-              </FormControl>
-              <Box w="100%" display="flex" flexWrap="wrap">
-                {selectedUser.map((u) => (
-                    <UserBadgeItem
-                        key={user._id}
-                        user={u}
-                        handleFunction={() => handleDelete(u)}
-                    />
-                ))}
-              </Box>
-              {loading ? (
-                  <Spinner ml="auto" display="flex" />
-              ) : (
-                  searchResult
-                      ?.slice(0, 4)
-                      .map((user) => (
-                          <UserListItem
-                              key={user._id}
-                              user={user}
-                              handleFunction={() => handleGroup(user)}
-                          />
-                      ))
-              )}
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" onClick={handleSubmit}>
-                Go
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
+              ))}
+            </Box>
+            {loading ? (
+              <Spinner ml="auto" display="flex" />
+            ) : (
+              searchResult
+                ?.slice(0, 4)
+                .map((user) => (
+                  <UserListItem
+                    key={user._id}
+                    user={user}
+                    handleFunction={() => handleGroup(user)}
+                  />
+                ))
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={handleSubmit}>
+              Go
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 
