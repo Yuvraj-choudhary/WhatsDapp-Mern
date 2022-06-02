@@ -37,7 +37,7 @@ function Homepage() {
           shadow="2xl"
         >
           <Text fontSize="4xl" fontFamily="nunito">
-            Chat Dapp
+            Whats Dapp
           </Text>
         </Box>
         <Box w="100%" p={5} borderRadius="3xl" borderWidth="1px" shadow="2xl">
