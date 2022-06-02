@@ -5,9 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
     server:{
         proxy:{
-            '/api/user':"http://localhost:8000/",
-            '/api/chat':"http://localhost:8000/",
-            '/api/message':"http://localhost:8000/",
+            '/api/user':"https://whatsdapp.herokuapp.com/",
+            '/api/chat':"https://whatsdapp.herokuapp.com/",
+            '/api/message':"https://whatsdapp.herokuapp.com/",
         }
     },
     plugins: [react()]
