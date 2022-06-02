@@ -69,11 +69,6 @@ db.once("open", () => {
 });
 
 app.use(express.json({limit: "100000000000mb", extended: true}));
-app.use(
-    cors({
-        origin: "https://chatdapp-mern.herokuapp.com",
-    })
-);
 
 const PORT = process.env.PORT || 8000;
 
