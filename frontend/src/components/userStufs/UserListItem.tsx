@@ -1,6 +1,6 @@
 import { Avatar, Box, Text, useColorMode } from "@chakra-ui/react";
 
-const UserListItem = ({ user, handleFunction }) => {
+const UserListItem = ({ user, handleFunction }:any) => {
   const { colorMode } = useColorMode();
   return (
     <Box

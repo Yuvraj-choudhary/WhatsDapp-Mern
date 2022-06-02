@@ -9,7 +9,7 @@ const ShowEmoji = ({
   setShowGifPicker,
   setShowPicker,
   showPicker,
-}) => {
+}:any) => {
   return (
     <>
       {showGifPicker ? (

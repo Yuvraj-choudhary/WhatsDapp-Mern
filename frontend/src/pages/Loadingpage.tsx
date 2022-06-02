@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import chatdapp from "../512x512.png";
 import Lock from "../components/icons/Lock";
 
-const Loadingpage = ({ colorMode, progress, setLoading, setProgress }) => {
+const Loadingpage = ({ colorMode, progress, setLoading, setProgress }:any) => {
   useEffect(() => {
     setLoading(true);
     const timer = setInterval(() => {
-      setProgress((oldProgress) => {
+      setProgress((oldProgress:any) => {
         if (oldProgress === 100) {
           return 0;
         }

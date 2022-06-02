@@ -26,7 +26,7 @@ const UpdateGroup = ({
   fetchAgain,
   setFetchAgain,
   children,
-}) => {
+}:any) => {
   const { isOpen, onOpen, onClose }: any = useDisclosure();
   const [groupChatName, setGroupChatName]: any = useState();
   const [search, setSearch]: any = useState("");
@@ -38,7 +38,7 @@ const UpdateGroup = ({
 
   const { selectedChat, setSelectedChat, user }: any = ChatState();
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (query:any) => {
     setSearch(query);
     if (!query) {
       return;
@@ -182,7 +182,7 @@ const UpdateGroup = ({
     setGroupChatName("");
   };
 
-  const handleRemove = async (user1) => {
+  const handleRemove = async (user1:any) => {
     if (selectedChat.groupAdmin._id !== user._id && user1._id !== user._id) {
       toast({
         title: "Only admins can remove someone!",
@@ -264,7 +264,7 @@ const UpdateGroup = ({
             justifyContent="center"
           >
             <Box w="100%" display="flex" flexWrap="wrap" pb={3}>
-              {selectedChat.users.map((u) => (
+              {selectedChat.users.map((u:any) => (
                 <UserBadgeItem
                   key={u._id}
                   user={u}
@@ -315,7 +315,7 @@ const UpdateGroup = ({
             {loading ? (
               <Spinner size="3xl" />
             ) : (
-              searchResult?.map((user) => (
+              searchResult?.map((user:any) => (
                 <UserListItem
                   key={user._id}
                   user={user}

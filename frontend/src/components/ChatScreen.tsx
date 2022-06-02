@@ -52,7 +52,7 @@ const ChatScreen = ({
   setIsRecording,
   isAudioRecording,
   setIsAudioRecording,
-}) => {
+}:any) => {
   const isPreview = pic || video || file || gif;
   return (
     <>

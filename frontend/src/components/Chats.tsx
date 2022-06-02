@@ -10,7 +10,7 @@ import GroupAdd from "./icons/GroupAdd";
 import GroupChatModel from "./miscellaneous/GroupChatModel";
 import "./styles.css";
 
-const Chats = ({ fetchAgain, isHidden, setIsHidden }) => {
+const Chats = ({ fetchAgain, isHidden, setIsHidden }:any) => {
   const [loggedUser, setLoggedUser]: any = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats }: any =
     ChatState();

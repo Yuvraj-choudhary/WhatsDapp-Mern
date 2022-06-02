@@ -6,7 +6,7 @@ const InputRoot = ({
   typingHandler,
   placeholder,
   setShowPicker,
-}) => {
+}:any) => {
   const { colorMode } = useColorMode();
   return (
     <TextareaAutosize

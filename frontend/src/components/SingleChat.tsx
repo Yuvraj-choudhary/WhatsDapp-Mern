@@ -97,7 +97,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   }, [selectedChat]);
 
   useEffect(() => {
-    socket.on("message recieved", (newMessageRecieved) => {
+    socket.on("message recieved", (newMessageRecieved:any) => {
       if (
         !selectedChatCompare || // if chat is not selected or doesn't match current chat
         selectedChatCompare._id !== newMessageRecieved.chat._id
@@ -112,7 +112,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
     });
   });
 
-  const postDetails = (pics) => {
+  const postDetails = (pics:any) => {
     new Promise((resolve) => {
       Resizer.imageFileResizer(
         pics,

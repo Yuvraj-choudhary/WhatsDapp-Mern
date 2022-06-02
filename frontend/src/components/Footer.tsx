@@ -44,11 +44,11 @@ const Footer = ({
   setIsRecording,
   isAudioRecording,
   setIsAudioRecording,
-}) => {
+}:any) => {
   const { colorMode } = useColorMode();
   const isPreview = pic || video || file || gif;
 
-  const onStop = (audioData) => {
+  const onStop = (audioData:any) => {
     console.log("audioData", audioData);
     setAudio(audioData.url);
   };

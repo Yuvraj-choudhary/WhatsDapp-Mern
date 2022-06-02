@@ -17,7 +17,7 @@ const ScrollableChat = ({
   deleteMessage,
   star,
   setStar,
-}) => {
+}:any) => {
   const { user }: any = ChatState();
   
     return (

@@ -22,7 +22,7 @@ const SendOrMic = ({
   onStop,
   isAudioRecording,
   setIsRecording,
-}) => {
+}:any) => {
   if (isAudioRecording === true) {
     setIsRecording(RecordState.START);
   } else {
@@ -72,14 +72,14 @@ const SendOrMic = ({
               color: colorMode === "dark" ? "#898787" : "#707070",
                           marginTop: "auto",
             }}
-            onClick={() => setIsAudioRecording((e) => !e)}
+            onClick={() => setIsAudioRecording((e:any) => !e)}
             className="button-inner-effect"
           >
             {isAudioRecording ? <SettingsVoiceRounded /> : <Mic />}
           </IconButton>
           <AudioReactRecorder
             state={isRecording}
-            onStop={(e) => onStop(e)}
+            onStop={(e:any) => onStop(e)}
             canvasWidth="0px"
             canvasHeight="0px"
             type="audio/mp3"

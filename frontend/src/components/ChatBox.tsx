@@ -2,7 +2,7 @@ import { Box, useColorMode } from "@chakra-ui/react";
 import { ChatState } from "../context/ChatProvider";
 import SingleChat from "./SingleChat";
 
-const ChatBox = ({ fetchAgain, setFetchAgain, isHidden, setIsHidden }) => {
+const ChatBox = ({ fetchAgain, setFetchAgain, isHidden, setIsHidden }:any) => {
   const { selectedChat }: any = ChatState();
   const { colorMode } = useColorMode();
 

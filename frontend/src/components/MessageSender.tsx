@@ -27,7 +27,7 @@ const MessageSender = ({
   user,
   star,
   setStar,
-}) => {
+}:any) => {
   const formatDate = (date: any) => {
     return date < 10 ? "0" + date : date;
   };

@@ -38,7 +38,7 @@ const ChatHeader = ({
   video,
   file,
   gif,
-}) => {
+}:any) => {
   console.log(message);
   const history = useHistory();
 

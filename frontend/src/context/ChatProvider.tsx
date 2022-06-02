@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 const ChatContext = createContext({});
 
-const ChatProvider = ({ children }) => {
+const ChatProvider = ({ children }:any) => {
   const [selectedChat, setSelectedChat]: any = useState();
   const [user, setUser]: any = useState();
   const [userPic, setUserPic]: any = useState();

@@ -12,7 +12,7 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 
-const ProfileModel = ({ user, children }) => {
+const ProfileModel = ({ user, children }:any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

@@ -45,7 +45,7 @@ import Chatdapp from "./Chatdapp";
 import ProfileModel from "./ProfileModel";
 import SearchModal from "./SearchModal";
 
-const SideDrawer = ({isHidden, setIsHidden}) => {
+const SideDrawer = ({isHidden, setIsHidden}:any) => {
     const [search, setSearch]: any = useState("");
     const [searchResult, setSearchResult]: any = useState([]);
     const [loading, setLoading]: any = useState(false);
@@ -107,7 +107,7 @@ const SideDrawer = ({isHidden, setIsHidden}) => {
         }
     };
 
-    const accessChat = async (userId) => {
+    const accessChat = async (userId:any) => {
         try {
             setLoadingChat(true);
 
@@ -120,7 +120,7 @@ const SideDrawer = ({isHidden, setIsHidden}) => {
 
             const {data} = await axios.post(`/api/chat`, {userId}, config);
 
-            if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+            if (!chats.find((c:any) => c._id === data._id)) setChats([data, ...chats]);
 
             setSelectedChat(data);
             setLoadingChat(false);
@@ -276,7 +276,7 @@ const SideDrawer = ({isHidden, setIsHidden}) => {
                                                 onClick={() => {
                                                     setSelectedChat(notif.chat);
                                                     setNotification(
-                                                        notification.filter((n) => n !== notif)
+                                                        notification.filter((n:any) => n !== notif)
                                                     );
                                                 }}
                                                 borderRadius="24px"

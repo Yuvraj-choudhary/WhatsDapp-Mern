@@ -19,7 +19,7 @@ const AttachFile = ({
   postDetails,
   postVideo,
   postFile,
-}) => {
+}:any) => {
   return (
     <>
       {showPicker ? (

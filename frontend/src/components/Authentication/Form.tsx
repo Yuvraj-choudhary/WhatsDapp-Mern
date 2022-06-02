@@ -23,7 +23,7 @@ const Form = ({
   handleClick,
   email,
   password
-}) => {
+}:any) => {
   const provider = new GoogleAuthProvider();
 
   const signInWithGoogle = () => {

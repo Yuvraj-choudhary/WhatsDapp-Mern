@@ -10,11 +10,11 @@ const ChatItem = ({
   colorMode,
   getSenderPic,
   chats,
-}) => {
+}:any) => {
   return (
     <Stack overflowY="scroll" w="100%" h="100vh" paddingInline="15px">
       {chats
-        .filter((chat) => {
+        .filter((chat:any) => {
           if (searchChat === "") {
             return chat;
           } else if (
@@ -27,7 +27,7 @@ const ChatItem = ({
             return chat;
           }
         })
-        .map((chat) => (
+        .map((chat:any) => (
           <ChatListItem
             getSender={getSender}
             loggedUser={loggedUser}

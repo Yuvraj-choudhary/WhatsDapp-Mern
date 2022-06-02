@@ -8,7 +8,7 @@ const ChatListItem = ({
   selectedChat,
   colorMode,
   getSenderPic,
-}) => {
+}:any) => {
   return (
     <Box
       onClick={() => setSelectedChat(chat)}

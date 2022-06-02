@@ -21,7 +21,7 @@ import "../styles.css";
 import UserBadgeItem from "../userStufs/UserBadgeItem";
 import UserListItem from "../userStufs/UserListItem";
 
-const GroupChatModel = ({ children }) => {
+const GroupChatModel = ({ children }:any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName]: any = useState();
   const [selectedUser, setSelectedUser]: any = useState([]);
@@ -35,7 +35,7 @@ const GroupChatModel = ({ children }) => {
 
   const { user, chats, setChats }: any = ChatState();
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (query:any) => {
     setSearch(query);
     if (!query) {
       return;
@@ -65,7 +65,7 @@ const GroupChatModel = ({ children }) => {
     }
   };
 
-  const postDetails = (pics) => {
+  const postDetails = (pics:any) => {
     setPicLoading(true);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
@@ -222,7 +222,7 @@ const GroupChatModel = ({ children }) => {
               />
             </FormControl>
             <Box w="100%" display="flex" flexWrap="wrap">
-              {selectedUser.map((u) => (
+              {selectedUser.map((u:any) => (
                 <UserBadgeItem
                   key={user._id}
                   user={u}
@@ -235,7 +235,7 @@ const GroupChatModel = ({ children }) => {
             ) : (
               searchResult
                 ?.slice(0, 4)
-                .map((user) => (
+                .map((user:any) => (
                   <UserListItem
                     key={user._id}
                     user={user}

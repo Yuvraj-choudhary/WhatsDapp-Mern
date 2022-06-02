@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-const SearchModal = ({ children }) => {
+const SearchModal = ({ children }:any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [search, setSearch] = useState("");

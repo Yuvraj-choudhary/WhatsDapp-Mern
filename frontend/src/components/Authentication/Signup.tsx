@@ -75,7 +75,7 @@ const Signup = () => {
     }
   };
 
-  const postDetails = (pics) => {
+  const postDetails = (pics:any) => {
     setPicLoading(true);
     if (pics === undefined) {
       toast({

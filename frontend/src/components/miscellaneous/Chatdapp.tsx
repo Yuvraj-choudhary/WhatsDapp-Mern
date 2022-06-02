@@ -10,7 +10,7 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 
-const Chatdapp = ({ children }) => {
+const Chatdapp = ({ children }:any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
