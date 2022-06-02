@@ -7,32 +7,32 @@ import { ChatState } from "../context/ChatProvider";
 import "./styles.css";
 
 const Chatpage = () => {
-  const { user }: any = ChatState();
-  const [fetchAgain, setFetchAgain] = useState(false);
-  const [isHidden, setIsHidden]: any = useState(false);
+    const { user }: any = ChatState();
+    const [fetchAgain, setFetchAgain] = useState(false);
+    const [isHidden, setIsHidden]: any = useState(false);
 
-  return (
-    <Box style={{ width: "100%" }} overflow="hidden" className="chat-anim">
-      {user && <SideDrawer isHidden={isHidden} setIsHidden={setIsHidden} />}
-      <Box display="flex" justifyContent="space-between" w="100%" className="chat-box">
-        {user && (
-          <Chats
-            fetchAgain={fetchAgain}
-            isHidden={isHidden}
-            setIsHidden={setIsHidden}
-          />
-        )}
-        {user && (
-          <ChatBox
-            fetchAgain={fetchAgain}
-            setFetchAgain={setFetchAgain}
-            isHidden={isHidden}
-            setIsHidden={setIsHidden}
-          />
-        )}
-      </Box>
-    </Box>
-  );
+    return (
+        <Box style={{ width: "100%" }} overflow="hidden" className="chat-anim">
+            {user && <SideDrawer isHidden={isHidden} setIsHidden={setIsHidden} />}
+            <Box display="flex" justifyContent="space-between" w="100%" className="chat-box">
+                {user && (
+                    <Chats
+                        fetchAgain={fetchAgain}
+                        isHidden={isHidden}
+                        setIsHidden={setIsHidden}
+                    />
+                )}
+                {user && (
+                    <ChatBox
+                        fetchAgain={fetchAgain}
+                        setFetchAgain={setFetchAgain}
+                        isHidden={isHidden}
+                        setIsHidden={setIsHidden}
+                    />
+                )}
+            </Box>
+        </Box>
+    );
 };
 
 export default Chatpage;

@@ -12,11 +12,9 @@
   width: 100%;
   flex-direction: column;
   background-color: #f0f2f5;
-  font-family: "Nunito" !important;
 }
 
 ::-webkit-scrollbar {
   width: 0px;
   display: none;
 }
-

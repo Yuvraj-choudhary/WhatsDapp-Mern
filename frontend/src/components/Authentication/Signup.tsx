@@ -9,6 +9,7 @@ const Signup = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const toast = useToast();
+  const history = useHistory();
 
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -62,6 +63,7 @@ const Signup = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
       window.location.reload();
+      history.push("/@");
     } catch (error: any) {
       toast({
         title: "Error Occurred!",

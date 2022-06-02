@@ -6,7 +6,6 @@ const messageSchema = mongoose.Schema(
     content: { type: String, trim: true, default: "" },
     image: String,
     file: { type: String, default: "" },
-    star: { type: Boolean, default: false },
     audio: { type: String, trim: true, default: "" },
     video: { type: String, trim: true, default: "" },
     gif: { type: String, trim: true, default: "" },

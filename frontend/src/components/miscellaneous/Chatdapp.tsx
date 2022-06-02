@@ -1,13 +1,14 @@
 import {
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
-    Text,
-    useDisclosure
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure
 } from "@chakra-ui/react";
 
 const Chatdapp = ({ children }) => {
@@ -25,14 +26,14 @@ const Chatdapp = ({ children }) => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay bg="none" backdropFilter="auto" backdropBlur="5px" />
-        <ModalContent h="auto">
+        <ModalContent minHeight="450px">
           <ModalHeader
             fontSize="40px"
             fontFamily="Nunito"
             display="flex"
             justifyContent="center"
           ></ModalHeader>
-          <ModalCloseButton borderRadius="50%" fontSize="15px" variant="" />
+          <ModalCloseButton />
           <ModalBody
             display="flex"
             flexDir="column"
@@ -60,7 +61,8 @@ const Chatdapp = ({ children }) => {
               </a>
             </Text>
           </ModalBody>
-          <ModalFooter></ModalFooter>
+          <ModalFooter>
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </>

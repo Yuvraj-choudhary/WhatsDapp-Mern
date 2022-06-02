@@ -32,7 +32,7 @@ const ChatProvider = ({ children }) => {
         chats,
         setChats,
         userPic,
-        setUserPic,
+        setUserPic
       }}
     >
       {children}

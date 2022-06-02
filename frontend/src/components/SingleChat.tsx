@@ -10,9 +10,9 @@ import ChatScreen from "./ChatScreen";
 import "./styles.css";
 
 const ENDPOINT =
-  process.env.NODE_ENV === "production"
-    ? "https://chatdapp-mern.herokuapp.com"
-    : "http://localhost:8000";
+    process.env.NODE_ENV === "production"
+        ? "https://chatdapp-mern.herokuapp.com"
+        : "http://localhost:8000";
 var socket: any, selectedChatCompare: any;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
@@ -37,7 +37,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   const [star, setStar]: any = useState(false);
   const [file, setFile]: any = useState("");
   const audioPlay = new Audio(
-    "https://firebasestorage.googleapis.com/v0/b/storage-1a7bb.appspot.com/o/files%2Fimessage_send_sound%20(1).mp3?alt=media&token=6a7cf28e-d678-406a-9473-b1a6b4751cff"
+      "https://firebasestorage.googleapis.com/v0/b/storage-1a7bb.appspot.com/o/files%2Fimessage_send_sound%20(1).mp3?alt=media&token=6a7cf28e-d678-406a-9473-b1a6b4751cff"
   );
 
   const toast = useToast();
@@ -64,8 +64,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
-        config
+          `/api/message/${selectedChat._id}`,
+          config
       );
       setMessage(data);
       setLoading(false);
@@ -99,8 +99,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   useEffect(() => {
     socket.on("message recieved", (newMessageRecieved) => {
       if (
-        !selectedChatCompare || // if chat is not selected or doesn't match current chat
-        selectedChatCompare._id !== newMessageRecieved.chat._id
+          !selectedChatCompare || // if chat is not selected or doesn't match current chat
+          selectedChatCompare._id !== newMessageRecieved.chat._id
       ) {
         if (!notification.includes(newMessageRecieved)) {
           setNotification([newMessageRecieved, ...notification]);
@@ -115,16 +115,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   const postDetails = (pics) => {
     new Promise((resolve) => {
       Resizer.imageFileResizer(
-        pics,
-        940,
-        780,
-        "PNG",
-        1000,
-        0,
-        (uri) => {
-          setPic(uri);
-        },
-        "base64"
+          pics,
+          940,
+          780,
+          "PNG",
+          1000,
+          0,
+          (uri) => {
+            setPic(uri);
+          },
+          "base64"
       );
     });
   };
@@ -139,15 +139,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       method: "post",
       body: data,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setVideo(data.url.toString());
-        console.log(data.url.toString());
-        setVideoLoading(false);
-      })
-      .catch((err) => {
-        setVideoLoading(false);
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          setVideo(data.url.toString());
+          console.log(data.url.toString());
+          setVideoLoading(false);
+        })
+        .catch((err) => {
+          setVideoLoading(false);
+        });
   };
 
   const postAudio = (e: any) => {
@@ -160,15 +160,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       method: "post",
       body: data,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setAudio(data.url.toString());
-        console.log(data.url.toString());
-        setAudioLoading(false);
-      })
-      .catch((err) => {
-        setAudioLoading(false);
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          setAudio(data.url.toString());
+          console.log(data.url.toString());
+          setAudioLoading(false);
+        })
+        .catch((err) => {
+          setAudioLoading(false);
+        });
   };
 
   const postFile = (e: any) => {
@@ -180,19 +180,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       const uploadTask = uploadBytesResumable(storageRef, e);
 
       uploadTask.on(
-        "state_changed",
-        (snapshot) => {},
-        (err) => {
-          console.log(err);
-          setFileLoading(false);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url: any) => {
-            console.log(url);
-            setFile(url);
+          "state_changed",
+          (snapshot) => {},
+          (err) => {
+            console.log(err);
             setFileLoading(false);
-          });
-        }
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((url: any) => {
+              console.log(url);
+              setFile(url);
+              setFileLoading(false);
+            });
+          }
       );
     } else {
       setFileLoading(false);
@@ -208,9 +208,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
 
   const sendMessage = async (e: any) => {
     if (
-      e.keyCode === 13 &&
-      newMessage.trim() !== "" &&
-      (newMessage || pic || audio || gif || video)
+        e.keyCode === 13 &&
+        newMessage.trim() !== "" &&
+        (newMessage || pic || audio || gif || video)
     ) {
       socket.emit("stop typing", selectedChat._id);
       try {
@@ -221,18 +221,18 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
           },
         };
         const { data } = await axios.post(
-          "api/message",
-          {
-            content: newMessage,
-            image: pic,
-            audio: audio,
-            file: file,
-            chatId: selectedChat._id,
-            gif: gif,
-            video: video,
-            star: star,
-          },
-          config
+            "api/message",
+            {
+              content: newMessage,
+              image: pic,
+              audio: audio,
+              file: file,
+              chatId: selectedChat._id,
+              gif: gif,
+              video: video,
+              star: star,
+            },
+            config
         );
 
         socket.emit("new message", data);
@@ -260,11 +260,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
 
   const sendMessageButton = async () => {
     if (
-      (newMessage && newMessage.trim() !== "") ||
-      pic ||
-      audio ||
-      gif ||
-      video
+        (newMessage && newMessage.trim() !== "") ||
+        pic ||
+        audio ||
+        gif ||
+        video
     ) {
       socket.emit("stop typing", selectedChat._id);
       try {
@@ -276,17 +276,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
         };
 
         const { data } = await axios.post(
-          "api/message",
-          {
-            content: newMessage,
-            image: pic,
-            file: file,
-            audio: audio,
-            chatId: selectedChat._id,
-            gif: gif,
-            video: video,
-          },
-          config
+            "api/message",
+            {
+              content: newMessage,
+              image: pic,
+              file: file,
+              audio: audio,
+              chatId: selectedChat._id,
+              gif: gif,
+              video: video,
+            },
+            config
         );
 
         socket.emit("new message", data);
@@ -363,11 +363,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       };
 
       const { data } = await axios.put(
-        `/api/message/messages`,
-        {
-          _id: m._id,
-        },
-        config
+          `/api/message/messages`,
+          {
+            _id: m._id,
+          },
+          config
       );
 
       fetchMessages();
@@ -393,11 +393,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       };
 
       const { data } = await axios.put(
-        "/api/chat/remove",
-        {
-          _id: selectedChat._id,
-        },
-        config
+          "/api/chat/remove",
+          {
+            _id: selectedChat._id,
+          },
+          config
       );
       setFetchAgain(!fetchAgain);
     } catch (error) {
@@ -413,69 +413,69 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
   };
 
   return (
-    <>
-      {selectedChat ? (
-        <ChatScreen
-          colorMode={colorMode}
-          setSelectedChat={setSelectedChat}
-          message={message}
-          user={user}
-          fetchMessages={fetchMessages}
-          deleteChat={deleteChat}
-          fetchAgain={fetchAgain}
-          setFetchAgain={setFetchAgain}
-          selectedChat={selectedChat}
-          pic={pic}
-          audio={audio}
-          gif={gif}
-          video={video}
-          file={file}
-          showPicker={showPicker}
-          loading={loading}
-          isTyping={isTyping}
-          deleteMessage={deleteMessage}
-          showGifPicker={showGifPicker}
-          setGifHandler={setGifHandler}
-          newMessage={newMessage}
-          sendMessageButton={sendMessageButton}
-          sendMessage={sendMessage}
-          setShowPicker={setShowPicker}
-          typingHandler={typingHandler}
-          postDetails={postDetails}
-          picLoading={picLoading}
-          setPic={setPic}
-          postAudio={postAudio}
-          audioLoading={audioLoading}
-          videoLoading={videoLoading}
-          fileLoading={fileLoading}
-          setAudio={setAudio}
-          setShowGifPicker={setShowGifPicker}
-          setGif={setGif}
-          postVideo={postVideo}
-          setVideo={setVideo}
-          onEmojiClick={onEmojiClick}
-          setFile={setFile}
-          postFile={postFile}
-          star={star}
-          setStar={setStar}
-          isRecording={isRecording}
-          setIsRecording={setIsRecording}
-          isAudioRecording={isAudioRecording}
-          setIsAudioRecording={setIsAudioRecording}
-        />
-      ) : (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          h="100%"
-        >
-          <Text fontSize="3xl" pb={3} fontFamily="Nunito">
-            Click on a user or a group to start chating
-          </Text>
-        </Box>
-      )}
-    </>
+      <>
+        {selectedChat ? (
+            <ChatScreen
+                colorMode={colorMode}
+                setSelectedChat={setSelectedChat}
+                message={message}
+                user={user}
+                fetchMessages={fetchMessages}
+                deleteChat={deleteChat}
+                fetchAgain={fetchAgain}
+                setFetchAgain={setFetchAgain}
+                selectedChat={selectedChat}
+                pic={pic}
+                audio={audio}
+                gif={gif}
+                video={video}
+                file={file}
+                showPicker={showPicker}
+                loading={loading}
+                isTyping={isTyping}
+                deleteMessage={deleteMessage}
+                showGifPicker={showGifPicker}
+                setGifHandler={setGifHandler}
+                newMessage={newMessage}
+                sendMessageButton={sendMessageButton}
+                sendMessage={sendMessage}
+                setShowPicker={setShowPicker}
+                typingHandler={typingHandler}
+                postDetails={postDetails}
+                picLoading={picLoading}
+                setPic={setPic}
+                postAudio={postAudio}
+                audioLoading={audioLoading}
+                videoLoading={videoLoading}
+                fileLoading={fileLoading}
+                setAudio={setAudio}
+                setShowGifPicker={setShowGifPicker}
+                setGif={setGif}
+                postVideo={postVideo}
+                setVideo={setVideo}
+                onEmojiClick={onEmojiClick}
+                setFile={setFile}
+                postFile={postFile}
+                star={star}
+                setStar={setStar}
+                isRecording={isRecording}
+                setIsRecording={setIsRecording}
+                isAudioRecording={isAudioRecording}
+                setIsAudioRecording={setIsAudioRecording}
+            />
+        ) : (
+            <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                h="100%"
+            >
+              <Text fontSize="3xl" pb={3} fontFamily="Nunito">
+                Click on a user or a group to start chating
+              </Text>
+            </Box>
+        )}
+      </>
   );
 };
 

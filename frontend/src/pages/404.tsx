@@ -1,6 +1,5 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import "./styles.css";
 
 const NotFound = () => {
   const history = useHistory();
@@ -13,7 +12,6 @@ const NotFound = () => {
         alignItems="center"
         justifyContent="center"
         flexDir="column"
-        className="⛔-anim"
       >
         <Text fontSize="100" fontFamily="nunito">
           404
