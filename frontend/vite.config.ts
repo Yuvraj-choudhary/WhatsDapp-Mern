@@ -5,9 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
     server: {
         host: true,
+        port: process.env.NODE_ENV !== "production" ? 3000 : process.env.PORT,
         proxy: {
             '/api/user': {
-                target: "https://whatsdapp.herokuapp.com", changeOrigin: true,
+                target: "https://whatsdapp.herokuapp.com",
+                changeOrigin: true,
                 secure: false
             },
             '/api/chat': {
