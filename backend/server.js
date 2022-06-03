@@ -3,11 +3,10 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
-const { notFound, errorHandler } = require("./middleware/errorMiddleware");
-const path = require("path");
+const {notFound, errorHandler} = require("./middleware/errorMiddleware");
 const Pusher = require("pusher");
 const mongoose = require("mongoose");
-const cors = require("cors");
+const path = require("path");
 
 const pusher = new Pusher({
     appId: "1364139",
@@ -82,7 +81,6 @@ app.use("/api/message", messageRoutes);
 const __dirname1 = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
-
     app.use(express.static(path.join(__dirname1, "/frontend/dist")));
 
     app.get("*", (req, res) =>
@@ -105,9 +103,8 @@ const server = app.listen(
 );
 
 const io = require("socket.io")(server, {
-    cors: {
-        origin: "https://whatsdapp.vercel.app/",
-    },
+        origin: " http://localhost:8000",
+    credentials: true
 });
 
 io.on("connection", (socket) => {

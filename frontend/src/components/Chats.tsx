@@ -24,6 +24,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }:any) => {
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
+          'Access-Control-Allow-Origin': 'GET'
         },
       };
 

@@ -45,6 +45,7 @@ const Signup = () => {
       const config = {
         headers: {
           "Content-type": "application/json",
+          'Access-Control-Allow-Origin': 'POST'
         },
       };
       const { data } = await axios.post(
@@ -120,7 +121,7 @@ const Signup = () => {
     }
   };
 
-  return (      <form>
+  return (
     <VStack spacing="5px">
 
       <Form
@@ -137,7 +138,7 @@ const Signup = () => {
         email={email}
         password={password}
       />
-    </VStack></form>
+    </VStack>
   );
 };
 

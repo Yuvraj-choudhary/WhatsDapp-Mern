@@ -114,6 +114,7 @@ const SideDrawer = ({isHidden, setIsHidden}:any) => {
             const config = {
                 headers: {
                     "Content-type": "application/json",
+                    'Access-Control-Allow-Origin': '*',
                     Authorization: `Bearer ${user.token}`,
                 },
             };
