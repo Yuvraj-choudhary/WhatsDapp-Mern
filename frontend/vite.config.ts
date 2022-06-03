@@ -1,13 +1,25 @@
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    server:{
-        proxy:{
-            '/api/user':"https://whatsdapp.herokuapp.com",
-            '/api/chat':"https://whatsdapp.herokuapp.com",
-            '/api/message':"https://whatsdapp.herokuapp.com",
+    server: {
+        host: true,
+        proxy: {
+            '/api/user': {
+                target: "https://whatsdapp.herokuapp.com", changeOrigin: true,
+                secure: false
+            },
+            '/api/chat': {
+                target: "https://whatsdapp.herokuapp.com",
+                changeOrigin: true,
+                secure: false
+            },
+            '/api/message': {
+                target: "https://whatsdapp.herokuapp.com",
+                changeOrigin: true,
+                secure: false
+            },
         }
     },
     plugins: [react()]
