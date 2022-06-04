@@ -23,8 +23,7 @@ const Chats = ({ fetchAgain, isHidden, setIsHidden }:any) => {
     try {
       const config = {
         headers: {
-          Authorization: `Bearer ${user.token}`,
-          'Access-Control-Allow-Origin': 'GET'
+          Authorization: `Bearer ${user.token}`
         },
       };
 

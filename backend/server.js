@@ -1,8 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const userRoutes = require("./routes/userRoutes");
-const chatRoutes = require("./routes/chatRoutes");
-const messageRoutes = require("./routes/messageRoutes");
+const apiRoutes = require("./routes/apiRoutes");
 const {notFound, errorHandler} = require("./middleware/errorMiddleware");
 const Pusher = require("pusher");
 const mongoose = require("mongoose");
@@ -71,9 +69,7 @@ app.use(express.json({limit: "100000000000mb", extended: true}));
 
 const PORT = process.env.PORT || 8000;
 
-app.use("/api/user", userRoutes);
-app.use("/api/chat", chatRoutes);
-app.use("/api/message", messageRoutes);
+app.use("/api", apiRoutes);
 
 
 // ------------------------->DeployMent<-------------------------

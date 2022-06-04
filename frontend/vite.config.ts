@@ -6,22 +6,13 @@ const url = "http://127.0.0.1:8000"
 export default defineConfig({
     server: {
         host: true,
+        port : 3000,
         proxy: {
-            '/api/user': {
-                target: url, changeOrigin: true,
-                secure: false,
-            },
-            '/api/chat': {
-                target: url, changeOrigin: true,
-                secure: false,
-            },
-            '/api/message': {
-                target: url, changeOrigin: true,
-                secure: false,
+            '/': {
+                target: url,
+                changeOrigin: true,
             }
-        },
-        cors: false,
-        origin: 'http://localhost:8000'
+        }
     },
     plugins: [react()]
 })
