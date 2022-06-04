@@ -5,8 +5,8 @@
   "main": "backend/server.js",
   "scripts": {
     "start": "concurrently \"cd frontend && yarn start\" \"nodemon\"",
-    "deploy": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
-    "dependencies": "yarn && cd frontend && yarn && cd .."
+    "build": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
+    "dependencies": "concurrently \"yarn && cd frontend\" && \"yarn\""
   },
   "author": "yuvraj-choudhary",
   "license": "ISC",
