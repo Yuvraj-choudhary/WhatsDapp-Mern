@@ -4,7 +4,7 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "start": "cd frontend && yarn dev",
+    "start": "concurrently \"cd frontend && yarn start\" \"nodemon\"",
     "build": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
     "dependencies": "concurrently \"cd frontend && yarn\" && \"yarn\""
   },
