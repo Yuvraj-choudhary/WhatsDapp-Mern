@@ -223,9 +223,9 @@ const ChatHeader = ({
                         justifyContent="center"
                       >
                         <ProfileModel
-                          user={getSenderFull(user, selectedChat.users)}
-                          children={null}
-                        />
+                          user={getSenderFull(user, selectedChat.users)}>
+                            Delete
+                        </ProfileModel>
                       </MenuItem>
                     ) : (
                       <MenuItem

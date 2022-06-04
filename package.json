@@ -4,9 +4,9 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "start": "concurrently \"cd frontend && yarn start\" \"nodemon\"",
+    "start": "cd frontend && yarn dev",
     "build": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
-    "dependencies": "concurrently \"yarn && cd frontend\" && \"yarn\""
+    "dependencies": "concurrently \"cd frontend && yarn\" && \"yarn\""
   },
   "author": "yuvraj-choudhary",
   "license": "ISC",
