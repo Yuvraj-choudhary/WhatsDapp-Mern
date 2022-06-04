@@ -5,7 +5,7 @@
   "main": "backend/server.js",
   "scripts": {
     "start": "concurrently \"cd frontend && yarn start\" \"nodemon\"",
-    "build": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
+    "dist": "set NODE_ENV=production && cd frontend && yarn build && cd ..",
     "dependencies": "concurrently \"cd frontend && yarn\" && \"yarn\""
   },
   "author": "yuvraj-choudhary",
