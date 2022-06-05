@@ -1,5 +1,5 @@
 const { protect } = require("../middleware/authMiddleWare");
-const express = require("express");
+import express from "express";
 const {
   addToGroup,
   removeFromGroup,

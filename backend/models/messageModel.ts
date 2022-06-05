@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
+// @ts-ignore
 const messageSchema = mongoose.Schema(
   {
     sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

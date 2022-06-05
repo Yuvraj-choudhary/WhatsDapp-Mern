@@ -1,4 +1,4 @@
-const asyncHandler = require("express-async-handler");
+import asyncHandler from "express-async-handler";
 const generateToken = require("../config/getToken");
 const User = require("../models/userModels");
 
@@ -67,7 +67,7 @@ const allUsers = asyncHandler(async (req, res) => {
         ],
       }
     : {};
-
+  // @ts-ignore
   const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
   res.send(users);
 });

@@ -1,9 +1,9 @@
-const asyncHandler = require("express-async-handler");
+import asyncHandler from "express-async-handler";
 const Chat = require("../models/chatModel");
 const Message = require("../models/messageModel");
 const User = require("../models/userModels");
 
-const sendMessage = asyncHandler(async (req, res) => {
+const sendMessage = asyncHandler(async (req:any, res:any) => {
   const { content, chatId, image, audio, gif, video, file, star } = req.body;
 
   if (!chatId) {
@@ -35,7 +35,7 @@ const sendMessage = asyncHandler(async (req, res) => {
     await Chat.findByIdAndUpdate(req.body.chatId, { latestMessage: message });
 
     res.json(message);
-  } catch (error) {
+  } catch (error:any) {
     res.status(400);
     throw new Error(error.message);
   }
@@ -47,7 +47,7 @@ const allMessages = asyncHandler(async (req, res) => {
       .populate("sender", "name pic email")
       .populate("chat");
     res.json(messages);
-  } catch (error) {
+  } catch (error:any) {
     res.status(400);
     throw new Error(error.message);
   }
@@ -60,7 +60,7 @@ const deleteDocument = asyncHandler(async (req, res) => {
     const remove = await Message.deleteOne({ _id });
 
     res.json(remove);
-  } catch (error) {
+  } catch (error:any) {
     res.status(400);
     throw new Error(error.message);
   }

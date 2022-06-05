@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const bcrypt = require("bcryptjs");
 
+// @ts-ignore
 const userSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -16,16 +17,18 @@ const userSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword:any) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function (next:any) {
+  // @ts-ignore
   if (!this.isModified) {
     next();
   }
 
   const salt = await bcrypt.genSalt(10);
+  // @ts-ignore
   this.password = await bcrypt.hash(this.password, salt);
 });
 

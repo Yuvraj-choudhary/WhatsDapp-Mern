@@ -1,8 +1,8 @@
-const asyncHandler = require("express-async-handler");
+import asyncHandler from "express-async-handler";
 const Chat = require("../models/chatModel");
 const User = require("../models/userModels");
 
-const accessChat = asyncHandler(async (req, res) => {
+const accessChat = asyncHandler(async (req:any, res:any) => {
   const { userId } = req.body;
 
   if (!userId) {
@@ -40,21 +40,21 @@ const accessChat = asyncHandler(async (req, res) => {
         "-password"
       );
       res.status(200).json(FullChat);
-    } catch (error) {
+    } catch (error:any) {
       res.status(400);
       throw new Error(error.message);
     }
   }
 });
 
-const fetchChats = asyncHandler(async (req, res) => {
+const fetchChats = asyncHandler(async (req:any, res:any) => {
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
       .populate("groupAdmin", "-password")
       .populate("latestMessage")
       .sort({ updatedAt: -1 })
-      .then(async (results) => {
+      .then(async (results:any) => {
         results = await User.populate(results, {
           path: "latestMessage.sender",
           select: "name pic email",
@@ -62,13 +62,13 @@ const fetchChats = asyncHandler(async (req, res) => {
 
         res.status(200).send(results);
       });
-  } catch (error) {
+  } catch (error:any) {
     res.status(400);
     throw new Error(error.message);
   }
 });
 
-const createGroupChat = asyncHandler(async (req, res) => {
+const createGroupChat = asyncHandler(async (req:any, res:any) => {
   if (!req.body.users || !req.body.name) {
     return res.status(400).send({ message: "Please Fill all the Fields" });
   }
@@ -97,7 +97,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
       .populate("groupAdmin", "-password");
 
     res.status(200).json(fullGroupChat);
-  } catch (error) {
+  } catch (error:any) {
     res.status(400);
     throw new Error(error.message);
   }
@@ -178,7 +178,7 @@ const deleteChat = asyncHandler(async (req, res) => {
     const remove = await Chat.deleteOne({ _id });
 
     res.json(remove);
-  } catch (error) {
+  } catch (error:any) {
     res.status(400);
     throw new Error(error.message);
   }

@@ -1,4 +1,4 @@
-const express = require('express');
+import express from "express";
 const { allMessages, sendMessage,deleteDocument, uploadDocument } = require('../controller/messageControllers');
 const { protect } = require('../middleware/authMiddleWare');
 

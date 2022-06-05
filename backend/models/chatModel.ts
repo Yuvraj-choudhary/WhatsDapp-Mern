@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose"
 
+// @ts-ignore
 const chatModel = mongoose.Schema(
   {
     chatName: { type: String, trim: true },
