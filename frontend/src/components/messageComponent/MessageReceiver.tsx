@@ -17,15 +17,21 @@ import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import { isLastMessage, isSameReceiver } from "../config/ChatLogics";
-import "./styles.css";
+import {
+    isLastMessage,
+    isSameSender,
+    isSameSenderMargin
+} from "../../config/ChatLogics";
+import "../styles.css";
 
-const MessageSender = ({
+const MessageReceiver = ({
   m,
   i,
   message,
   deleteMessage,
   user,
+  selectedChat,
+  isTyping,
   star,
   setStar,
 }:any) => {
@@ -35,7 +41,7 @@ const MessageSender = ({
 
   const options = {
     target: "_blank",
-    className: "link--s",
+    className: "link--r",
   };
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -60,21 +66,25 @@ const MessageSender = ({
     <>
       <Box
         style={{
-          backgroundColor: colorMode === "dark" ? "#232b38" : "#e6e6e6",
-          marginLeft: "auto",
-          boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 40%)",
+          backgroundColor: "#2b6bed",
+          boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 69%)",
           marginTop: 1.5,
-          marginRight: 5,
+          marginLeft: selectedChat.isGroupChat
+            ? isSameSenderMargin(message, m, i, user._id)
+            : 5,
           borderRadius:
-            isSameReceiver(message, m, i, user._id) ||
+            isSameSender(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)
-              ? "20px"
-              : "20px 20px 9px 20px",
-          marginBottom:
-            isSameReceiver(message, m, i, user._id) ||
-            isLastMessage(message, i, user._id)
-              ? "0px"
+              ? isTyping
+                ? "20px"
+                : "20px 20px 20px 9px"
               : "20px",
+          marginBottom:
+            isSameSender(message, m, i, user._id) ||
+            isLastMessage(message, i, user._id)
+              ? 20
+              : "0",
+
           padding: "10px 10px",
         }}
         maxWidth={{ base: "80%", xl: "63%" }}
@@ -83,13 +93,14 @@ const MessageSender = ({
           <Zoom
             transitionDuration={600}
             zoomZindex={0}
+            overlayBgColorEnd="RGBA(255,255,255,0.09)"
           >
             <Image src={m.image} alt="" className="image" />
           </Zoom>
         )}
         {m.audio !== "" && (
           <AudioPlayer
-            src={m.audio}
+            src={m.audio || m.content}
             style={{
               marginTop: m.image ? "10px" : 0,
               marginBottom: m.gif ? "10px" : 0,
@@ -119,14 +130,12 @@ const MessageSender = ({
             <Box
               bg="#fff"
               borderRadius="17px"
-              w="100%"
-              h="250px"
-              px="30px"
+              h="100px"
+              w="100px"
               color="#000"
               cursor="pointer"
               display="flex"
               alignItems="center"
-              justifyContent="center"
             >
               <ExternalLinkIcon mr={1} />
               <Text fontFamily="Nunito">Open file in New Tab</Text>
@@ -141,20 +150,17 @@ const MessageSender = ({
           textAlign="center"
         />
         <Linkify options={options}>
-          <Text fontFamily="Nunito">{m.content}</Text>
+          <Text fontFamily="Nunito" color="white">
+            {m.content}
+          </Text>
         </Linkify>
-        <Box
-          display="flex"
-          position="relative"
-          alignItems="center"
-          justifyContent="center"
-        >
+        <Box display="flex" alignItems="center" justifyContent="center">
           <span
             style={{
               fontSize: "12px",
               marginRight: "auto",
               display: "flex",
-              color: "GrayText",
+              color: "white",
             }}
           >
             {formatDate(days[new Date(m.createdAt).getDay()])}{" "}
@@ -170,7 +176,7 @@ const MessageSender = ({
           </span>
           <Menu>
             <MenuButton>
-              <ChevronDownIcon fontSize="2xl" color="GrayText" />
+              <ChevronDownIcon fontSize="2xl" color="white" />
             </MenuButton>
             <MenuList borderRadius="2xl" boxShadow="2xl">
               <MenuItem onClick={() => deleteMessage(m)}>Delete</MenuItem>
@@ -198,4 +204,4 @@ const MessageSender = ({
   );
 };
 
-export default MessageSender;
+export default MessageReceiver;

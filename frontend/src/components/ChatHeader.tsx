@@ -222,10 +222,7 @@ const ChatHeader = ({
                         display="flex"
                         justifyContent="center"
                       >
-                        <ProfileModel
-                          user={getSenderFull(user, selectedChat.users)}>
-                            Delete
-                        </ProfileModel>
+                        <ProfileModel user={getSenderFull(user, selectedChat.users)}/>
                       </MenuItem>
                     ) : (
                       <MenuItem

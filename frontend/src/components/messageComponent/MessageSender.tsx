@@ -3,7 +3,7 @@ import {
     Box,
     Image,
     Menu,
-    MenuButton,
+    MenuButton, MenuDivider,
     MenuItem,
     MenuList,
     Text,
@@ -17,21 +17,15 @@ import AudioPlayer from "react-h5-audio-player";
 import ModalImage from "react-image-modal";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import {
-    isLastMessage,
-    isSameSender,
-    isSameSenderMargin
-} from "../config/ChatLogics";
-import "./styles.css";
+import { isLastMessage, isSameReceiver } from "../../config/ChatLogics";
+import "../styles.css";
 
-const MessageReceiver = ({
+const MessageSender = ({
   m,
   i,
   message,
   deleteMessage,
   user,
-  selectedChat,
-  isTyping,
   star,
   setStar,
 }:any) => {
@@ -41,23 +35,23 @@ const MessageReceiver = ({
 
   const options = {
     target: "_blank",
-    className: "link--r",
+    className: "link--s",
   };
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
   ];
 
   const toast = useToast();
@@ -66,25 +60,21 @@ const MessageReceiver = ({
     <>
       <Box
         style={{
-          backgroundColor: "#2b6bed",
-          boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 69%)",
+          backgroundColor: colorMode === "dark" ? "#232b38" : "#e6e6e6",
+          marginLeft: "auto",
+          boxShadow: "-1px 4px 20px -6px rgb(0 0 0 / 40%)",
           marginTop: 1.5,
-          marginLeft: selectedChat.isGroupChat
-            ? isSameSenderMargin(message, m, i, user._id)
-            : 5,
+          marginRight: 5,
           borderRadius:
-            isSameSender(message, m, i, user._id) ||
+            isSameReceiver(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)
-              ? isTyping
-                ? "20px"
-                : "20px 20px 20px 9px"
-              : "20px",
+              ? "20px"
+              : "20px 20px 9px 20px",
           marginBottom:
-            isSameSender(message, m, i, user._id) ||
+            isSameReceiver(message, m, i, user._id) ||
             isLastMessage(message, i, user._id)
-              ? 20
-              : "0",
-
+              ? "0px"
+              : "20px",
           padding: "10px 10px",
         }}
         maxWidth={{ base: "80%", xl: "63%" }}
@@ -93,14 +83,13 @@ const MessageReceiver = ({
           <Zoom
             transitionDuration={600}
             zoomZindex={0}
-            overlayBgColorEnd="RGBA(255,255,255,0.09)"
           >
             <Image src={m.image} alt="" className="image" />
           </Zoom>
         )}
         {m.audio !== "" && (
           <AudioPlayer
-            src={m.audio || m.content}
+            src={m.audio}
             style={{
               marginTop: m.image ? "10px" : 0,
               marginBottom: m.gif ? "10px" : 0,
@@ -130,12 +119,14 @@ const MessageReceiver = ({
             <Box
               bg="#fff"
               borderRadius="17px"
-              h="100px"
-              w="100px"
+              w="100%"
+              h="250px"
+              px="30px"
               color="#000"
               cursor="pointer"
               display="flex"
               alignItems="center"
+              justifyContent="center"
             >
               <ExternalLinkIcon mr={1} />
               <Text fontFamily="Nunito">Open file in New Tab</Text>
@@ -150,17 +141,20 @@ const MessageReceiver = ({
           textAlign="center"
         />
         <Linkify options={options}>
-          <Text fontFamily="Nunito" color="white">
-            {m.content}
-          </Text>
+          <Text fontFamily="Nunito">{m.content}</Text>
         </Linkify>
-        <Box display="flex" alignItems="center" justifyContent="center">
+        <Box
+          display="flex"
+          position="relative"
+          alignItems="center"
+          justifyContent="center"
+        >
           <span
             style={{
               fontSize: "12px",
               marginRight: "auto",
               display: "flex",
-              color: "white",
+              color: "GrayText",
             }}
           >
             {formatDate(days[new Date(m.createdAt).getDay()])}{" "}
@@ -176,25 +170,57 @@ const MessageReceiver = ({
           </span>
           <Menu>
             <MenuButton>
-              <ChevronDownIcon fontSize="2xl" color="white" />
+              <ChevronDownIcon fontSize="2xl" color="GrayText" />
             </MenuButton>
-            <MenuList borderRadius="2xl" boxShadow="2xl">
-              <MenuItem onClick={() => deleteMessage(m)}>Delete</MenuItem>
+            <MenuList
+                borderColor="#d3d3d300"
+                borderRadius="33px"
+                boxShadow="2xl"
+                padding={1.5}
+                className="transition-all duration-300 ease-in-out">
+              <MenuItem
+                  onClick={() => deleteMessage(m)}
+                  borderRadius="24px 24px 0 0"
+                  boxShadow="inset 0 1px 4px 2px rgba(0,0,0,0.1)"
+                  className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                  display="flex"
+                  justifyContent="center">
+                  <Text
+                      p={2}
+                      fontSize={18}
+                      fontFamily="Nunito"
+                  >
+                      Delete
+                  </Text>
+              </MenuItem>
               {m.content !== "" && (
-                <MenuItem
-                  onClick={() => {
-                    navigator.clipboard.writeText(m.content);
-                    toast({
-                      title: "Successfully copied the text to clipboard.",
-                      status: "success",
-                      position: "top",
-                      duration: 2000,
-                      isClosable: true,
-                    });
-                  }}
-                >
-                  Copy Text
-                </MenuItem>
+                <>
+                  <MenuDivider marginTop="0.2rem" marginBottom="0.2rem"/><MenuItem
+                      onClick={() => {
+                          navigator.clipboard.writeText(m.content);
+                          toast({
+                              title: "Successfully copied the text to clipboard.",
+                              status: "success",
+                              position: "top",
+                              duration: 2000,
+                              isClosable: true,
+                          });
+                      }}
+                      borderRadius="0 0 24px 24px"
+                      boxShadow="inset 0 0 4px 2px rgba(0,0,0,0.1)"
+                      className="transition-all duration-1000 ease-in-out hover:shadow-sm"
+                      display="flex"
+                      justifyContent="center"
+                  >
+                      <Text
+                          p={2}
+                          fontSize={18}
+                          fontFamily="Nunito"
+                      >
+                          Copy Text
+                      </Text>
+                  </MenuItem>
+               </>
               )}
             </MenuList>
           </Menu>
@@ -204,4 +230,4 @@ const MessageReceiver = ({
   );
 };
 
-export default MessageReceiver;
+export default MessageSender;

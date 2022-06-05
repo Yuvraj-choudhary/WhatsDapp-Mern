@@ -17,7 +17,13 @@ const ProfileModel = ({ user, children }:any) => {
 
   return (
     <Box>
-        <Text onClick={onOpen}>{children}</Text>
+        {children ? (
+            <Text onClick={onOpen}>{children}</Text>
+        ) : (
+            <Text fontFamily="Nunito" p={4} fontSize={18} onClick={onOpen}>
+                View Profile
+            </Text>
+        )}
 
       <Modal
         size="4xl"

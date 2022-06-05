@@ -7,8 +7,8 @@ import { isLastMessage, isSameSender } from "../config/ChatLogics";
 import { ChatState } from "../context/ChatProvider";
 import MessageLoader from "./MessageLoader";
 import "./styles.css";
-const MessageReceiver = lazy(() => import("./MessageReceiver"));
-const MessageSender = lazy(() => import("./MessageSender"));
+const MessageReceiver = lazy(() => import("./messageComponent/MessageReceiver"));
+const MessageSender = lazy(() => import("./messageComponent/MessageSender"));
 
 const ScrollableChat = ({
   message,
