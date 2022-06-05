@@ -5,6 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import ChatProvider from "./context/ChatProvider";
 import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ChakraProvider>
@@ -20,3 +22,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 document.addEventListener("contextmenu", (e) => {
   e.preventDefault();
 });
+
+reportWebVitals();
+serviceWorkerRegistration.register();
