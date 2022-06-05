@@ -9,7 +9,6 @@
 /.pnp
 .pnp.js
 .expo/
-dist/
 npm-debug.*
 *.jks
 *.p8

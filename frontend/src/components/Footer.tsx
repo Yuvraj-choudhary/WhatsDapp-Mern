@@ -1,7 +1,9 @@
 import { Box, FormControl, SlideFade, useColorMode } from "@chakra-ui/react";
 import { EmojiPicker } from "react-emoji-search";
+// @ts-ignore
 import Picker from "react-giphy-component";
 import AudioPlayer from "react-h5-audio-player";
+// @ts-ignore
 import ModalImage from "react-image-modal";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";

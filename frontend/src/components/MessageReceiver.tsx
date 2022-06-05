@@ -13,6 +13,7 @@ import {
 import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import Linkify from "linkify-react";
 import AudioPlayer from "react-h5-audio-player";
+// @ts-ignore
 import ModalImage from "react-image-modal";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";

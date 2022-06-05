@@ -33,6 +33,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+// @ts-ignore
 import NotificationBadge, { Effect } from "react-notification-badge";
 import { useHistory } from "react-router-dom";
 import { getSender } from "../../config/ChatLogics";

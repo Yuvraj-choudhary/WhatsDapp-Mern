@@ -1,4 +1,5 @@
 import { Spinner } from "@chakra-ui/react";
+// @ts-ignore
 import AudioReactRecorder, { RecordState } from "@kazzkiq/audio-react-recorder";
 import { IconButton } from "@material-ui/core";
 import { Mic, SettingsVoiceRounded } from "@material-ui/icons";
