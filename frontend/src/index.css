@@ -15,8 +15,6 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -webkit-touch-callout: none;
-  overflow: hidden;
-
 }
 
 code {

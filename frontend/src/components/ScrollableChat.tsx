@@ -19,10 +19,9 @@ const ScrollableChat = ({
   setStar,
 }:any) => {
   const { user }: any = ChatState();
-  
+
     return (
-        <ScrollableFeed
-        >
+    <ScrollableFeed>
       {message &&
         message.map((m: any, i: any) => (
           <>

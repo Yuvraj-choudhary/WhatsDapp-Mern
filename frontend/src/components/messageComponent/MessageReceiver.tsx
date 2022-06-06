@@ -150,7 +150,7 @@ const MessageReceiver = ({
           textAlign="center"
         />
         <Linkify options={options}>
-          <Text fontFamily="Nunito" color="white">
+          <Text className="px" fontFamily="Nunito" color="white">
             {m.content}
           </Text>
         </Linkify>

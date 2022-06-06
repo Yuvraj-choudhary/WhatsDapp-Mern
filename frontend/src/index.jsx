@@ -19,9 +19,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   document.getElementById("chat")
 );
 
-document.addEventListener("contextmenu", (e) => {
-  e.preventDefault();
-});
-
 reportWebVitals();
 serviceWorkerRegistration.register();

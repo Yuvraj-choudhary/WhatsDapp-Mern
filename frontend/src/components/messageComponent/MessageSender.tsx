@@ -141,7 +141,7 @@ const MessageSender = ({
           textAlign="center"
         />
         <Linkify options={options}>
-          <Text fontFamily="Nunito">{m.content}</Text>
+          <Text fontFamily="Nunito" className="messageText">{m.content}</Text>
         </Linkify>
         <Box
           display="flex"
