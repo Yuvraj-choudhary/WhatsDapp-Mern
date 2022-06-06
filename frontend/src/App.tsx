@@ -6,6 +6,7 @@ import Chatpage from "./pages/Chatpage";
 const Loadingpage = lazy(() => import("./pages/Loadingpage"));
 const NotFound = lazy(() => import("./pages/404"));
 const Homepage = lazy(() => import("./pages/Homepage"));
+const Videopage = lazy(() => import("./pages/Videopage"));
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,7 @@ const App = () => {
         <Switch>
           <Route path="/" component={Homepage} exact />
           <Route path="/@" component={Chatpage} />
+          <Route path="/$" component={Videopage} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

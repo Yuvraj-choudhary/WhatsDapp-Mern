@@ -52,7 +52,6 @@ const UpdateGroup = ({
         },
       };
       const { data } = await axios.get(`/api/user?search=${search}`, config);
-      console.log(data);
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
@@ -108,7 +107,6 @@ const UpdateGroup = ({
         config
       );
 
-      console.log(data._id);
       setSelectedChat(data);
       setFetchAgain(!fetchAgain);
       setRenameLoading(false);

@@ -51,7 +51,6 @@ const Footer = ({
   const isPreview = pic || video || file || gif;
 
   const onStop = (audioData:any) => {
-    console.log("audioData", audioData);
     setAudio(audioData.url);
   };
 

@@ -139,7 +139,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       .then((res) => res.json())
       .then((data) => {
         setVideo(data.url.toString());
-        console.log(data.url.toString());
         setVideoLoading(false);
       })
       .catch((err) => {
@@ -160,7 +159,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
       .then((res) => res.json())
       .then((data) => {
         setAudio(data.url.toString());
-        console.log(data.url.toString());
         setAudioLoading(false);
       })
       .catch((err) => {
@@ -180,12 +178,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: any) => {
         "state_changed",
         (snapshot) => {},
         (err) => {
-          console.log(err);
           setFileLoading(false);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url: any) => {
-            console.log(url);
             setFile(url);
             setFileLoading(false);
           });

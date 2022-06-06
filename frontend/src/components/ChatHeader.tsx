@@ -11,7 +11,7 @@ import {
     SlideFade,
     Text
 } from "@chakra-ui/react";
-import { Close, MoreVert, Refresh } from "@material-ui/icons";
+import {Close, MoreVert, Refresh, VideocamRounded} from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { getSender, getSenderFull, getSenderPic } from "../config/ChatLogics";
 import ProfileModel from "./miscellaneous/ProfileModel";
@@ -39,7 +39,6 @@ const ChatHeader = ({
   file,
   gif,
 }:any) => {
-  console.log(message);
   const history = useHistory();
 
   const formatDate = (date: any) => {
@@ -83,7 +82,7 @@ const ChatHeader = ({
               onClick={() => {
                 setPic("");
                 setVideo("");
-                setFile("i");
+                setFile("");
                 setGif("");
               }}
               aria-label="back"
@@ -173,8 +172,8 @@ const ChatHeader = ({
               )}
               <Box marginLeft="auto" display="flex">
                 <IconButton
-                  icon={<Refresh />}
-                  onClick={() => fetchMessages()}
+                  icon={<VideocamRounded />}
+                  onClick={() => history.push("/$") }
                   aria-label="refresh"
                   variant=""
                   isRound
