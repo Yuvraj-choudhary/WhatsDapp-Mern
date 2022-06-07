@@ -1,7 +1,9 @@
 {
-  "name": "Chat Dapp",
-  "short_name": "Chatdapp",
+  "name": "Whats Dapp",
+  "short_name": "WhatsDapp",
+  "theme_color": "#fff",
   "description": "Progressive Web App",
+  "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
@@ -20,11 +22,6 @@
       "src": "./images/384x384.png",
       "type": "image/png",
       "sizes": "384x384"
-    },
-    {
-      "src": "./images/512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ]
 }

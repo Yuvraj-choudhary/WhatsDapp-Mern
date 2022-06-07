@@ -122,8 +122,8 @@ const Form = ({
           disabled={process.env.NODE_ENV === "production"}
           className="button-inner-effect"
           onClick={() => {
-            setEmail("guestUser@example.com");
-            setPassword("1234567");
+            setEmail("guestUser@gmail.com");
+            setPassword("123456");
           }}
         >
           Get Guest User Credentials

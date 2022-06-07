@@ -20,8 +20,7 @@ const Videopage = () => {
                 appId="Wq5fHCh2lHRYl0hz8ffbu2g8Ojp1"
                 name={user.name}
                 disableChat
-                disableNameField
-                disableSelfieMode
+                disableSetupView
                 onLeaveCall={() => {history.push("/@"); window.location.reload();}}
             />
         </Box>

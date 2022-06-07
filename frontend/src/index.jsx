@@ -9,14 +9,14 @@ import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ChakraProvider>
-    <BrowserRouter>
-      <ChatProvider>
-        <App />
-      </ChatProvider>
-    </BrowserRouter>
-  </ChakraProvider>,
-  document.getElementById("chat")
+    <ChakraProvider>
+        <BrowserRouter>
+            <ChatProvider>
+                <App />
+            </ChatProvider>
+        </BrowserRouter>
+    </ChakraProvider>,
+    document.getElementById("chat")
 );
 
 reportWebVitals();
