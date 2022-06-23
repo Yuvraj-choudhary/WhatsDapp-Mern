@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "dev": "concurrently \"cd frontend && yarn dev\" \"nodemon\"",
     "dist": "cd backend && tsc && cd .. && cd frontend && yarn build",
-    "dependencies": "concurrently \"cd frontend && yarn\" && \"yarn\""
+    "get": "concurrently \"cd frontend && yarn\" && \"yarn\""
   },
   "author": "yuvraj-choudhary",
   "license": "ISC",
